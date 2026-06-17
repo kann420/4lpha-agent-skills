@@ -1018,10 +1018,10 @@ function printUsage(): void {
   const ui = createCliUi();
   ui.banner("help", "BNB strategy skill CLI");
   ui.section("Usage");
-  ui.item("4lpha-agent-skill menu");
+  ui.item("4lpha menu");
   ui.item("npx --yes . menu");
-  ui.item("4lpha-agent-skill demo");
-  ui.item("4lpha-agent-skill demo --lane bstocks");
+  ui.item("4lpha demo");
+  ui.item("4lpha demo --lane bstocks");
   ui.item("npm run cli -- catalog list");
   ui.item("npm run cli -- catalog show strategy.generate");
   ui.item("npm run cli -- market fetch-cmc --out examples/generated/cmc-market-context.snapshot.json");

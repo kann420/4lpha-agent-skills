@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "bin": {
+    "4lpha": "./bin/4lpha-agent-skill.js",
     "4lpha-agent-skill": "./bin/4lpha-agent-skill.js",
+    "4lphacli": "./bin/4lpha-agent-skill.js",
     "fourmeme-skill": "./bin/4lpha-agent-skill.js"
   },
   "scripts": {

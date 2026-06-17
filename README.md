@@ -81,14 +81,14 @@ npx --yes . catalog list
 Alternative local package execution:
 
 ```powershell
-npm exec --yes --package=. 4lpha-agent-skill demo
+npm exec --yes --package=. 4lpha demo
 ```
 
 or install the local repo CLI once and then run:
 
 ```powershell
 npm install -g .
-4lpha-agent-skill demo
+4lpha demo
 ```
 
 Capability catalog:

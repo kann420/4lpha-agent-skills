@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "source": "distilled-from-4alpha-global-learning",
+  "generatedAt": "2026-06-15T00:00:00.000Z",
+  "summary": "Portable Four.Meme strategy lessons adapted from the 4alpha learning layer. These lessons are used to review strategy specs, not to execute trades.",
+  "lessons": [
+    {
+      "id": "contract-identity-first",
+      "scope": "global",
+      "direction": "block",
+      "roleHints": ["safety", "gatekeeper", "strategy"],
+      "summary": "Never approve a meme-token setup by symbol alone. Contract address, venue, chain, and timestamp must be preserved.",
+      "triggers": ["symbol-only candidate", "missing contract address", "ambiguous token identity"],
+      "effect": "Reject or hold the strategy inactive until contract-level identity is available."
+    },
+    {
+      "id": "dead-follow-through-veto",
+      "scope": "global",
+      "direction": "avoid",
+      "roleHints": ["safety", "gatekeeper"],
+      "summary": "Avoid launch candidates that have activity but no follow-through. A strategy should not rescue dead tape with broad market optimism.",
+      "triggers": ["low venue activity", "weak bonding progress", "stale launch", "no approved discovery bucket"],
+      "effect": "Prefer wait/reject unless a fresh venue scan shows approved-bucket candidates."
+    },
+    {
+      "id": "negative-close-cluster-cooldown",
+      "scope": "global",
+      "direction": "avoid",
+      "roleHints": ["safety", "strategy"],
+      "summary": "Recent clusters of failed entries should create a temporary cooldown instead of repeated re-entry.",
+      "triggers": ["repeated stopouts", "same-token loss cluster", "failed re-entry"],
+      "effect": "Require cooldown and daily-loss controls in the generated strategy spec."
+    },
+    {
+      "id": "medium-risk-watchlist-only",
+      "scope": "fourmeme",
+      "direction": "avoid",
+      "roleHints": ["safety", "social", "gatekeeper"],
+      "summary": "Medium Risk discovery names are useful watchlist material, but they should not become active entries without a supportive regime and confirmation.",
+      "triggers": ["mediumRisk bucket", "selective market regime", "missing external confirmation"],
+      "effect": "Keep Medium Risk candidates out of active entry rules unless Gatekeeper has explicit confirming evidence."
+    },
+    {
+      "id": "social-missing-is-neutral",
+      "scope": "fourmeme",
+      "direction": "neutral",
+      "roleHints": ["social", "gatekeeper"],
+      "summary": "Missing social/KOL data is neutral, not bearish. Explicit bearish social evidence, wash-trading evidence, or suspicious fresh-wallet behavior should block.",
+      "triggers": ["missing social data", "bearish social data", "wash trading", "fresh wallet spike"],
+      "effect": "Do not invent social evidence. Use venue attention as a weak proxy only when labeled as such."
+    },
+    {
+      "id": "regime-first-position-sizing",
+      "scope": "global",
+      "direction": "favor",
+      "roleHints": ["strategy", "gatekeeper"],
+      "summary": "When the market regime is mixed, the strategy may still be useful, but only with reduced sizing, exposure caps, and explicit invalidation.",
+      "triggers": ["selective-bnb-strength", "mixed CMC regime", "fear and greed below neutral"],
+      "effect": "Keep position size small and require strict invalidation instead of broad risk-on deployment."
+    }
+  ]
+}

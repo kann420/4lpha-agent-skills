@@ -1,0 +1,17 @@
+.env
+.env.local
+.env.*.local
+AGENTS.md
+agents.md
+CLAUDE.md
+claude.md
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+dist/
+build/
+coverage/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,34 @@
+{
+  "asOf": "2026-06-17T13:19:59.999Z",
+  "source": "coinmarketcap",
+  "transport": "rest",
+  "global": {
+    "totalMarketCapUsd": 2234106659767.5317,
+    "totalVolume24hUsd": 70813614864.84,
+    "totalMarketCapChange24hPct": -1.58256097,
+    "btcDominancePct": 58.319270947619,
+    "btcDominanceChange24hPct": -0.114173392381,
+    "ethDominancePct": 9.500899372083,
+    "observedAt": "2026-06-17T13:19:59.999Z"
+  },
+  "fearGreed": {
+    "value": 23,
+    "classification": "Fear",
+    "observedAt": "2026-06-17T13:08:10.032Z"
+  },
+  "bnb": {
+    "assetId": 1839,
+    "name": "BNB",
+    "symbol": "BNB",
+    "cmcRank": 4,
+    "priceUsd": 609.3221615473583,
+    "volume24hUsd": 1224102999.672125,
+    "percentChange1h": 0.49830946,
+    "percentChange24h": -0.2782029,
+    "percentChange7d": 3.65632606,
+    "percentChange30d": -4.98825481,
+    "marketCapUsd": 82126617066.5207,
+    "marketCapDominancePct": 3.6763,
+    "observedAt": "2026-06-17T13:19:04.000Z"
+  }
+}

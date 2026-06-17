@@ -1,0 +1,579 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://4lpha.tech/schemas/bstocks/bstocks-reviewed-strategy-spec.schema.json",
+  "title": "BstocksReviewedStrategySpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "strategyId",
+    "generatedAt",
+    "domain",
+    "status",
+    "inputWindow",
+    "universe",
+    "regime",
+    "entryRules",
+    "exitRules",
+    "riskControls",
+    "invalidation",
+    "assumptions",
+    "evidence",
+    "strategyThesis",
+    "brainReview",
+    "rationale"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "strategyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domain": {
+      "type": "string",
+      "const": "bnb-bstocks"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "rejected"
+      ]
+    },
+    "inputWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asOf",
+        "barInterval",
+        "lookback"
+      ],
+      "properties": {
+        "asOf": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "barInterval": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lookback": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chain",
+        "venue",
+        "issuer",
+        "selectionMethod",
+        "quoteAsset",
+        "candidateCount",
+        "allowedSymbols"
+      ],
+      "properties": {
+        "chain": {
+          "type": "string",
+          "const": "bnb-chain"
+        },
+        "venue": {
+          "type": "string",
+          "const": "pancakeswap-stocks"
+        },
+        "issuer": {
+          "type": "string",
+          "const": "bStocks"
+        },
+        "selectionMethod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quoteAsset": {
+          "type": "string",
+          "const": "USD"
+        },
+        "candidateCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "allowedSymbols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "sampleCandidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        }
+      }
+    },
+    "regime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "summary"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "entryRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 1
+    },
+    "exitRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 1
+    },
+    "riskControls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/riskControl"
+      },
+      "minItems": 1
+    },
+    "invalidation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/condition"
+      },
+      "minItems": 1
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assumption"
+      },
+      "minItems": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "minItems": 1
+    },
+    "strategyThesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brainReview": {
+      "$ref": "#/$defs/brainReview"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rejectionReasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/condition"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "metric",
+        "operator",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "=",
+            "crosses_above",
+            "crosses_below",
+            "in",
+            "not_in"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "array"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "riskControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "position-sizing",
+            "stop-loss",
+            "time-stop",
+            "cooldown",
+            "daily-loss-limit",
+            "exposure-cap",
+            "liquidity-filter"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "impact": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "observedAt",
+        "summary"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cmcId",
+        "symbol",
+        "name",
+        "issuer",
+        "venueUrl",
+        "priceUsd",
+        "volume24hUsd",
+        "marketCapUsd",
+        "percentChange24h",
+        "percentChange7d",
+        "observedAt"
+      ],
+      "properties": {
+        "cmcId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuer": {
+          "type": "string",
+          "const": "bStocks"
+        },
+        "venueUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "priceUsd": {
+          "type": "number"
+        },
+        "volume24hUsd": {
+          "type": "number"
+        },
+        "marketCapUsd": {
+          "type": "number"
+        },
+        "percentChange24h": {
+          "type": "number"
+        },
+        "percentChange7d": {
+          "type": "number"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "brainReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "provider",
+        "status",
+        "finalVerdict",
+        "strategyThesis",
+        "learning",
+        "agents"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "off",
+            "single-agent",
+            "multi-agent"
+          ]
+        },
+        "provider": {
+          "type": "string",
+          "enum": [
+            "deterministic-generator",
+            "local-rules",
+            "openai-compatible"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "blocked",
+            "advisory-only"
+          ]
+        },
+        "finalVerdict": {
+          "type": "string",
+          "enum": [
+            "approve",
+            "wait",
+            "reject"
+          ]
+        },
+        "strategyThesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "learning": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policyVersion",
+            "source",
+            "appliedLessonIds",
+            "summary"
+          ],
+          "properties": {
+            "policyVersion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            },
+            "appliedLessonIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "summary": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/brainAgentReview"
+          }
+        }
+      }
+    },
+    "brainAgentReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "model",
+        "verdict",
+        "confidence",
+        "summary",
+        "reasons",
+        "appliedLessonIds"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "strategy",
+            "safety",
+            "market-analysis",
+            "gatekeeper"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "approve",
+            "wait",
+            "reject"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "appliedLessonIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

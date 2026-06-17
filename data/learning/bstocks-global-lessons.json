@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "source": "bstocks-lane-global-learning",
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "summary": "Portable bStocks strategy lessons for the BNB hackathon lane. These lessons review strategy specs and activation quality, not live execution.",
+  "lessons": [
+    {
+      "id": "issuer-venue-identity-first",
+      "scope": "bstocks",
+      "direction": "block",
+      "roleHints": ["safety", "gatekeeper", "strategy"],
+      "summary": "Never approve a bStocks setup without matching issuer, venue, symbol, and CMC identity.",
+      "triggers": ["missing cmc id", "issuer mismatch", "venue mismatch", "symbol-only candidate"],
+      "effect": "Reject or hold the strategy inactive until lane identity is explicit."
+    },
+    {
+      "id": "cmc-regime-first",
+      "scope": "global",
+      "direction": "block",
+      "roleHints": ["safety", "market-analysis", "gatekeeper", "strategy"],
+      "summary": "Broad CMC regime gates must stay visible before any bStocks relative-strength logic is allowed to activate.",
+      "triggers": ["risk-off market", "negative market-cap trend", "defensive fear and greed"],
+      "effect": "Keep the strategy inactive when regime gates fail instead of rescuing it with single-name momentum."
+    },
+    {
+      "id": "quote-coverage-minimum",
+      "scope": "bstocks",
+      "direction": "block",
+      "roleHints": ["safety", "gatekeeper", "strategy"],
+      "summary": "Do not activate a rotation lane unless the tracked bStocks universe has enough quoteable names to rank.",
+      "triggers": ["too few quoteable symbols", "stale universe coverage"],
+      "effect": "Wait or reject until the minimum universe coverage threshold is restored."
+    },
+    {
+      "id": "thin-volume-is-caution",
+      "scope": "bstocks",
+      "direction": "avoid",
+      "roleHints": ["market-analysis", "gatekeeper", "strategy"],
+      "summary": "Thin-volume names should not dominate the strategy thesis even if they are top 24h performers.",
+      "triggers": ["low 24h volume", "single-name concentration", "weak breadth"],
+      "effect": "Prefer the more active names and keep concentration controls explicit."
+    },
+    {
+      "id": "missing-external-evidence-is-neutral",
+      "scope": "bstocks",
+      "direction": "neutral",
+      "roleHints": ["market-analysis", "gatekeeper"],
+      "summary": "Missing non-CMC external sentiment or narrative data is neutral, not bullish or bearish.",
+      "triggers": ["missing social data", "missing issuer commentary", "missing off-chain flow data"],
+      "effect": "Do not invent external evidence; use only labeled CMC-backed or repo-maintained inputs."
+    },
+    {
+      "id": "mixed-regime-size-down",
+      "scope": "global",
+      "direction": "favor",
+      "roleHints": ["strategy", "gatekeeper"],
+      "summary": "Mixed regimes can still justify a strategy spec, but only with reduced sizing, exposure caps, and explicit invalidation.",
+      "triggers": ["selective regime", "moderate fear and greed", "supportive but imperfect breadth"],
+      "effect": "Keep the strategy narrow and preserve risk controls instead of broad deployment."
+    }
+  ]
+}

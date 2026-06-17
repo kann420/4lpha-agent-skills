@@ -1,0 +1,44 @@
+{
+  "version": "0.1.0",
+  "issuer": "bStocks",
+  "venue": "pancakeswap-stocks",
+  "venueUrl": "https://pancakeswap.finance/stocks",
+  "selectionUniverse": [
+    {
+      "cmcId": 40213,
+      "contractAddress": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
+      "symbol": "CRCLB",
+      "displayName": "Circle Internet Group Tokenized bStocks"
+    },
+    {
+      "cmcId": 40212,
+      "contractAddress": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
+      "symbol": "MUB",
+      "displayName": "Micron Technology Tokenized bStocks"
+    },
+    {
+      "cmcId": 40215,
+      "contractAddress": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "symbol": "NVDAB",
+      "displayName": "NVIDIA Tokenized bStocks"
+    },
+    {
+      "cmcId": 40216,
+      "contractAddress": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+      "symbol": "SNDKB",
+      "displayName": "SanDisk Tokenized bStocks"
+    },
+    {
+      "cmcId": 40217,
+      "contractAddress": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "symbol": "SPCXB",
+      "displayName": "SpaceX Tokenized bStocks"
+    },
+    {
+      "cmcId": 40214,
+      "contractAddress": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "symbol": "TSLAB",
+      "displayName": "Tesla Tokenized bStocks"
+    }
+  ]
+}

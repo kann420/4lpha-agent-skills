@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://4lpha.tech/schemas/bstocks/bstocks-snapshot.schema.json",
+  "title": "BstocksUniverseSnapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "asOf",
+    "source",
+    "universeVersion",
+    "issuer",
+    "venue",
+    "venueUrl",
+    "sourceBaseUrl",
+    "symbols",
+    "candidateCount",
+    "candidates"
+  ],
+  "properties": {
+    "asOf": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "const": "coinmarketcap"
+    },
+    "universeVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "issuer": {
+      "type": "string",
+      "const": "bStocks"
+    },
+    "venue": {
+      "type": "string",
+      "const": "pancakeswap-stocks"
+    },
+    "venueUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sourceBaseUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "symbols": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "candidateCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cmcId",
+          "symbol",
+          "name",
+          "issuer",
+          "venue",
+          "venueUrl",
+          "cmcRank",
+          "priceUsd",
+          "volume24hUsd",
+          "percentChange1h",
+          "percentChange24h",
+          "percentChange7d",
+          "percentChange30d",
+          "marketCapUsd",
+          "observedAt"
+        ],
+        "properties": {
+          "cmcId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "issuer": {
+            "type": "string",
+            "const": "bStocks"
+          },
+          "venue": {
+            "type": "string",
+            "const": "pancakeswap-stocks"
+          },
+          "venueUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "cmcRank": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "priceUsd": {
+            "type": "number"
+          },
+          "volume24hUsd": {
+            "type": "number"
+          },
+          "percentChange1h": {
+            "type": "number"
+          },
+          "percentChange24h": {
+            "type": "number"
+          },
+          "percentChange7d": {
+            "type": "number"
+          },
+          "percentChange30d": {
+            "type": "number"
+          },
+          "marketCapUsd": {
+            "type": "number"
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

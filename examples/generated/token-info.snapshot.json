@@ -1,0 +1,66 @@
+{
+  "version": "0.1.0",
+  "lane": "fourmeme",
+  "contract": "0xc269d59a0d608ea0bd672f2f4616c372d8554444",
+  "fetchedAt": "2026-06-17T12:50:07.943Z",
+  "source": "coinmarketcap+fourmeme",
+  "display": {
+    "nameSymbol": "ClipX/ClipX",
+    "priceUsd": "~$0.00035",
+    "volume24hUsd": "~$5.24K",
+    "totalHolders": "Requires CMC API key",
+    "marketCap": "~$349.48K",
+    "liquidity": "~$71.44K",
+    "bondedOrGraduated": true,
+    "bondingStatusRaw": "TRADE",
+    "cmcRank": null,
+    "cmcLink": null,
+    "creator": "0x9aac2ad40f05b77be6f69a7b84e609f7d3592926",
+    "createdAtUtc": "2025/11/17 10:44:17 UTC",
+    "socials": {
+      "website": "https://www.clipx0.xyz/",
+      "twitter": "https://x.com/ClipX0_",
+      "telegram": "https://t.me/ClipXofficial"
+    },
+    "latestNews": [
+      {
+        "title": "Requires CMC API key",
+        "source": "CoinMarketCap"
+      }
+    ]
+  },
+  "raw": {
+    "cmcId": 40032,
+    "name": "ClipX",
+    "symbol": "ClipX",
+    "priceUsd": 0.00034948181311791627,
+    "volume24hUsd": 5235.161880009301,
+    "totalHolders": 0,
+    "marketCapUsd": 349481.8131179163,
+    "liquidityUsd": 71437.11498986339,
+    "bondedOrGraduated": true,
+    "bondingStatusRaw": "TRADE",
+    "cmcRank": null,
+    "cmcLink": null,
+    "creator": "0x9aac2ad40f05b77be6f69a7b84e609f7d3592926",
+    "createdAt": "2025/11/17 10:44:17 UTC",
+    "latestNews": [],
+    "missingCmcApiKey": true
+  },
+  "sources": [
+    {
+      "name": "CoinMarketCap public DEX search",
+      "observedAt": "2026-06-17T12:42:41.000Z",
+      "url": "https://pro-api.coinmarketcap.com/trial-pro-api/v1/dex/search?q=0xc269d59a0d608ea0bd672f2f4616c372d8554444"
+    },
+    {
+      "name": "Four.Meme token detail",
+      "observedAt": "2026-06-17T12:50:07.943Z",
+      "url": "https://four.meme/meme-api/v1/private/token/get/v2?address=0xc269d59a0d608ea0bd672f2f4616c372d8554444"
+    },
+    {
+      "name": "CoinMarketCap API key required for quotes, metrics, info, rank, and news",
+      "observedAt": "2026-06-17T12:50:07.943Z"
+    }
+  ]
+}

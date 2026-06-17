@@ -1,0 +1,45 @@
+{
+  "version": "0.1.0",
+  "lane": "bstocks",
+  "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+  "fetchedAt": "2026-06-17T12:50:32.175Z",
+  "source": "coinmarketcap+bstocks-allowlist",
+  "display": {
+    "nameSymbol": "SpaceX Tokenized bStocks/SPCXB",
+    "description": "Requires CMC API key",
+    "price": "Requires CMC API key",
+    "percentChange24h": "Requires CMC API key",
+    "volume24h": "Requires CMC API key",
+    "cmcRank": null,
+    "cmcLink": null,
+    "latestNews": [
+      {
+        "title": "Requires CMC API key",
+        "source": "CoinMarketCap"
+      }
+    ]
+  },
+  "raw": {
+    "cmcId": 40217,
+    "name": "SpaceX Tokenized bStocks",
+    "symbol": "SPCXB",
+    "description": null,
+    "priceUsd": 0,
+    "percentChange24h": 0,
+    "volume24hUsd": 0,
+    "cmcRank": null,
+    "cmcLink": null,
+    "latestNews": [],
+    "missingCmcApiKey": true
+  },
+  "sources": [
+    {
+      "name": "bStocks committed allowlist",
+      "observedAt": "2026-06-17T12:50:32.175Z"
+    },
+    {
+      "name": "CoinMarketCap API key required for quotes, info, rank, and news",
+      "observedAt": "2026-06-17T12:50:32.175Z"
+    }
+  ]
+}

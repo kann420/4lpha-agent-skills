@@ -1,0 +1,32 @@
+{
+  "name": "4lpha-agent-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "4lpha-agent-skill": "./bin/4lpha-agent-skill.js",
+    "fourmeme-skill": "./bin/4lpha-agent-skill.js"
+  },
+  "scripts": {
+    "cli": "tsx scripts/agent-skill-cli.ts",
+    "demo": "npm run cli -- example generate",
+    "generate:cmc-strategy": "tsx scripts/generate-cmc-strategy.ts",
+    "generate:bstocks-strategy": "tsx scripts/generate-bstocks-strategy.ts",
+    "test:token-info": "tsx tests/token-info.smoke.ts",
+    "test:fourmeme-brain": "tsx tests/fourmeme-brain.smoke.ts",
+    "test:bstocks-brain": "tsx tests/bstocks-brain.smoke.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run generate:cmc-strategy"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "dotenv": "17.4.2",
+    "tsx": "4.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.3",
+    "typescript": "6.0.3"
+  }
+}

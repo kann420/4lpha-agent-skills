@@ -1,0 +1,180 @@
+{
+  "version": "0.1.0",
+  "source": "4alpha-custom-fourmeme-smart-wallet-entry-doctrine",
+  "generatedAt": "2026-06-15T00:00:00.000Z",
+  "summary": "Four.Meme smart-wallet entry doctrine adapted from 4alpha research. This doctrine is used as strategy review policy and evidence requirements, not as an execution command.",
+  "researchBasis": "Adapted from a 4alpha custom skill based on 10 BNB Chain top-PnL smart wallets observed from 2026-05-11 to 2026-05-21.",
+  "setupModes": [
+    {
+      "id": "low-mc-revival",
+      "summary": "Old, migrated, or ignored token gets fresh live buyers.",
+      "marketCapUsdPreferredMin": 3500,
+      "marketCapUsdPreferredMax": 8000,
+      "marketCapUsdValidMax": 25000,
+      "requiredEvidence": [
+        "volume expansion",
+        "organic buyer follow-through",
+        "not one isolated buy"
+      ]
+    },
+    {
+      "id": "pre-open-near-open-scalp",
+      "summary": "High-risk scalp mode only; do not turn it into a hold thesis without fresh data.",
+      "marketCapUsdPreferredMin": 0,
+      "marketCapUsdPreferredMax": 25000,
+      "marketCapUsdValidMax": 50000,
+      "requiredEvidence": [
+        "creator closed or risk-controlled",
+        "low suspicious/dev risk",
+        "early smart or KOL participation"
+      ]
+    },
+    {
+      "id": "confirmed-momentum",
+      "summary": "Continuation setup where volume, holders, liquidity, and smart-wallet participation keep expanding.",
+      "marketCapUsdPreferredMin": 25000,
+      "marketCapUsdPreferredMax": 100000,
+      "marketCapUsdValidMax": 150000,
+      "requiredEvidence": [
+        "consolidation, reclaim, or continuation",
+        "volume expansion",
+        "holder or liquidity expansion"
+      ]
+    },
+    {
+      "id": "mature-narrative",
+      "summary": "Mature narrative trade only with exceptional liquidity and broad follow-through.",
+      "marketCapUsdPreferredMin": 100000,
+      "marketCapUsdPreferredMax": 1000000,
+      "marketCapUsdValidMax": 1500000,
+      "requiredEvidence": [
+        "exceptional liquidity",
+        "broad follow-through",
+        "fresh buyer expansion"
+      ]
+    }
+  ],
+  "confirmationLevels": [
+    {
+      "level": "weak",
+      "summary": "One smart wallet buys.",
+      "minimumQualityWallets": 1,
+      "windowMinutes": 15,
+      "strategyUse": "watchlist-only"
+    },
+    {
+      "level": "medium",
+      "summary": "Two quality wallets buy the same contract within 5-15 minutes.",
+      "minimumQualityWallets": 2,
+      "windowMinutes": 15,
+      "strategyUse": "confirmation-required"
+    },
+    {
+      "level": "strong",
+      "summary": "Three or more quality wallets buy within 30 minutes while buy volume rises and no fast distribution appears.",
+      "minimumQualityWallets": 3,
+      "windowMinutes": 30,
+      "strategyUse": "entry-confirmation"
+    },
+    {
+      "level": "very-strong",
+      "summary": "Strong smart-wallet cluster plus growing holders, healthy liquidity, and clean holder/developer risk.",
+      "minimumQualityWallets": 3,
+      "windowMinutes": 30,
+      "strategyUse": "highest-conviction-confirmation"
+    }
+  ],
+  "entryChecklist": [
+    {
+      "id": "one-minute-volume-expansion",
+      "summary": "Current 1-minute volume is at least 3x the previous 5-minute average.",
+      "metric": "fourmeme.volume_1m_vs_previous_5m_ratio",
+      "operator": ">=",
+      "value": 3,
+      "dataStatus": "future-evidence"
+    },
+    {
+      "id": "buy-volume-dominance",
+      "summary": "Buy volume is at least 2x sell volume in the same short window.",
+      "metric": "fourmeme.buy_sell_volume_ratio_short_window",
+      "operator": ">=",
+      "value": 2,
+      "dataStatus": "future-evidence"
+    },
+    {
+      "id": "organic-buyers-follow",
+      "summary": "Multiple organic buyers follow the first smart-wallet buy.",
+      "metric": "fourmeme.organic_buyer_follow_count",
+      "operator": ">=",
+      "value": 2,
+      "dataStatus": "future-evidence"
+    },
+    {
+      "id": "two-quality-smart-wallets",
+      "summary": "At least two quality smart wallets buy the same contract.",
+      "metric": "fourmeme.quality_smart_wallet_buys_15m",
+      "operator": ">=",
+      "value": 2,
+      "dataStatus": "future-evidence"
+    },
+    {
+      "id": "market-cap-fits-mode",
+      "summary": "Market cap fits one setup mode.",
+      "metric": "fourmeme.market_cap_usd",
+      "operator": "mode_range",
+      "value": "smart-wallet-doctrine.setupModes",
+      "dataStatus": "available"
+    },
+    {
+      "id": "liquidity-absorbs-position",
+      "summary": "Liquidity can absorb the configured fixed position.",
+      "metric": "fourmeme.volume_24h_usd",
+      "operator": ">=",
+      "value": 50000,
+      "dataStatus": "available-proxy"
+    },
+    {
+      "id": "security-signals-clean",
+      "summary": "Creator, top-holder, bundle, sniper, rat, and suspicious signals are not worse than configured filters allow.",
+      "metric": "fourmeme.security_signal_status",
+      "operator": "=",
+      "value": "clean_or_unknown",
+      "dataStatus": "future-evidence"
+    },
+    {
+      "id": "controlled-breakout-or-reclaim",
+      "summary": "Price is breaking, reclaiming, or consolidating after a controlled impulse.",
+      "metric": "fourmeme.price_structure",
+      "operator": "in",
+      "value": ["breakout", "reclaim", "controlled-consolidation"],
+      "dataStatus": "future-evidence"
+    }
+  ],
+  "avoidRules": [
+    {
+      "id": "duplicate-symbol-contract-unclear",
+      "summary": "Skip duplicate symbols or narrative clones where the contract is unclear."
+    },
+    {
+      "id": "dead-liquidity",
+      "summary": "Skip dead pools, tiny liquidity, collapsed volume, or holder count too low for the intended position."
+    },
+    {
+      "id": "single-high-churn-wallet",
+      "summary": "Penalize smart-wallet signal from only one high-churn wallet."
+    },
+    {
+      "id": "late-vertical-entry",
+      "summary": "Avoid late vertical entries without consolidation."
+    },
+    {
+      "id": "weak-mature-token",
+      "summary": "Avoid mature or high-market-cap tokens with weak liquidity or no fresh buyer expansion."
+    }
+  ],
+  "integrationNotes": [
+    "The current repo can use market-cap, volume, holder, bonding-progress, bucket, and contract identity fields immediately.",
+    "Short-window smart-wallet cluster, buy/sell ratio, and security-scan fields are preserved as explicit future evidence requirements until adapters exist.",
+    "The doctrine must never bypass CMC regime gates, hard safety gates, schema validation, or risk controls."
+  ]
+}

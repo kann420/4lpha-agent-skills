@@ -1,0 +1,309 @@
+{
+  "version": "0.1.0",
+  "strategyId": "cmc-bnb-bstocks-2026-06-16T10-39-04-000Z",
+  "generatedAt": "2026-06-16T10:40:03.220Z",
+  "domain": "bnb-bstocks",
+  "status": "proposed",
+  "inputWindow": {
+    "asOf": "2026-06-16T10:39:04.000Z",
+    "barInterval": "1h",
+    "lookback": "7d"
+  },
+  "universe": {
+    "chain": "bnb-chain",
+    "venue": "pancakeswap-stocks",
+    "issuer": "bStocks",
+    "selectionMethod": "Apply a CMC market-regime gate, then rank the maintained bStocks allowlist by 24h relative strength and keep only the more active names.",
+    "quoteAsset": "USD",
+    "candidateCount": 5,
+    "allowedSymbols": [
+      "CRCLB",
+      "MUB",
+      "NVDAB",
+      "SNDKB",
+      "TSLAB"
+    ],
+    "sampleCandidates": [
+      {
+        "cmcId": 40212,
+        "symbol": "MUB",
+        "name": "Micron Technology Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 1126.2022086559464,
+        "volume24hUsd": 1834118.95828742,
+        "marketCapUsd": 3226721.6261173408,
+        "percentChange24h": 6.53655696,
+        "percentChange7d": 22.96934943,
+        "observedAt": "2026-06-16T10:39:04.000Z"
+      },
+      {
+        "cmcId": 40216,
+        "symbol": "SNDKB",
+        "name": "SanDisk Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 2160.4419733203094,
+        "volume24hUsd": 2036864.70736064,
+        "marketCapUsd": 2037404.9196683976,
+        "percentChange24h": 3.4685394,
+        "percentChange7d": 18.34370236,
+        "observedAt": "2026-06-16T10:39:04.000Z"
+      },
+      {
+        "cmcId": 40213,
+        "symbol": "CRCLB",
+        "name": "Circle Internet Group Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 84.60379519102452,
+        "volume24hUsd": 2850734.07930751,
+        "marketCapUsd": 3299824.150886219,
+        "percentChange24h": 3.2110313,
+        "percentChange7d": 0.68294691,
+        "observedAt": "2026-06-16T10:39:04.000Z"
+      },
+      {
+        "cmcId": 40215,
+        "symbol": "NVDAB",
+        "name": "NVIDIA Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 211.86652367957637,
+        "volume24hUsd": 1275701.33309157,
+        "marketCapUsd": 3294595.020111153,
+        "percentChange24h": 1.05497967,
+        "percentChange7d": 4.35839272,
+        "observedAt": "2026-06-16T10:39:04.000Z"
+      },
+      {
+        "cmcId": 40214,
+        "symbol": "TSLAB",
+        "name": "Tesla Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 404.7191506779273,
+        "volume24hUsd": 2762721.10533196,
+        "marketCapUsd": 1436309.3239949667,
+        "percentChange24h": -1.36086985,
+        "percentChange7d": 2.90301312,
+        "observedAt": "2026-06-16T10:39:04.000Z"
+      }
+    ]
+  },
+  "regime": {
+    "label": "selective-bstocks-rotation",
+    "summary": "The environment is usable but not fully risk-on, so the lane should stay narrow and only target the strongest quoted symbols.",
+    "confidence": 0.64
+  },
+  "entryRules": [
+    {
+      "id": "market-cap-risk-gate",
+      "description": "Only activate the bStocks rotation lane when total crypto market cap is flat-to-up versus the prior 24h snapshot.",
+      "metric": "cmc.global.total_market_cap_change_24h_pct",
+      "operator": ">=",
+      "value": 0
+    },
+    {
+      "id": "fear-greed-risk-gate",
+      "description": "Require CoinMarketCap Fear and Greed to stay above the defensive floor before allocating to bStocks rotation.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": ">=",
+      "value": 45
+    },
+    {
+      "id": "bnb-support-gate",
+      "description": "Keep the bStocks lane inactive when BNB is losing 24h momentum, because the venue and routing still sit on BNB Chain.",
+      "metric": "cmc.bnb.percent_change_24h",
+      "operator": ">=",
+      "value": 0
+    },
+    {
+      "id": "bstocks-universe-coverage",
+      "description": "Only propose live entries when at least three tracked bStocks symbols have current CMC quotes.",
+      "metric": "bstocks.candidate_count",
+      "operator": ">=",
+      "value": 3
+    },
+    {
+      "id": "bstocks-relative-strength-rank",
+      "description": "Only enter symbols that rank inside the top two 24h performers of the tracked bStocks universe.",
+      "metric": "bstocks.relative_strength_rank_24h",
+      "operator": "<=",
+      "value": 2
+    },
+    {
+      "id": "bstocks-positive-24h-momentum",
+      "description": "Require the selected symbol to keep a non-negative 24h return so the lane behaves as a continuation strategy, not a mean-reversion catch.",
+      "metric": "bstocks.percent_change_24h",
+      "operator": ">=",
+      "value": 0
+    },
+    {
+      "id": "bstocks-active-volume-gate",
+      "description": "Require 24h quoted volume to remain at or above the current bStocks universe median so the strategy stays in the more active names.",
+      "metric": "bstocks.volume_24h_usd",
+      "operator": ">=",
+      "value": 2036864.71
+    },
+    {
+      "id": "bstocks-allowlist-gate",
+      "description": "Restrict the lane to the repo-maintained bStocks allowlist so the submission story stays explicit and reproducible.",
+      "metric": "bstocks.symbol",
+      "operator": "in",
+      "value": [
+        "CRCLB",
+        "MUB",
+        "NVDAB",
+        "SNDKB",
+        "TSLAB"
+      ]
+    }
+  ],
+  "exitRules": [
+    {
+      "id": "hard-stop-loss",
+      "description": "Exit when drawdown from entry reaches the hard stop threshold.",
+      "metric": "trade.drawdown_pct_from_entry",
+      "operator": "<=",
+      "value": -4
+    },
+    {
+      "id": "take-profit",
+      "description": "Harvest gains when the rotation move reaches the take-profit threshold.",
+      "metric": "trade.unrealized_return_pct",
+      "operator": ">=",
+      "value": 8
+    },
+    {
+      "id": "time-stop",
+      "description": "Exit after three days if the relative-strength move has not resolved.",
+      "metric": "trade.holding_period_hours",
+      "operator": ">=",
+      "value": 72
+    },
+    {
+      "id": "relative-strength-fade-exit",
+      "description": "Exit if the position falls out of the top three 24h performers on the next hourly rebalance.",
+      "metric": "bstocks.relative_strength_rank_24h",
+      "operator": ">",
+      "value": 3
+    },
+    {
+      "id": "regime-break-exit",
+      "description": "Flatten exposure if the regime flips defensive after entry.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": "<",
+      "value": 45
+    }
+  ],
+  "riskControls": [
+    {
+      "id": "position-size-cap",
+      "description": "Cap each bStocks position at 1.0% of strategy equity.",
+      "type": "position-sizing",
+      "value": 1
+    },
+    {
+      "id": "portfolio-exposure-cap",
+      "description": "Cap concurrent bStocks exposure at 2.0% of strategy equity.",
+      "type": "exposure-cap",
+      "value": 2
+    },
+    {
+      "id": "daily-loss-cap",
+      "description": "Pause new entries after 2.0% daily strategy drawdown.",
+      "type": "daily-loss-limit",
+      "value": 2
+    },
+    {
+      "id": "allowlist-filter",
+      "description": "Reject symbols that fall outside the committed bStocks universe file even if CMC can quote them.",
+      "type": "liquidity-filter",
+      "value": "allowlist-required"
+    },
+    {
+      "id": "stopout-cooldown",
+      "description": "Wait twelve hours after a stop-out before re-entering the same bStocks symbol.",
+      "type": "cooldown",
+      "value": "12h"
+    }
+  ],
+  "invalidation": [
+    {
+      "description": "Invalidate the lane if fewer than three tracked bStocks symbols are currently quoteable from CoinMarketCap.",
+      "metric": "bstocks.candidate_count",
+      "operator": "<",
+      "value": 3
+    },
+    {
+      "description": "Invalidate the lane if Fear and Greed drops below the activation floor.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": "<",
+      "value": 45
+    },
+    {
+      "description": "Invalidate the lane if total crypto market cap turns negative again on a 24h basis.",
+      "metric": "cmc.global.total_market_cap_change_24h_pct",
+      "operator": "<",
+      "value": 0
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "cmc-pricing-authority",
+      "description": "CoinMarketCap quote snapshots are treated as the authoritative hourly pricing reference for this repo lane.",
+      "impact": "Backtests should sample CMC-aligned hourly snapshots rather than assume continuous fills."
+    },
+    {
+      "id": "bstocks-allowlist-maintenance",
+      "description": "The bStocks trade universe is an explicit repo-maintained allowlist rather than an open-ended crawler.",
+      "impact": "Backtests should use the same committed universe file for reproducibility."
+    },
+    {
+      "id": "separate-domain-lane",
+      "description": "The bStocks lane is intentionally separate from Four.Meme discovery logic and does not inherit meme-token heuristics.",
+      "impact": "Do not blend Four.Meme bucket logic into bStocks results when evaluating this strategy family."
+    },
+    {
+      "id": "limited-history-window",
+      "description": "bStocks is a newly launched venue lane, so historical inference should stay conservative and data-source timestamps must be preserved.",
+      "impact": "Backtests may need a shorter lookback window and should state any proxy assumptions explicitly."
+    }
+  ],
+  "evidence": [
+    {
+      "source": "CoinMarketCap Global Metrics API",
+      "observedAt": "2026-06-16T10:38:59.999Z",
+      "summary": "Total crypto market cap is 2280383774374 USD with a 24h change of 1.71%.",
+      "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
+    },
+    {
+      "source": "CoinMarketCap Fear and Greed API",
+      "observedAt": "2026-06-16T10:38:10.024Z",
+      "summary": "Fear and Greed is 25 and classified as Fear.",
+      "url": "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
+    },
+    {
+      "source": "CoinMarketCap BNB Quote API",
+      "observedAt": "2026-06-16T10:39:04.000Z",
+      "summary": "BNB trades at 614.96 USD with 0.11% 24h change.",
+      "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB"
+    },
+    {
+      "source": "CoinMarketCap bStocks quote snapshot",
+      "observedAt": "2026-06-16T10:39:04.000Z",
+      "summary": "Tracked 5 bStocks symbols from the committed allowlist. Leading names: MUB (40212) 24h 6.54%, 7d 22.97%, price $1126.20, volume $1.83M; SNDKB (40216) 24h 3.47%, 7d 18.34%, price $2160.44, volume $2.04M; CRCLB (40213) 24h 3.21%, 7d 0.68%, price $84.60, volume $2.85M.",
+      "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=CRCLB,MUB,NVDAB,SNDKB,TSLAB"
+    }
+  ],
+  "rationale": "CMC conditions are mixed, so the bStocks lane should remain selective and size-constrained. The current CMC snapshot shows Fear and Greed at 25, total market cap change at 1.71% over 24h, and BNB at 0.11% over 24h. The bStocks lane currently tracks 5 quoteable symbols from the committed allowlist, with MUB (6.54%), SNDKB (3.47%), CRCLB (3.21%) leading the 24h relative-strength table. This lane is intentionally shallow for the current milestone: it proves repo structure, CMC-backed pricing, and explicit backtestable rules without mixing in Four.Meme heuristics.",
+  "rejectionReasons": [
+    {
+      "description": "CMC Fear and Greed is 25, below the bStocks activation threshold of 45.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": "<",
+      "value": 45
+    }
+  ]
+}

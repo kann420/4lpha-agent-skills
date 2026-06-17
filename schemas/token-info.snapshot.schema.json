@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://4lpha.tech/schemas/token-info.snapshot.schema.json",
+  "title": "TokenInfoSnapshot",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/fourmeme"
+    },
+    {
+      "$ref": "#/$defs/bstocks"
+    }
+  ],
+  "$defs": {
+    "newsItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publishedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "observedAt"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "socials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "website",
+        "twitter",
+        "telegram"
+      ],
+      "properties": {
+        "website": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "twitter": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "telegram": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "fourmeme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "lane",
+        "contract",
+        "fetchedAt",
+        "source",
+        "display",
+        "raw",
+        "sources"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lane": {
+          "const": "fourmeme"
+        },
+        "contract": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "fetchedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "const": "coinmarketcap+fourmeme"
+        },
+        "display": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nameSymbol",
+            "priceUsd",
+            "volume24hUsd",
+            "totalHolders",
+            "marketCap",
+            "liquidity",
+            "bondedOrGraduated",
+            "bondingStatusRaw",
+            "cmcRank",
+            "cmcLink",
+            "creator",
+            "createdAtUtc",
+            "socials",
+            "latestNews"
+          ],
+          "properties": {
+            "nameSymbol": {
+              "type": "string",
+              "minLength": 1
+            },
+            "priceUsd": {
+              "type": "string"
+            },
+            "volume24hUsd": {
+              "type": "string"
+            },
+            "totalHolders": {
+              "type": "string"
+            },
+            "marketCap": {
+              "type": "string"
+            },
+            "liquidity": {
+              "type": "string"
+            },
+            "bondedOrGraduated": {
+              "type": "boolean"
+            },
+            "bondingStatusRaw": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cmcRank": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cmcLink": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            },
+            "creator": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "createdAtUtc": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "socials": {
+              "$ref": "#/$defs/socials"
+            },
+            "latestNews": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/newsItem"
+              }
+            }
+          }
+        },
+        "raw": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRecord"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "bstocks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "lane",
+        "contract",
+        "fetchedAt",
+        "source",
+        "display",
+        "raw",
+        "sources"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lane": {
+          "const": "bstocks"
+        },
+        "contract": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "fetchedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "const": "coinmarketcap+bstocks-allowlist"
+        },
+        "display": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nameSymbol",
+            "description",
+            "price",
+            "percentChange24h",
+            "volume24h",
+            "cmcRank",
+            "cmcLink",
+            "latestNews"
+          ],
+          "properties": {
+            "nameSymbol": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "price": {
+              "type": "string"
+            },
+            "percentChange24h": {
+              "type": "string"
+            },
+            "volume24h": {
+              "type": "string"
+            },
+            "cmcRank": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cmcLink": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            },
+            "latestNews": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/newsItem"
+              }
+            }
+          }
+        },
+        "raw": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRecord"
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

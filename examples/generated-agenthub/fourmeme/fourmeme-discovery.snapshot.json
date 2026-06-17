@@ -1,0 +1,1650 @@
+{
+  "asOf": "2026-06-17T12:56:07.470Z",
+  "sourceBaseUrl": "https://four.meme/meme-api/v1",
+  "sourceEndpoints": [
+    "https://four.meme/meme-api/v1/public/token/ranking",
+    "https://four.meme/meme-api/v1/public/token/search"
+  ],
+  "venue": "fourmeme",
+  "feedCounts": {
+    "newLaunches": 50,
+    "volumeLeaders": 50,
+    "hot": 50,
+    "dexMigrated": 100
+  },
+  "safe2apeCandidates": [
+    {
+      "tokenAddress": "0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
+      "venueUrl": "https://four.meme/en/token/0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
+      "symbol": "MAX",
+      "name": "捐款给GIGGLE",
+      "image": "https://static.four.meme/market/617U6ymNNDnXy.png",
+      "createdAt": "2026-06-17T01:16:03.000Z",
+      "marketCapUsd": 13436.124388556942,
+      "volume24hUsd": 55724.65,
+      "volume4hUsd": 24212.6,
+      "priceUsd": 0.000013425566537893087,
+      "holders": 70,
+      "bondingProgress": 66,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 48
+    },
+    {
+      "tokenAddress": "0xc7bd4091fc0997744dca52a7ef4d0e600cb0ffff",
+      "venueUrl": "https://four.meme/en/token/0xc7bd4091fc0997744dca52a7ef4d0e600cb0ffff",
+      "symbol": "Aster合规",
+      "name": "Aster合规性质疑",
+      "image": "https://static.four.meme/market/6173dS9gJg3zL.jpg",
+      "createdAt": "2026-06-17T12:15:05.000Z",
+      "marketCapUsd": 12840.28513114491,
+      "volume24hUsd": 9928.44,
+      "volume4hUsd": 9928.44,
+      "priceUsd": 0.000012840285131144912,
+      "holders": 97,
+      "bondingProgress": 64.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 45
+    }
+  ],
+  "mediumRiskCandidates": [
+    {
+      "tokenAddress": "0x89da89494878472ba8cfd509b524688675f84444",
+      "venueUrl": "https://four.meme/en/token/0x89da89494878472ba8cfd509b524688675f84444",
+      "symbol": "不吃压力",
+      "name": "不吃压力",
+      "image": "https://static.four.meme/market/617uXJjIxj4h4.jpg",
+      "createdAt": "2026-06-17T07:28:20.000Z",
+      "marketCapUsd": 5028.96316780618,
+      "volume24hUsd": 95014.05,
+      "volume4hUsd": 0,
+      "priceUsd": 0.00000502896316780618,
+      "holders": 63,
+      "bondingProgress": 22.6,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 33
+    },
+    {
+      "tokenAddress": "0x11bca62f586185a09641aee156d53ec027db4444",
+      "venueUrl": "https://four.meme/en/token/0x11bca62f586185a09641aee156d53ec027db4444",
+      "symbol": "czzzzzzzzz",
+      "name": "changpeng zhao",
+      "image": "https://static.four.meme/market/617YvFZbH5Lxi.jpg",
+      "createdAt": "2026-06-17T03:08:15.000Z",
+      "marketCapUsd": 4409.744482204692,
+      "volume24hUsd": 82963.57,
+      "volume4hUsd": 0,
+      "priceUsd": 0.000004409744482204692,
+      "holders": 51,
+      "bondingProgress": 15.1,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 32
+    },
+    {
+      "tokenAddress": "0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
+      "venueUrl": "https://four.meme/en/token/0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
+      "symbol": "ME",
+      "name": "我是最好的",
+      "image": "https://static.four.meme/market/617OI3Qg86HKm.jpg",
+      "createdAt": "2026-06-17T09:31:11.000Z",
+      "marketCapUsd": 3504.2758748075325,
+      "volume24hUsd": 74123.11,
+      "volume4hUsd": 74123.11,
+      "priceUsd": 0.0000035042758748075324,
+      "holders": 25,
+      "bondingProgress": 0.9,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 29
+    },
+    {
+      "tokenAddress": "0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
+      "venueUrl": "https://four.meme/en/token/0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
+      "symbol": "妮卡",
+      "name": "妮卡",
+      "image": "https://static.four.meme/market/617Gi53yHGrnh.jpg",
+      "createdAt": "2026-06-16T18:17:12.000Z",
+      "marketCapUsd": 3531.3921301299183,
+      "volume24hUsd": 72644.81,
+      "volume4hUsd": 55847.64,
+      "priceUsd": 0.0000035313921301299186,
+      "holders": 20,
+      "bondingProgress": 0.8,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 29
+    },
+    {
+      "tokenAddress": "0x0aa6dff980f1d9d74d61819ea4ad71d8fa33d153",
+      "venueUrl": "https://four.meme/en/token/0x0aa6dff980f1d9d74d61819ea4ad71d8fa33d153",
+      "symbol": "SPCXB-Baby",
+      "name": "无需质押自动分红SPCXB",
+      "image": "https://static.four.meme/market/617HBbwcns6oX.png",
+      "createdAt": "2026-06-17T10:00:06.000Z",
+      "marketCapUsd": 4346.822400523175,
+      "volume24hUsd": 65688.48,
+      "volume4hUsd": 65688.48,
+      "priceUsd": 0.000004346822400523175,
+      "holders": 13,
+      "bondingProgress": 14.5,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 29
+    },
+    {
+      "tokenAddress": "0xfc80c6663d913f4de0b40bdee57bcb9aeda54444",
+      "venueUrl": "https://four.meme/en/token/0xfc80c6663d913f4de0b40bdee57bcb9aeda54444",
+      "symbol": "MAX",
+      "name": "New Max",
+      "image": "https://static.four.meme/market/617zhF6Cw8V7K.png",
+      "createdAt": "2026-06-17T01:09:12.000Z",
+      "marketCapUsd": 5835.017576014343,
+      "volume24hUsd": 52734.79,
+      "volume4hUsd": 18370.16,
+      "priceUsd": 0.000005835017576014343,
+      "holders": 27,
+      "bondingProgress": 30.7,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0x7a7fab8ba81f30f2e7c6380c32bc7cb576514444",
+      "venueUrl": "https://four.meme/en/token/0x7a7fab8ba81f30f2e7c6380c32bc7cb576514444",
+      "symbol": "MEME",
+      "name": "Most Elite Most Epic",
+      "image": "https://static.four.meme/market/617kFVIvmL06B.jpg",
+      "createdAt": "2026-06-17T09:34:52.000Z",
+      "marketCapUsd": 3626.784548998765,
+      "volume24hUsd": 47833.42,
+      "volume4hUsd": 47833.42,
+      "priceUsd": 0.000003626784548998765,
+      "holders": 18,
+      "bondingProgress": 3.2,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0xbb6841e9002b30deec7c1217921d646222ef4444",
+      "venueUrl": "https://four.meme/en/token/0xbb6841e9002b30deec7c1217921d646222ef4444",
+      "symbol": "FEELSGUY",
+      "name": "Just a Feels Guy",
+      "image": "https://static.four.meme/market/617ymTpWUDHEW.jpg",
+      "createdAt": "2026-06-17T02:07:10.000Z",
+      "marketCapUsd": 3513.9635907380093,
+      "volume24hUsd": 46299.83,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000035139635907380092,
+      "holders": 16,
+      "bondingProgress": 0.6,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0xf7987b5ac7fee552d0f9c35d949258b26b364444",
+      "venueUrl": "https://four.meme/en/token/0xf7987b5ac7fee552d0f9c35d949258b26b364444",
+      "symbol": "MOJAVE",
+      "name": "CZ's Dog",
+      "image": "https://static.four.meme/market/616yZ4v6wyhyD.jpg",
+      "createdAt": "2026-06-16T15:43:59.000Z",
+      "marketCapUsd": 3551.074188222423,
+      "volume24hUsd": 43798.46,
+      "volume4hUsd": 6767.76,
+      "priceUsd": 0.000003551074188222423,
+      "holders": 18,
+      "bondingProgress": 1.4,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0xf40fa06f88fbd59641931a09ee9218935a2d4444",
+      "venueUrl": "https://four.meme/en/token/0xf40fa06f88fbd59641931a09ee9218935a2d4444",
+      "symbol": "MAX",
+      "name": "Max",
+      "image": "https://static.four.meme/market/617mSdIa4q8Lu.png",
+      "createdAt": "2026-06-17T01:07:03.000Z",
+      "marketCapUsd": 3541.11849499213,
+      "volume24hUsd": 43004.7,
+      "volume4hUsd": 0,
+      "priceUsd": 0.00000354111849499213,
+      "holders": 11,
+      "bondingProgress": 1.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0xd7a8fcc8468ce7dce6ba8935a43e852f17684059",
+      "venueUrl": "https://four.meme/en/token/0xd7a8fcc8468ce7dce6ba8935a43e852f17684059",
+      "symbol": "币安别墅",
+      "name": "币安别墅",
+      "image": "https://static.four.meme/market/616JAxHBxgamn.png",
+      "createdAt": "2026-06-16T16:00:06.000Z",
+      "marketCapUsd": 5550.445428555935,
+      "volume24hUsd": 16305.95,
+      "volume4hUsd": 6610.48,
+      "priceUsd": 0.000005550445428555935,
+      "holders": 56,
+      "bondingProgress": 27.9,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 28
+    },
+    {
+      "tokenAddress": "0x4e95bdd52e53115ac7ea91f6bce1114a970bffff",
+      "venueUrl": "https://four.meme/en/token/0x4e95bdd52e53115ac7ea91f6bce1114a970bffff",
+      "symbol": "Dai Dai",
+      "name": "Dai Dai",
+      "image": "https://static.four.meme/market/608eHLN6C1UiP.jpg",
+      "createdAt": "2026-06-08T07:58:56.000Z",
+      "marketCapUsd": 125912.58709340589,
+      "volume24hUsd": 75129.65,
+      "volume4hUsd": 942871.73,
+      "priceUsd": 0.00012591258709340587,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 27
+    },
+    {
+      "tokenAddress": "0xa4295b803c45a3444081e1209c202d3066314444",
+      "venueUrl": "https://four.meme/en/token/0xa4295b803c45a3444081e1209c202d3066314444",
+      "symbol": "Asstar",
+      "name": "Asstar",
+      "image": "https://static.four.meme/market/617DYxsOtL41t.jpg",
+      "createdAt": "2026-06-17T12:40:40.000Z",
+      "marketCapUsd": 3968.8467895297767,
+      "volume24hUsd": 32542.12,
+      "volume4hUsd": 32542.12,
+      "priceUsd": 0.000003968846789529777,
+      "holders": 13,
+      "bondingProgress": 8.5,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 27
+    },
+    {
+      "tokenAddress": "0xbf82da7a37ef9f11a82102af3671768863ee4444",
+      "venueUrl": "https://four.meme/en/token/0xbf82da7a37ef9f11a82102af3671768863ee4444",
+      "symbol": "嫉妒",
+      "name": "嫉妒使人面目全非",
+      "image": "https://static.four.meme/market/617ylwdplUrn7.png",
+      "createdAt": "2026-06-17T07:24:16.000Z",
+      "marketCapUsd": 3800.3628008148853,
+      "volume24hUsd": 30336.62,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000038003628008148857,
+      "holders": 14,
+      "bondingProgress": 5.8,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x4e7ddc8387e5b20630f675ab40543a9f898b4444",
+      "venueUrl": "https://four.meme/en/token/0x4e7ddc8387e5b20630f675ab40543a9f898b4444",
+      "symbol": "螃蟹",
+      "name": "螃蟹效应",
+      "image": "https://static.four.meme/market/617pZNQ88uvSA.jpg",
+      "createdAt": "2026-06-17T08:26:45.000Z",
+      "marketCapUsd": 3529.603898740744,
+      "volume24hUsd": 28568.43,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000035296038987407443,
+      "holders": 8,
+      "bondingProgress": 1.4,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x687e3f00f1ba4fa65d7745e6ca87bfe59e0a4444",
+      "venueUrl": "https://four.meme/en/token/0x687e3f00f1ba4fa65d7745e6ca87bfe59e0a4444",
+      "symbol": "大傻子",
+      "name": "大傻子",
+      "image": "https://static.four.meme/market/617lpyujKVUCC.png",
+      "createdAt": "2026-06-17T08:53:12.000Z",
+      "marketCapUsd": 3731.0745771784455,
+      "volume24hUsd": 26827.4,
+      "volume4hUsd": 0,
+      "priceUsd": 0.000003731074577178445,
+      "holders": 17,
+      "bondingProgress": 5,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0xa0d46829bc4aab365b9389da8c49c7d2fe0e4444",
+      "venueUrl": "https://four.meme/en/token/0xa0d46829bc4aab365b9389da8c49c7d2fe0e4444",
+      "symbol": "Astar",
+      "name": "Astar",
+      "image": "https://static.four.meme/market/6177XdMOCXTDx.png",
+      "createdAt": "2026-06-17T12:40:23.000Z",
+      "marketCapUsd": 3540.86194966035,
+      "volume24hUsd": 26763.86,
+      "volume4hUsd": 26763.86,
+      "priceUsd": 0.0000035408619496603505,
+      "holders": 8,
+      "bondingProgress": 1.1,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0xc458d9e2a0f1f1acca29d17d13b3d5283b174444",
+      "venueUrl": "https://four.meme/en/token/0xc458d9e2a0f1f1acca29d17d13b3d5283b174444",
+      "symbol": "God Is A Girl",
+      "name": "上帝是个女孩",
+      "image": "https://static.four.meme/market/616OD8TGChVI7.jpg",
+      "createdAt": "2026-06-16T14:34:16.000Z",
+      "marketCapUsd": 4735.8506122236295,
+      "volume24hUsd": 26371.75,
+      "volume4hUsd": 206.17,
+      "priceUsd": 0.00000473585061222363,
+      "holders": 21,
+      "bondingProgress": 19.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x603ea2e7acd2ebb4d0899174c3a8604f760a4444",
+      "venueUrl": "https://four.meme/en/token/0x603ea2e7acd2ebb4d0899174c3a8604f760a4444",
+      "symbol": "FXNavi",
+      "name": "FX Navi",
+      "image": "https://static.four.meme/market/617wkaxunakDd.png",
+      "createdAt": "2026-06-17T01:46:50.000Z",
+      "marketCapUsd": 3830.740546682728,
+      "volume24hUsd": 25174.05,
+      "volume4hUsd": 243.31,
+      "priceUsd": 0.000003830740546682728,
+      "holders": 18,
+      "bondingProgress": 6.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x671bf01c72b233c3a27d5d686a956603f3984444",
+      "venueUrl": "https://four.meme/en/token/0x671bf01c72b233c3a27d5d686a956603f3984444",
+      "symbol": "MAX4",
+      "name": "MAX4",
+      "image": "https://static.four.meme/market/6173BMH7KjGr6.png",
+      "createdAt": "2026-06-17T01:09:39.000Z",
+      "marketCapUsd": 3483.385591596923,
+      "volume24hUsd": 23167.61,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000034833855915969227,
+      "holders": 5,
+      "bondingProgress": 0.2,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x3c1db9dfd902aba01be4dde8f359531a08854444",
+      "venueUrl": "https://four.meme/en/token/0x3c1db9dfd902aba01be4dde8f359531a08854444",
+      "symbol": "格局",
+      "name": "老板的格局才是你的天花板",
+      "image": "https://static.four.meme/market/617NMGBdlnU4M.png",
+      "createdAt": "2026-06-17T07:29:49.000Z",
+      "marketCapUsd": 3494.5104189782624,
+      "volume24hUsd": 22712.24,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000034945104189782625,
+      "holders": 7,
+      "bondingProgress": 0.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 26
+    },
+    {
+      "tokenAddress": "0x29c077dc4e1616c191ea2aa6188a424161034444",
+      "venueUrl": "https://four.meme/en/token/0x29c077dc4e1616c191ea2aa6188a424161034444",
+      "symbol": "bSTOCKS",
+      "name": "bStocks finance",
+      "image": "https://static.four.meme/market/607Y6mAdDyi2r.png",
+      "createdAt": "2026-06-07T15:00:42.000Z",
+      "marketCapUsd": 100929.8981185815,
+      "volume24hUsd": 42526.68,
+      "volume4hUsd": 944282.76,
+      "priceUsd": 0.00010092989811858151,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0xa629a63c3bad0c8c28154cfbb0d272170c7effff",
+      "venueUrl": "https://four.meme/en/token/0xa629a63c3bad0c8c28154cfbb0d272170c7effff",
+      "symbol": "OMS",
+      "name": "OMS Toolkit",
+      "image": "https://static.four.meme/market/605Au2A4bysIL.jpg",
+      "createdAt": "2026-06-09T10:23:27.000Z",
+      "marketCapUsd": 56768.02481824733,
+      "volume24hUsd": 40455.23,
+      "volume4hUsd": 1029322.07,
+      "priceUsd": 0.000056768024818247334,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0x81aa6343bfb881e53b7eb130d6db635a2f8affff",
+      "venueUrl": "https://four.meme/en/token/0x81aa6343bfb881e53b7eb130d6db635a2f8affff",
+      "symbol": "0.1BTC",
+      "name": "0.1BTC",
+      "image": "https://static.four.meme/market/608xZNDIl3IM4.jpg",
+      "createdAt": "2026-06-08T06:54:04.000Z",
+      "marketCapUsd": 70531.58123120302,
+      "volume24hUsd": 39332.71,
+      "volume4hUsd": 805265.59,
+      "priceUsd": 0.00007053158123120301,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0x2fb905d6831f9525adcdd9e046cf98d78b5dba8f",
+      "venueUrl": "https://four.meme/en/token/0x2fb905d6831f9525adcdd9e046cf98d78b5dba8f",
+      "symbol": "FOOTBALL",
+      "name": "FOOTBALL",
+      "image": "https://static.four.meme/market/615On6G7NcP0O.png",
+      "createdAt": "2026-06-15T04:23:23.000Z",
+      "marketCapUsd": 119458.63490227211,
+      "volume24hUsd": 34662.23,
+      "volume4hUsd": 527880.07,
+      "priceUsd": 0.00011945863490227212,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0xa51e8a21a10766559ace7ed78ee42d905a35ffff",
+      "venueUrl": "https://four.meme/en/token/0xa51e8a21a10766559ace7ed78ee42d905a35ffff",
+      "symbol": "最后一次机会",
+      "name": "最后一次机会",
+      "image": "https://static.four.meme/market/609QGHbAB7zPC.jpg",
+      "createdAt": "2026-06-09T08:55:37.000Z",
+      "marketCapUsd": 137284.1830809409,
+      "volume24hUsd": 31306.61,
+      "volume4hUsd": 306050.2,
+      "priceUsd": 0.0001372841830809409,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0x6a76ef71f258576a77e1049a07dcb22cd3d84444",
+      "venueUrl": "https://four.meme/en/token/0x6a76ef71f258576a77e1049a07dcb22cd3d84444",
+      "symbol": "捂嘴",
+      "name": "捂嘴",
+      "image": "https://static.four.meme/market/617ACXN5dDmEy.jpg",
+      "createdAt": "2026-06-17T06:12:48.000Z",
+      "marketCapUsd": 3527.4160094739536,
+      "volume24hUsd": 20020.61,
+      "volume4hUsd": 0,
+      "priceUsd": 0.0000035274160094739537,
+      "holders": 12,
+      "bondingProgress": 0.8,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0xa8d1c48057ecbce05f540ae4d322beb1fa314444",
+      "venueUrl": "https://four.meme/en/token/0xa8d1c48057ecbce05f540ae4d322beb1fa314444",
+      "symbol": "memeQueen",
+      "name": "meme Queen",
+      "image": "https://static.four.meme/market/617UBXaSQgzzb.jpg",
+      "createdAt": "2026-06-17T10:57:41.000Z",
+      "marketCapUsd": 4246.717989021342,
+      "volume24hUsd": 19553.2,
+      "volume4hUsd": 19553.2,
+      "priceUsd": 0.000004246717989021342,
+      "holders": 13,
+      "bondingProgress": 13.7,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0xdde641666a4e5c7790923a1f0e0d9e44516d4444",
+      "venueUrl": "https://four.meme/en/token/0xdde641666a4e5c7790923a1f0e0d9e44516d4444",
+      "symbol": "我是最好的",
+      "name": "我是最好的",
+      "image": "https://static.four.meme/market/617PrmazPs12j.jpg",
+      "createdAt": "2026-06-17T09:30:18.000Z",
+      "marketCapUsd": 3508.5545099240917,
+      "volume24hUsd": 15995.44,
+      "volume4hUsd": 15995.44,
+      "priceUsd": 0.0000035085545099240924,
+      "holders": 19,
+      "bondingProgress": 1,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 25
+    },
+    {
+      "tokenAddress": "0x1c0ce99728d664ffbec452719f6609354c304444",
+      "venueUrl": "https://four.meme/en/token/0x1c0ce99728d664ffbec452719f6609354c304444",
+      "symbol": "币安股票",
+      "name": "币安股票",
+      "image": "https://static.four.meme/market/607FLuNtmS2Ou.png",
+      "createdAt": "2026-06-06T16:42:32.000Z",
+      "marketCapUsd": 935118.9541709253,
+      "volume24hUsd": 70605.49,
+      "volume4hUsd": 1803024.71,
+      "priceUsd": 0.0009351189541709254,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 24
+    },
+    {
+      "tokenAddress": "0x1a014e03450a74f0e959c307b6c30f57d02d4444",
+      "venueUrl": "https://four.meme/en/token/0x1a014e03450a74f0e959c307b6c30f57d02d4444",
+      "symbol": "富贵小羊",
+      "name": "抖音热榜爆款meme玩偶",
+      "image": "https://static.four.meme/market/601APYB980cqu.jpg",
+      "createdAt": "2026-06-01T03:30:33.000Z",
+      "marketCapUsd": 715402.0097511838,
+      "volume24hUsd": 65677.27,
+      "volume4hUsd": 640561.8625751861,
+      "priceUsd": 0.0007154020097511838,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 24
+    },
+    {
+      "tokenAddress": "0x3ff300566e272f6ec356a97b21f07fd56a6f4444",
+      "venueUrl": "https://four.meme/en/token/0x3ff300566e272f6ec356a97b21f07fd56a6f4444",
+      "symbol": "吐钱鳄鱼",
+      "name": "Cubigator",
+      "image": "https://static.four.meme/market/6107BcDglb44R.gif",
+      "createdAt": "2026-06-10T11:07:58.000Z",
+      "marketCapUsd": 97652.11211441639,
+      "volume24hUsd": 21932.09,
+      "volume4hUsd": 268092.32,
+      "priceUsd": 0.00009765211211441639,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 24
+    },
+    {
+      "tokenAddress": "0x511157dadc2ebcbb46af17deb866b9f0bc284444",
+      "venueUrl": "https://four.meme/en/token/0x511157dadc2ebcbb46af17deb866b9f0bc284444",
+      "symbol": "币安文学",
+      "name": "币安文学",
+      "image": "https://static.four.meme/market/cc4a84c6-6e83-4a85-96be-6af6fae4828018130350893415273412.jpg",
+      "createdAt": "2025-10-08T07:26:31.000Z",
+      "marketCapUsd": 220638.02834280752,
+      "volume24hUsd": 58123.9,
+      "volume4hUsd": 1292836.06,
+      "priceUsd": 0.0002206380283428075,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 23
+    },
+    {
+      "tokenAddress": "0xbe5df4a40ac939ef641430e86a2dce94d071e0f6",
+      "venueUrl": "https://four.meme/en/token/0xbe5df4a40ac939ef641430e86a2dce94d071e0f6",
+      "symbol": "SYNERGIX",
+      "name": "Synergix",
+      "image": "https://static.four.meme/market/614wlm0v8DJx9.png",
+      "createdAt": "2026-06-14T04:17:56.000Z",
+      "marketCapUsd": 569675.2898777325,
+      "volume24hUsd": 55314.96,
+      "volume4hUsd": 885279.91,
+      "priceUsd": 0.0005696752898777325,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 23
+    },
+    {
+      "tokenAddress": "0xdc22ff889add3a49fe2e349ed2bbb4f9ac044444",
+      "venueUrl": "https://four.meme/en/token/0xdc22ff889add3a49fe2e349ed2bbb4f9ac044444",
+      "symbol": "新疆小羊",
+      "name": "“新疆小羊”爆火出圈",
+      "image": "https://static.four.meme/market/530WvTo4gs0iT.jpg",
+      "createdAt": "2026-05-30T07:04:59.000Z",
+      "marketCapUsd": 380689.08851439314,
+      "volume24hUsd": 52039.93,
+      "volume4hUsd": 348289.81,
+      "priceUsd": 0.00038068908851439316,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 23
+    },
+    {
+      "tokenAddress": "0xfa9f4c95d291fb1b7fda0de0f6c6a0ac3a694444",
+      "venueUrl": "https://four.meme/en/token/0xfa9f4c95d291fb1b7fda0de0f6c6a0ac3a694444",
+      "symbol": "杜杜",
+      "name": "杜杜",
+      "image": "https://static.four.meme/market/615JhHzKct0IO.jpg",
+      "createdAt": "2026-06-14T21:58:56.000Z",
+      "marketCapUsd": 197710.25593026818,
+      "volume24hUsd": 48408.79,
+      "volume4hUsd": 438618.61,
+      "priceUsd": 0.00019771025593026816,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 23
+    },
+    {
+      "tokenAddress": "0xbd74119c14a61d359a57cbe3b241e0c41a0b4444",
+      "venueUrl": "https://four.meme/en/token/0xbd74119c14a61d359a57cbe3b241e0c41a0b4444",
+      "symbol": "CAPTAIN",
+      "name": "CAPTAIN BIBI",
+      "image": "https://static.four.meme/market/611GFfniPiXb4.jpg",
+      "createdAt": "2026-06-10T16:04:32.000Z",
+      "marketCapUsd": 220218.3374259279,
+      "volume24hUsd": 47340.05,
+      "volume4hUsd": 920009.57,
+      "priceUsd": 0.0002202183374259279,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 23
+    },
+    {
+      "tokenAddress": "0x145634a9a1730341c6044113ed67557a74be4444",
+      "venueUrl": "https://four.meme/en/token/0x145634a9a1730341c6044113ed67557a74be4444",
+      "symbol": "布布",
+      "name": "布布",
+      "image": "https://static.four.meme/market/615JhHzKct0IO.jpg",
+      "createdAt": "2026-06-14T22:00:46.000Z",
+      "marketCapUsd": 1223434.2155612092,
+      "volume24hUsd": 113416.56,
+      "volume4hUsd": 2124805.56,
+      "priceUsd": 0.0012234342155612093,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0x0f85efa67a29bdee638eefd2b83a9f1f24484444",
+      "venueUrl": "https://four.meme/en/token/0x0f85efa67a29bdee638eefd2b83a9f1f24484444",
+      "symbol": "布布",
+      "name": "布布",
+      "image": "https://static.four.meme/market/b48967a9-d67b-4514-9294-b1a22b8ebbdd3201291017445187891.jpg",
+      "createdAt": "2025-07-15T05:37:30.000Z",
+      "marketCapUsd": 319938.8404068049,
+      "volume24hUsd": 41970.52,
+      "volume4hUsd": 278443.58,
+      "priceUsd": 0.00031993884040680494,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0x19188b3a565f5a4c80410c70552f8859d8cbffff",
+      "venueUrl": "https://four.meme/en/token/0x19188b3a565f5a4c80410c70552f8859d8cbffff",
+      "symbol": "饭盒PC",
+      "name": "饭盒PC",
+      "image": "https://static.four.meme/market/616Njodp9ThGe.jpg",
+      "createdAt": "2026-06-16T10:53:52.000Z",
+      "marketCapUsd": 151462.9578751585,
+      "volume24hUsd": 41505.15,
+      "volume4hUsd": 472528.51,
+      "priceUsd": 0.00015146295787515847,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0x876ee7801ca29e87cff52bcccf770794b00ac2f9",
+      "venueUrl": "https://four.meme/en/token/0x876ee7801ca29e87cff52bcccf770794b00ac2f9",
+      "symbol": "SKILL++",
+      "name": "SKILLPP",
+      "image": "https://static.four.meme/market/616Bq3o0rfqHo.png",
+      "createdAt": "2026-06-16T05:53:47.000Z",
+      "marketCapUsd": 405461.7611391787,
+      "volume24hUsd": 37345.62,
+      "volume4hUsd": 117800.45,
+      "priceUsd": 0.0004054617611391788,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0xfc60e79c0efd71f70c4734d3fa21427a91974444",
+      "venueUrl": "https://four.meme/en/token/0xfc60e79c0efd71f70c4734d3fa21427a91974444",
+      "symbol": "OAO",
+      "name": "Onchain. Always On",
+      "image": "https://static.four.meme/market/607lV7sPjVx8Z.png",
+      "createdAt": "2026-06-07T15:05:55.000Z",
+      "marketCapUsd": 183476.76372277527,
+      "volume24hUsd": 31869.55,
+      "volume4hUsd": 219151.5,
+      "priceUsd": 0.00018347676372277528,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0xf2aa346c3c55730e640e6b13c503acdd0b51ffff",
+      "venueUrl": "https://four.meme/en/token/0xf2aa346c3c55730e640e6b13c503acdd0b51ffff",
+      "symbol": "币安9号",
+      "name": "币安9号",
+      "image": "https://static.four.meme/market/612dohHUjpzOB.jpg",
+      "createdAt": "2026-06-12T07:06:19.000Z",
+      "marketCapUsd": 27924.14369203446,
+      "volume24hUsd": 12844.3,
+      "volume4hUsd": 678141.62,
+      "priceUsd": 0.000027924143692034466,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0xb85797db0533067fb1b43d3ab22c58db0fd84444",
+      "venueUrl": "https://four.meme/en/token/0xb85797db0533067fb1b43d3ab22c58db0fd84444",
+      "symbol": "OTB",
+      "name": "Open to Build",
+      "image": "https://static.four.meme/market/608EGBMn5w2UX.jpg",
+      "createdAt": "2026-06-08T05:32:02.000Z",
+      "marketCapUsd": 53061.380876029536,
+      "volume24hUsd": 12227.21,
+      "volume4hUsd": 277212.07,
+      "priceUsd": 0.00005306138087602953,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0xd8350571444b8800b3754f2f540c57323c0757a1",
+      "venueUrl": "https://four.meme/en/token/0xd8350571444b8800b3754f2f540c57323c0757a1",
+      "symbol": "钻石手",
+      "name": "新机制首个钻石手分红",
+      "image": "https://static.four.meme/market/615jSUlFICtBU.png",
+      "createdAt": "2026-06-15T06:01:34.000Z",
+      "marketCapUsd": 98501.038704056,
+      "volume24hUsd": 12009.79,
+      "volume4hUsd": 257609.48,
+      "priceUsd": 0.00009850103870405599,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 22
+    },
+    {
+      "tokenAddress": "0xf7d42bd5a449974e0c35651f2661b9a16b434444",
+      "venueUrl": "https://four.meme/en/token/0xf7d42bd5a449974e0c35651f2661b9a16b434444",
+      "symbol": "特朗普",
+      "name": "Trump",
+      "image": "https://static.four.meme/market/617Cpcq1xPX0i.jpg",
+      "createdAt": "2026-06-17T03:18:53.000Z",
+      "marketCapUsd": 4438.008790846,
+      "volume24hUsd": 69557.43,
+      "volume4hUsd": 2938.26,
+      "priceUsd": 0.000004438008790846,
+      "holders": 24,
+      "bondingProgress": 9.6,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0xb8efd8e09f13f8fe6d69db85d83dceee7ed24444",
+      "venueUrl": "https://four.meme/en/token/0xb8efd8e09f13f8fe6d69db85d83dceee7ed24444",
+      "symbol": "HC",
+      "name": "HoneyComb",
+      "image": "https://static.four.meme/market/612ZmuInJowPN.jpeg",
+      "createdAt": "2026-06-12T13:54:08.000Z",
+      "marketCapUsd": 461952.5724065872,
+      "volume24hUsd": 26640.64,
+      "volume4hUsd": 72847.49,
+      "priceUsd": 0.0004619525724065872,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0x68b8aedbe2c83c80cfc67dacd31e99eed058ffff",
+      "venueUrl": "https://four.meme/en/token/0x68b8aedbe2c83c80cfc67dacd31e99eed058ffff",
+      "symbol": "泡沫",
+      "name": "全都是泡沫",
+      "image": "https://static.four.meme/market/60805M3ILJNFD.jpg",
+      "createdAt": "2026-06-08T04:30:47.000Z",
+      "marketCapUsd": 336703.3488071479,
+      "volume24hUsd": 24043.68,
+      "volume4hUsd": 86501.06,
+      "priceUsd": 0.00033670334880714787,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0xbb969b3ff4f5494c7758e24f3ebbd7b19de14efc",
+      "venueUrl": "https://four.meme/en/token/0xbb969b3ff4f5494c7758e24f3ebbd7b19de14efc",
+      "symbol": "GACHA",
+      "name": "Gachamon",
+      "image": "https://static.four.meme/market/612UAWR2HZTlf.jpg",
+      "createdAt": "2026-06-12T05:14:24.000Z",
+      "marketCapUsd": 106616.19036880626,
+      "volume24hUsd": 10259.49,
+      "volume4hUsd": 147558.45,
+      "priceUsd": 0.00010661619036880626,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0x30e155e0d3f3d2c14909a3ec938775533c13ffff",
+      "venueUrl": "https://four.meme/en/token/0x30e155e0d3f3d2c14909a3ec938775533c13ffff",
+      "symbol": "Claude Fable 5",
+      "name": "Claude Fable 5",
+      "image": "https://static.four.meme/market/611CSyRVPq9DC.jpg",
+      "createdAt": "2026-06-11T07:42:39.000Z",
+      "marketCapUsd": 26563.225182830578,
+      "volume24hUsd": 9973.96,
+      "volume4hUsd": 516239.78,
+      "priceUsd": 0.000026563225182830576,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0xad02383c999217791cfa802c531a10991b7bffff",
+      "venueUrl": "https://four.meme/en/token/0xad02383c999217791cfa802c531a10991b7bffff",
+      "symbol": "4号",
+      "name": "谁是4号",
+      "image": "https://static.four.meme/market/610AMNqsNQ5DV.jpg",
+      "createdAt": "2026-06-10T06:25:49.000Z",
+      "marketCapUsd": 43006.559063850036,
+      "volume24hUsd": 9074.73,
+      "volume4hUsd": 280273.67,
+      "priceUsd": 0.00004300655906385004,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 21
+    },
+    {
+      "tokenAddress": "0x39b7749379c47c1690733c3f4e265a2824054444",
+      "venueUrl": "https://four.meme/en/token/0x39b7749379c47c1690733c3f4e265a2824054444",
+      "symbol": "9",
+      "name": "Haaland",
+      "image": "https://static.four.meme/market/608bzfHC9DzAK.png",
+      "createdAt": "2026-06-08T13:17:25.000Z",
+      "marketCapUsd": 287327.5233049784,
+      "volume24hUsd": 17006.9,
+      "volume4hUsd": 305681.69,
+      "priceUsd": 0.0002873275233049784,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 20
+    },
+    {
+      "tokenAddress": "0x0906911dd097b7a7aa999f2d79fd7b66b258ee4c",
+      "venueUrl": "https://four.meme/en/token/0x0906911dd097b7a7aa999f2d79fd7b66b258ee4c",
+      "symbol": "Open Four",
+      "name": "第一个分红型代币",
+      "image": "https://static.four.meme/market/608Tnzj2OGJVf.png",
+      "createdAt": "2026-06-08T11:39:41.000Z",
+      "marketCapUsd": 215751.59969144964,
+      "volume24hUsd": 15597.48,
+      "volume4hUsd": 181242.46,
+      "priceUsd": 0.00021575159969144963,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 20
+    },
+    {
+      "tokenAddress": "0xb4c9049c5f28469098f1e25994683ae956fbffff",
+      "venueUrl": "https://four.meme/en/token/0xb4c9049c5f28469098f1e25994683ae956fbffff",
+      "symbol": "TANUKI",
+      "name": "TANUKI",
+      "image": "https://static.four.meme/market/528MmPa5Rx4L2.jpeg",
+      "createdAt": "2026-05-28T20:17:33.000Z",
+      "marketCapUsd": 140756.15234818254,
+      "volume24hUsd": 6553.3,
+      "volume4hUsd": 26116.795216338985,
+      "priceUsd": 0.00014075615234818256,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 20
+    },
+    {
+      "tokenAddress": "0xd9f0db3091e64a3d1f3c99f3d846cd919bd9ffff",
+      "venueUrl": "https://four.meme/en/token/0xd9f0db3091e64a3d1f3c99f3d846cd919bd9ffff",
+      "symbol": "pivotx402",
+      "name": "pivotx402",
+      "image": "https://static.four.meme/market/6134UJtIZu7sv.jpg",
+      "createdAt": "2026-06-15T08:25:35.000Z",
+      "marketCapUsd": 12540.468210793648,
+      "volume24hUsd": 6157.49,
+      "volume4hUsd": 710790.15,
+      "priceUsd": 0.00001254046821079365,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 20
+    },
+    {
+      "tokenAddress": "0x66fd8b5752d9f696c73f044beea5a6ecd5f44444",
+      "venueUrl": "https://four.meme/en/token/0x66fd8b5752d9f696c73f044beea5a6ecd5f44444",
+      "symbol": "溜溜梅",
+      "name": "LLM",
+      "image": "https://static.four.meme/market/6128hSKHWnKS2.jpg",
+      "createdAt": "2026-06-12T13:06:21.000Z",
+      "marketCapUsd": 24914.42947673356,
+      "volume24hUsd": 5403.2,
+      "volume4hUsd": 718957.09,
+      "priceUsd": 0.000024914429476733557,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 20
+    },
+    {
+      "tokenAddress": "0x33d05e0f32cdcfb1d575e722182ed2568a734444",
+      "venueUrl": "https://four.meme/en/token/0x33d05e0f32cdcfb1d575e722182ed2568a734444",
+      "symbol": "哈宝",
+      "name": "哈兰德",
+      "image": "https://static.four.meme/market/606YWdr7dsmyK.jpg",
+      "createdAt": "2026-06-06T10:21:07.000Z",
+      "marketCapUsd": 1193751.3455287092,
+      "volume24hUsd": 31395.62,
+      "volume4hUsd": 176496.12,
+      "priceUsd": 0.0011937513455287092,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 19
+    },
+    {
+      "tokenAddress": "0xa71af35c38d4955d86333f969fb78ef7a9c14444",
+      "venueUrl": "https://four.meme/en/token/0xa71af35c38d4955d86333f969fb78ef7a9c14444",
+      "symbol": "FINU",
+      "name": "Fifa Inu",
+      "image": "https://static.four.meme/market/609JpqPejZVUI.jpg",
+      "createdAt": "2026-06-09T09:24:12.000Z",
+      "marketCapUsd": 25171.25630380225,
+      "volume24hUsd": 4735.61,
+      "volume4hUsd": 248259.84,
+      "priceUsd": 0.00002517125630380225,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 19
+    },
+    {
+      "tokenAddress": "0xf88bb6e439aa1ea6d398d5da4a6aeafd644a4fab",
+      "venueUrl": "https://four.meme/en/token/0xf88bb6e439aa1ea6d398d5da4a6aeafd644a4fab",
+      "symbol": "HONEY",
+      "name": "Honeycomb",
+      "image": "https://static.four.meme/market/612B58JTH5esQ.jpg",
+      "createdAt": "2026-06-12T14:16:32.000Z",
+      "marketCapUsd": 727291.7089592646,
+      "volume24hUsd": 4610.36,
+      "volume4hUsd": 35320.2,
+      "priceUsd": 0.0007272917089592646,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 16
+    },
+    {
+      "tokenAddress": "0x1154ab9d6380fe90c4cf4c842c9de3ff94f74444",
+      "venueUrl": "https://four.meme/en/token/0x1154ab9d6380fe90c4cf4c842c9de3ff94f74444",
+      "symbol": "MAME",
+      "name": "The Last Shiba",
+      "image": "https://static.four.meme/market/611f3UJ8vNQ6B.jpg",
+      "createdAt": "2026-06-11T14:29:09.000Z",
+      "marketCapUsd": 468463.25618431217,
+      "volume24hUsd": 3466.79,
+      "volume4hUsd": 36702.58,
+      "priceUsd": 0.00046846325618431217,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 16
+    },
+    {
+      "tokenAddress": "0xde39a9c5817b205eed96f48e160ad83477314444",
+      "venueUrl": "https://four.meme/en/token/0xde39a9c5817b205eed96f48e160ad83477314444",
+      "symbol": "干",
+      "name": "build",
+      "image": "https://static.four.meme/market/6097uRBYLTtyD.jpg",
+      "createdAt": "2026-06-09T04:11:11.000Z",
+      "marketCapUsd": 4836.040639803263,
+      "volume24hUsd": 1253.45,
+      "volume4hUsd": 599631.71,
+      "priceUsd": 0.000004836040639803264,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 16
+    },
+    {
+      "tokenAddress": "0x6f522285a447941c131f832054c78ece50de4444",
+      "venueUrl": "https://four.meme/en/token/0x6f522285a447941c131f832054c78ece50de4444",
+      "symbol": "快乐生蚝",
+      "name": "HappyOyster",
+      "image": "https://static.four.meme/market/617TFj9d1uaGR.jpg",
+      "createdAt": "2026-06-17T12:47:41.000Z",
+      "marketCapUsd": 3489.4260971002586,
+      "volume24hUsd": 1686.31,
+      "volume4hUsd": 1686.31,
+      "priceUsd": 0.0000034894260971002583,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "newLaunches"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 11
+    }
+  ],
+  "gemHuntCandidates": [
+    {
+      "tokenAddress": "0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+      "venueUrl": "https://four.meme/en/token/0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+      "symbol": "冬冬",
+      "name": "保护冬冬 为冬冬伸张正义",
+      "image": "https://static.four.meme/market/608R0LkhurkMz.jpg",
+      "createdAt": "2026-06-08T06:02:27.000Z",
+      "marketCapUsd": 628827.0706671958,
+      "volume24hUsd": 363536.1,
+      "volume4hUsd": 4023895.14,
+      "priceUsd": 0.0006288270706671958,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 46
+    },
+    {
+      "tokenAddress": "0x2dd0c348693f8ddd76f83ec58b00898742637655",
+      "venueUrl": "https://four.meme/en/token/0x2dd0c348693f8ddd76f83ec58b00898742637655",
+      "symbol": "第一个分红",
+      "name": "第一个分红",
+      "image": "https://static.four.meme/market/608dgg55AIbRw.webp",
+      "createdAt": "2026-06-08T08:05:47.000Z",
+      "marketCapUsd": 710228.1519147869,
+      "volume24hUsd": 162934.9,
+      "volume4hUsd": 373520.22,
+      "priceUsd": 0.000710228151914787,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    },
+    {
+      "tokenAddress": "0x70dac56e4be1786a23ab5823f92ba99f81bc4444",
+      "venueUrl": "https://four.meme/en/token/0x70dac56e4be1786a23ab5823f92ba99f81bc4444",
+      "symbol": "Open Four",
+      "name": "Open Four",
+      "image": "https://static.four.meme/market/608xznjkp09aU.png",
+      "createdAt": "2026-06-08T08:06:00.000Z",
+      "marketCapUsd": 903832.8168755665,
+      "volume24hUsd": 159888.18,
+      "volume4hUsd": 249403.27,
+      "priceUsd": 0.0009038328168755664,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    },
+    {
+      "tokenAddress": "0x567ad9c78dc412b5e9273ef5caebfd86787289a3",
+      "venueUrl": "https://four.meme/en/token/0x567ad9c78dc412b5e9273ef5caebfd86787289a3",
+      "symbol": "ELITE",
+      "name": "Elite Gacha",
+      "image": "https://static.four.meme/market/616vvorFB1TjO.png",
+      "createdAt": "2026-06-15T17:45:42.000Z",
+      "marketCapUsd": 756563.6268054995,
+      "volume24hUsd": 155832.46,
+      "volume4hUsd": 1329528.87,
+      "priceUsd": 0.0007565636268054996,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    },
+    {
+      "tokenAddress": "0xdbaab6400e0dff44d96cf1fbd71151726d906c15",
+      "venueUrl": "https://four.meme/en/token/0xdbaab6400e0dff44d96cf1fbd71151726d906c15",
+      "symbol": "OPENFOUR",
+      "name": "OPENFOUR",
+      "image": "https://static.four.meme/market/608gur4KR4mq6.png",
+      "createdAt": "2026-06-08T08:07:43.000Z",
+      "marketCapUsd": 544833.616963088,
+      "volume24hUsd": 116274.2,
+      "volume4hUsd": 1068645.6,
+      "priceUsd": 0.0005448336169630879,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 43
+    }
+  ],
+  "selectedCandidates": [
+    {
+      "tokenAddress": "0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
+      "venueUrl": "https://four.meme/en/token/0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
+      "symbol": "MAX",
+      "name": "捐款给GIGGLE",
+      "image": "https://static.four.meme/market/617U6ymNNDnXy.png",
+      "createdAt": "2026-06-17T01:16:03.000Z",
+      "marketCapUsd": 13436.124388556942,
+      "volume24hUsd": 55724.65,
+      "volume4hUsd": 24212.6,
+      "priceUsd": 0.000013425566537893087,
+      "holders": 70,
+      "bondingProgress": 66,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 48
+    },
+    {
+      "tokenAddress": "0xc7bd4091fc0997744dca52a7ef4d0e600cb0ffff",
+      "venueUrl": "https://four.meme/en/token/0xc7bd4091fc0997744dca52a7ef4d0e600cb0ffff",
+      "symbol": "Aster合规",
+      "name": "Aster合规性质疑",
+      "image": "https://static.four.meme/market/6173dS9gJg3zL.jpg",
+      "createdAt": "2026-06-17T12:15:05.000Z",
+      "marketCapUsd": 12840.28513114491,
+      "volume24hUsd": 9928.44,
+      "volume4hUsd": 9928.44,
+      "priceUsd": 0.000012840285131144912,
+      "holders": 97,
+      "bondingProgress": 64.3,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 45
+    },
+    {
+      "tokenAddress": "0x89da89494878472ba8cfd509b524688675f84444",
+      "venueUrl": "https://four.meme/en/token/0x89da89494878472ba8cfd509b524688675f84444",
+      "symbol": "不吃压力",
+      "name": "不吃压力",
+      "image": "https://static.four.meme/market/617uXJjIxj4h4.jpg",
+      "createdAt": "2026-06-17T07:28:20.000Z",
+      "marketCapUsd": 5028.96316780618,
+      "volume24hUsd": 95014.05,
+      "volume4hUsd": 0,
+      "priceUsd": 0.00000502896316780618,
+      "holders": 63,
+      "bondingProgress": 22.6,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 33
+    },
+    {
+      "tokenAddress": "0x11bca62f586185a09641aee156d53ec027db4444",
+      "venueUrl": "https://four.meme/en/token/0x11bca62f586185a09641aee156d53ec027db4444",
+      "symbol": "czzzzzzzzz",
+      "name": "changpeng zhao",
+      "image": "https://static.four.meme/market/617YvFZbH5Lxi.jpg",
+      "createdAt": "2026-06-17T03:08:15.000Z",
+      "marketCapUsd": 4409.744482204692,
+      "volume24hUsd": 82963.57,
+      "volume4hUsd": 0,
+      "priceUsd": 0.000004409744482204692,
+      "holders": 51,
+      "bondingProgress": 15.1,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 32
+    },
+    {
+      "tokenAddress": "0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
+      "venueUrl": "https://four.meme/en/token/0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
+      "symbol": "ME",
+      "name": "我是最好的",
+      "image": "https://static.four.meme/market/617OI3Qg86HKm.jpg",
+      "createdAt": "2026-06-17T09:31:11.000Z",
+      "marketCapUsd": 3504.2758748075325,
+      "volume24hUsd": 74123.11,
+      "volume4hUsd": 74123.11,
+      "priceUsd": 0.0000035042758748075324,
+      "holders": 25,
+      "bondingProgress": 0.9,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 29
+    },
+    {
+      "tokenAddress": "0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
+      "venueUrl": "https://four.meme/en/token/0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
+      "symbol": "妮卡",
+      "name": "妮卡",
+      "image": "https://static.four.meme/market/617Gi53yHGrnh.jpg",
+      "createdAt": "2026-06-16T18:17:12.000Z",
+      "marketCapUsd": 3531.3921301299183,
+      "volume24hUsd": 72644.81,
+      "volume4hUsd": 55847.64,
+      "priceUsd": 0.0000035313921301299186,
+      "holders": 20,
+      "bondingProgress": 0.8,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 29
+    },
+    {
+      "tokenAddress": "0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+      "venueUrl": "https://four.meme/en/token/0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+      "symbol": "冬冬",
+      "name": "保护冬冬 为冬冬伸张正义",
+      "image": "https://static.four.meme/market/608R0LkhurkMz.jpg",
+      "createdAt": "2026-06-08T06:02:27.000Z",
+      "marketCapUsd": 628827.0706671958,
+      "volume24hUsd": 363536.1,
+      "volume4hUsd": 4023895.14,
+      "priceUsd": 0.0006288270706671958,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 46
+    },
+    {
+      "tokenAddress": "0x2dd0c348693f8ddd76f83ec58b00898742637655",
+      "venueUrl": "https://four.meme/en/token/0x2dd0c348693f8ddd76f83ec58b00898742637655",
+      "symbol": "第一个分红",
+      "name": "第一个分红",
+      "image": "https://static.four.meme/market/608dgg55AIbRw.webp",
+      "createdAt": "2026-06-08T08:05:47.000Z",
+      "marketCapUsd": 710228.1519147869,
+      "volume24hUsd": 162934.9,
+      "volume4hUsd": 373520.22,
+      "priceUsd": 0.000710228151914787,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    },
+    {
+      "tokenAddress": "0x70dac56e4be1786a23ab5823f92ba99f81bc4444",
+      "venueUrl": "https://four.meme/en/token/0x70dac56e4be1786a23ab5823f92ba99f81bc4444",
+      "symbol": "Open Four",
+      "name": "Open Four",
+      "image": "https://static.four.meme/market/608xznjkp09aU.png",
+      "createdAt": "2026-06-08T08:06:00.000Z",
+      "marketCapUsd": 903832.8168755665,
+      "volume24hUsd": 159888.18,
+      "volume4hUsd": 249403.27,
+      "priceUsd": 0.0009038328168755664,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    },
+    {
+      "tokenAddress": "0x567ad9c78dc412b5e9273ef5caebfd86787289a3",
+      "venueUrl": "https://four.meme/en/token/0x567ad9c78dc412b5e9273ef5caebfd86787289a3",
+      "symbol": "ELITE",
+      "name": "Elite Gacha",
+      "image": "https://static.four.meme/market/616vvorFB1TjO.png",
+      "createdAt": "2026-06-15T17:45:42.000Z",
+      "marketCapUsd": 756563.6268054995,
+      "volume24hUsd": 155832.46,
+      "volume4hUsd": 1329528.87,
+      "priceUsd": 0.0007565636268054996,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 44
+    }
+  ]
+}

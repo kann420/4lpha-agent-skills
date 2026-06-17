@@ -80,16 +80,22 @@ Common settings:
 ```env
 CMC_API_KEY=your-cmc-api-key
 CMC_DATA_PROVIDER=agent-hub-mcp
-CMC_MCP_API_KEY=
 
-FOURMEME_BRAIN_MODE=multi-agent
-FOURMEME_BRAIN_PROVIDER=local-rules
-
-BSTOCKS_BRAIN_MODE=multi-agent
-BSTOCKS_BRAIN_PROVIDER=local-rules
+# Optional: only needed when using an LLM-backed brain
+LLM_API_KEY=your-llm-api-key
 ```
 
-`local-rules` is the default review provider and does not require an LLM API key. To use an OpenAI-compatible endpoint, set the relevant `FOURMEME_LLM_*` or `BSTOCKS_LLM_*` values locally.
+Brain review settings:
+
+- The default brain is `multi-agent` with `local-rules`, which means deterministic built-in reviewers and no LLM API key.
+- `multi-agent` runs a small review committee before the final strategy is accepted or rejected. Four.Meme uses Safety, Social, and Gatekeeper roles. bStocks uses Safety, Market Analysis, and Gatekeeper roles.
+- `LLM_API_KEY` is optional. Set it only if you switch the brain provider to `openai-compatible` for LLM-backed single-agent or multi-agent decisions.
+
+Example LLM-backed run:
+
+```powershell
+4lpha demo --brain-provider openai-compatible
+```
 
 ## Project Layout
 

@@ -105,18 +105,22 @@ function readOpenAiCompatibleConfig(input: {
 } {
   loadRepoEnv();
 
-  const apiKey = process.env[`${input.envPrefix}_API_KEY`]?.trim();
+  const apiKey = process.env[`${input.envPrefix}_API_KEY`]?.trim() || process.env.LLM_API_KEY?.trim();
   if (!apiKey) {
-    throw new Error(`Missing ${input.envPrefix}_API_KEY for ${input.label} openai-compatible provider`);
+    throw new Error(`Missing ${input.envPrefix}_API_KEY or LLM_API_KEY for ${input.label} openai-compatible provider`);
   }
 
   const roleModelEnv = `${input.envPrefix}_${normalizeRoleToken(input.role)}_MODEL`;
   return {
     apiKey,
-    baseUrl: process.env[`${input.envPrefix}_BASE_URL`]?.trim() || DEFAULT_OPENAI_COMPATIBLE_BASE_URL,
+    baseUrl:
+      process.env[`${input.envPrefix}_BASE_URL`]?.trim() ||
+      process.env.LLM_BASE_URL?.trim() ||
+      DEFAULT_OPENAI_COMPATIBLE_BASE_URL,
     model:
       process.env[roleModelEnv]?.trim() ||
       process.env[`${input.envPrefix}_MODEL`]?.trim() ||
+      process.env.LLM_MODEL?.trim() ||
       DEFAULT_OPENAI_COMPATIBLE_MODEL,
   };
 }

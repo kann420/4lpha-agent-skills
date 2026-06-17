@@ -29,6 +29,40 @@ Then launch the interactive CLI:
 4lpha menu
 ```
 
+## Architecture
+
+```mermaid
+flowchart LR
+  caller["Agent Skill user<br/>CLI command or menu"] --> cli["4lpha CLI<br/>bin + scripts/agent-skill-cli.ts"]
+  cli --> provider["CMC data provider<br/>REST or Agent Hub MCP"]
+  provider --> market["Market context<br/>global metrics, Fear and Greed, BNB quote"]
+  cli --> lane{"Strategy lane"}
+
+  lane --> fourmeme["Four.Meme lane"]
+  market --> fourmeme
+  fourmeme --> fourmemeFeeds["Four.Meme adapter<br/>meme-api discovery feeds"]
+  fourmemeFeeds --> buckets["Contract-level buckets<br/>safe2ape, mediumRisk, gemHunt"]
+  buckets --> fourmemeSpec["Four.Meme strategy generator<br/>regime gates, rules, risk controls"]
+
+  lane --> bstocks["bStocks lane"]
+  market --> bstocks
+  bstocks --> allowlist["Maintained allowlist<br/>data/bstocks-universe.json"]
+  allowlist --> quotes["bStocks adapter<br/>CMC quote snapshot"]
+  quotes --> bstocksDraft["bStocks draft generator<br/>relative strength, rules, risk controls"]
+
+  cli -. optional contract .-> tokenInfo["Token info snapshot<br/>CMC MCP plus venue or allowlist evidence"]
+  tokenInfo -. evidence .-> brain["Strategy Brain Review<br/>local rules or OpenAI-compatible"]
+  learning["Learning policies<br/>global lessons and smart-wallet doctrine"] -. guidance .-> brain
+  fourmemeSpec --> brain
+  bstocksDraft --> brain
+
+  brain --> validate["Schema validation<br/>schemas/ via AJV"]
+  validate --> artifacts["Generated artifacts<br/>examples/generated/**"]
+  artifacts --> output["Backtestable strategy specs<br/>JSON plus demo summary"]
+
+  cli -. optional sidecar .-> bnbagent["BNBAgent SDK preflight<br/>integrations/bnbagent"]
+```
+
 ## Features
 
 - **Agent Skills** - Ships `fourmeme-strategy-skill` and `bstocks-strategy-skill` as installable Open Agent Skills-compatible workflows.
@@ -69,40 +103,6 @@ For one-off execution without a global install:
 
 ```powershell
 npm exec --yes --package=github:kann420/4lpha-agent-skills 4lpha -- demo --cmc-provider agent-hub-mcp
-```
-
-## Architecture
-
-```mermaid
-flowchart LR
-  caller["Agent Skill user<br/>CLI command or menu"] --> cli["4lpha CLI<br/>bin + scripts/agent-skill-cli.ts"]
-  cli --> provider["CMC data provider<br/>REST or Agent Hub MCP"]
-  provider --> market["Market context<br/>global metrics, Fear and Greed, BNB quote"]
-  cli --> lane{"Strategy lane"}
-
-  lane --> fourmeme["Four.Meme lane"]
-  market --> fourmeme
-  fourmeme --> fourmemeFeeds["Four.Meme adapter<br/>meme-api discovery feeds"]
-  fourmemeFeeds --> buckets["Contract-level buckets<br/>safe2ape, mediumRisk, gemHunt"]
-  buckets --> fourmemeSpec["Four.Meme strategy generator<br/>regime gates, rules, risk controls"]
-
-  lane --> bstocks["bStocks lane"]
-  market --> bstocks
-  bstocks --> allowlist["Maintained allowlist<br/>data/bstocks-universe.json"]
-  allowlist --> quotes["bStocks adapter<br/>CMC quote snapshot"]
-  quotes --> bstocksDraft["bStocks draft generator<br/>relative strength, rules, risk controls"]
-
-  cli -. optional contract .-> tokenInfo["Token info snapshot<br/>CMC MCP plus venue or allowlist evidence"]
-  tokenInfo -. evidence .-> brain["Strategy Brain Review<br/>local rules or OpenAI-compatible"]
-  learning["Learning policies<br/>global lessons and smart-wallet doctrine"] -. guidance .-> brain
-  fourmemeSpec --> brain
-  bstocksDraft --> brain
-
-  brain --> validate["Schema validation<br/>schemas/ via AJV"]
-  validate --> artifacts["Generated artifacts<br/>examples/generated/**"]
-  artifacts --> output["Backtestable strategy specs<br/>JSON plus demo summary"]
-
-  cli -. optional sidecar .-> bnbagent["BNBAgent SDK preflight<br/>integrations/bnbagent"]
 ```
 
 ## Configuration

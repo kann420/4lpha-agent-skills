@@ -1,139 +1,130 @@
-# 4lpha Agent Skill
+# 4lpha Agent Skills
 
-Standalone hackathon repo for backtestable BNB Chain strategy skills.
+Agent skills and a companion CLI for generating backtestable BNB Chain strategy specifications from live market context and lane-specific signals.
 
-The goal is not to ship a full trading product here. The goal is to ship a compact, judge-friendly repository that turns market context plus lane-specific signals into backtestable strategy specifications.
+4lpha focuses on two strategy lanes:
 
-## Current Lanes
+- **Four.Meme** - BNB meme-token discovery with CMC market regime gates, Four.Meme venue filters, and advisory smart-wallet doctrine.
+- **bStocks** - tokenized-stock rotation on BNB Chain with a maintained bStocks allowlist, CMC quote data, and relative-strength rules.
 
-- `fourmeme-strategy-skill`: the deeper current lane for BNB meme-token setups
-- `bstocks-strategy-skill`: a separate early-stage lane for tokenized stocks on BNB Chain
+The output is not a trade execution command. Each run produces machine-readable strategy artifacts with explicit universe, entry rules, exit rules, risk controls, invalidation conditions, evidence, assumptions, timestamps, and review verdicts.
 
-Four.Meme remains the main repo story today.
+## AI Integration
 
-bStocks is intentionally scaffolded as a separate lane so the repo can explore tokenized-stock strategy specs without mixing stock logic into meme-token logic.
+Install as Agent Skills so Codex, Claude Code, and other Open Agent Skills-compatible tools can discover the workflows:
 
-## Why Four.Meme Still Matters
+```powershell
+npx --yes skills add kann420/4lpha-agent-skills
+```
 
-Four.Meme is still a good fit for this repo as long as it is used as the **domain edge**, not the whole product story.
+Or install the CLI only:
 
-That still means:
+```powershell
+npm install -g github:kann420/4lpha-agent-skills
+```
 
-- The strategy still needs market-data grounding.
-- The output still needs explicit rules and assumptions.
-- The repo should optimize for Strategy Skills first, not live execution first.
+Then launch the interactive CLI:
 
-## Planned Outcome
+```powershell
+4lpha menu
+```
 
-- Separate skills that generate Four.Meme-aware and bStocks-aware BNB strategy specs
-- Machine-readable strategy schemas
-- A clear Agent Hub integration path
-- A clean official BNBAgent SDK integration path
+## Features
 
-## Current Stage
+- **Agent Skills** - Ships `fourmeme-strategy-skill` and `bstocks-strategy-skill` as installable Open Agent Skills-compatible workflows.
+- **Live CMC Market Context** - Fetches CoinMarketCap global metrics, Fear & Greed, and BNB quote data through direct REST or Agent Hub MCP transport.
+- **Four.Meme Discovery** - Scans live Four.Meme feeds, normalizes contract-level candidates, and applies Safe 2 Ape, Medium Risk, and Gem Hunt filters.
+- **bStocks Rotation** - Maintains a separate bStocks allowlist and ranks quoteable instruments by CMC-backed relative strength and activity.
+- **Strategy Brain Review** - Applies deterministic local review by default, with optional OpenAI-compatible LLM review for single-agent or multi-agent modes.
+- **Schema Validation** - Validates Four.Meme, bStocks draft, bStocks reviewed, and token-info artifacts against committed JSON schemas.
+- **Token Info Snapshots** - Fetches contract-level Four.Meme or bStocks evidence for focused strategy review.
+- **BNBAgent SDK Preflight** - Includes an official BNBAgent SDK dry-run path for ERC-8004 identity integration without broadcasting transactions.
 
-This repo has moved beyond scaffold-only mode.
+## Quick Start
 
-It now includes:
+```powershell
+# Install the agent skills for Codex / Claude Code-compatible environments
+npx --yes skills add kann420/4lpha-agent-skills
 
-- a live CoinMarketCap-backed market context adapter with `rest` fallback and official Agent Hub MCP support
-- a live Four.Meme discovery adapter
-- a schema-valid strategy generator
-- a distilled 4alpha global-learning brain with `single-agent` and `multi-agent` strategy review modes
-- an integrated Four.Meme smart-wallet doctrine adapted from the custom 4alpha skill
-- a separate bStocks lane scaffold with its own skill, schema folder, data file, and generator path
-- a Byreal-style repo CLI for demo and rerun flow
-- an official BNBAgent SDK integration layer under `integrations/bnbagent/`
+# Install the CLI from GitHub
+npm install -g github:kann420/4lpha-agent-skills
 
-## Structure
+# Provide a CMC key in the current shell, or let the CLI prompt interactively
+$env:CMC_API_KEY="your-cmc-api-key"
+
+# Open the interactive launcher
+4lpha menu
+
+# Generate a Four.Meme strategy bundle using CMC Agent Hub MCP
+4lpha demo --cmc-provider agent-hub-mcp
+
+# Generate a bStocks strategy bundle using CMC Agent Hub MCP
+4lpha demo --lane bstocks --cmc-provider agent-hub-mcp
+
+# Run BNBAgent SDK preflight without broadcasting a transaction
+4lpha bnbagent dry-run --debug
+```
+
+For one-off execution without a global install:
+
+```powershell
+npm exec --yes --package=github:kann420/4lpha-agent-skills 4lpha -- demo --cmc-provider agent-hub-mcp
+```
+
+## Configuration
+
+Copy `.env.example` to `.env.local` and set local-only credentials there. Do not commit real API keys, private keys, wallet material, RPC credentials, cookies, JWTs, or signed payloads.
+
+Common settings:
+
+```env
+CMC_API_KEY=your-cmc-api-key
+CMC_DATA_PROVIDER=agent-hub-mcp
+CMC_MCP_API_KEY=
+
+FOURMEME_BRAIN_MODE=multi-agent
+FOURMEME_BRAIN_PROVIDER=local-rules
+
+BSTOCKS_BRAIN_MODE=multi-agent
+BSTOCKS_BRAIN_PROVIDER=local-rules
+```
+
+`local-rules` is the default review provider and does not require an LLM API key. To use an OpenAI-compatible endpoint, set the relevant `FOURMEME_LLM_*` or `BSTOCKS_LLM_*` values locally.
+
+## Project Layout
 
 ```text
-docs/
-data/
-examples/
-integrations/bnbagent/
-schemas/
-scripts/
-skills/bstocks-strategy-skill/
-skills/fourmeme-strategy-skill/
-src/
-tests/
-AGENTS.md
-CLAUDE.md
-README.md
+data/                         Maintained lane inputs and learning policies
+docs/                         Architecture, tooling, and strategy notes
+examples/                     Generated strategy and snapshot artifacts
+integrations/bnbagent/        Official BNBAgent SDK integration layer
+schemas/                      JSON schemas for strategy and token-info outputs
+scripts/                      CLI entrypoints and generation helpers
+skills/                       Installable agent skill definitions
+src/                          Adapters, strategy generators, review logic, validators
+tests/                        Focused smoke tests
 ```
 
-## CLI Demo Flow
+## Output Artifacts
 
-Main demo command:
+Strategy generation writes reproducible artifacts under `examples/generated/` or the requested artifacts directory:
+
+- `cmc-market-context.snapshot.json`
+- `fourmeme-discovery.snapshot.json`
+- `cmc-market-regime.strategy.json`
+- `bstocks-universe.snapshot.json`
+- `bstocks-draft.strategy.json`
+- `bstocks-reviewed.strategy.json`
+- `demo.summary.md`
+
+The strategy status can be `proposed` or `rejected`. A rejected strategy is still a valid backtestable output when current market data fails the activation gates.
+
+## Verification
 
 ```powershell
-npm run demo
+npm run typecheck
+npm run test:fourmeme-brain
+npm run test:bstocks-brain
+npm run test:token-info
+npm run check
 ```
-
-Pro-looking single-command options:
-
-```powershell
-npx --yes . demo
-npx --yes . catalog list
-```
-
-Alternative local package execution:
-
-```powershell
-npm exec --yes --package=. 4lpha demo
-```
-
-or install the local repo CLI once and then run:
-
-```powershell
-npm install -g .
-4lpha demo
-```
-
-Capability catalog:
-
-```powershell
-npm run cli -- catalog list
-npm run cli -- catalog show strategy.generate
-```
-
-Strategy flow:
-
-```powershell
-npm run cli -- strategy generate
-npm run cli -- strategy generate --cmc-provider agent-hub-mcp
-npm run cli -- strategy generate --lane bstocks
-npm run cli -- strategy generate --lane bstocks --cmc-provider agent-hub-mcp
-npm run cli -- strategy generate --brain-mode single-agent
-npm run cli -- strategy generate --lane bstocks --brain-mode multi-agent --brain-provider local-rules
-npm run cli -- strategy validate examples/generated/cmc-market-regime.strategy.json
-npm run cli -- strategy validate --lane bstocks --stage draft examples/generated/bstocks/bstocks-draft.strategy.json
-npm run cli -- strategy validate --lane bstocks --stage reviewed examples/generated/bstocks/bstocks-reviewed.strategy.json
-```
-
-The repo now supports two CMC data transports: direct REST and the official CMC Agent Hub MCP endpoint. Keep `CMC_DATA_PROVIDER=rest` for compatibility, or switch to `CMC_DATA_PROVIDER=agent-hub-mcp` or `--cmc-provider agent-hub-mcp` for the sponsor-backed demo path.
-
-The default Four.Meme strategy path uses a local, deterministic `Safety -> Social -> Gatekeeper` review so judges can rerun the demo without any LLM secret. To use a real OpenAI-compatible LLM endpoint, set `FOURMEME_BRAIN_PROVIDER=openai-compatible` and the `FOURMEME_LLM_*` env vars locally.
-
-The bStocks lane now uses a separate `draft -> brain-reviewed` flow with `Safety -> Market Analysis -> Gatekeeper`. To use a real OpenAI-compatible LLM endpoint for that lane, set `BSTOCKS_BRAIN_PROVIDER=openai-compatible` and the `BSTOCKS_LLM_*` env vars locally.
-
-BNBAgent SDK preflight:
-
-```powershell
-npm run cli -- bnbagent dry-run --debug
-```
-
-## Repo Evidence
-
-- Local tooling notes: [docs/local-tooling.md](docs/local-tooling.md)
-- One-command judge demo: `npm run demo`
-- Agent Hub-backed judge demo: `npm run demo -- --cmc-provider agent-hub-mcp`
-- bStocks judge demo: `npm run demo -- --lane bstocks`
-- bStocks Agent Hub-backed demo: `npm run demo -- --lane bstocks --cmc-provider agent-hub-mcp`
-- CLI capability catalog: `npm run cli -- catalog list`
-- CMC-backed strategy generator: `npm run generate:cmc-strategy`
-- bStocks strategy generator: `npm run generate:bstocks-strategy`
-- Generated artifacts: [examples/generated](examples/generated)
-- Strategy brain notes: [docs/strategy-brain.md](docs/strategy-brain.md)
-- Smart-wallet doctrine notes: [docs/smart-wallet-doctrine.md](docs/smart-wallet-doctrine.md)

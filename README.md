@@ -68,6 +68,12 @@ flowchart LR
   cli -. optional sidecar .-> bnbagent["BNBAgent SDK preflight<br/>integrations/bnbagent"]
 ```
 
+## On-Chain Identity
+
+- Public ERC-8004 AgentIdentity registration proof: [BscScan transaction](https://bscscan.com/tx/0xf844a3155ac04c02f216c1dbf61f1682cf376c04ddb4e37158aff794d8125e19).
+- Registry contract: `0x8004A169FB4a3325136EB29fA0ceB6D2e539a432`.
+- Registered identity account: `0xD7E004CBda24E079aA3A657Ba7f8E2915192a966`.
+
 ## Features
 
 - **Agent Skills** - Ships `fourmeme-strategy-skill` and `bstocks-strategy-skill` as installable Open Agent Skills-compatible workflows.

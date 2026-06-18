@@ -1,3 +1,5 @@
+import type { DataQuality, ProviderError } from "../../types/artifact-metadata.js";
+
 const FOUR_MEME_API_BASE = "https://four.meme/meme-api/v1";
 const FOUR_MEME_IMAGE_BASE = "https://static.four.meme";
 const FOUR_MEME_VENUE_BASE = "https://four.meme";
@@ -49,6 +51,12 @@ interface FourMemeListResponse {
   list?: RawToken[];
 }
 
+interface FeedFetchResult {
+  error?: ProviderError;
+  feed: FourMemeDiscoveryFeed;
+  tokens: RawToken[];
+}
+
 interface BaseCandidate {
   tokenAddress: string;
   venueUrl: string;
@@ -89,6 +97,7 @@ export interface FourMemeCandidate {
 
 export interface FourMemeDiscoverySnapshot {
   asOf: string;
+  dataQuality: DataQuality;
   sourceBaseUrl: string;
   sourceEndpoints: string[];
   venue: "fourmeme";
@@ -108,13 +117,24 @@ export class FourMemeClient {
   constructor(private readonly apiBaseUrl: string = FOUR_MEME_API_BASE) {}
 
   async fetchDiscoverySnapshot(): Promise<FourMemeDiscoverySnapshot> {
+    const retrievedAt = new Date().toISOString();
     const bnbPriceUsd = await getBnbPriceUsd();
-    const [newLaunches, volumeLeaders, hot, dexMigrated] = await Promise.all([
+    const [newLaunchesResult, volumeLeadersResult, hotResult, dexMigratedResult] = await Promise.all([
       fetchTokenSearch("NEW", "PUBLISH", 50),
       fetchRanking("VOL_DAY_1", 50),
       fetchRanking("HOT", 50),
       fetchRanking("DEX", 100),
     ]);
+    const providerErrors = [
+      newLaunchesResult.error,
+      volumeLeadersResult.error,
+      hotResult.error,
+      dexMigratedResult.error,
+    ].filter((error): error is ProviderError => error !== undefined);
+    const newLaunches = newLaunchesResult.tokens;
+    const volumeLeaders = volumeLeadersResult.tokens;
+    const hot = hotResult.tokens;
+    const dexMigrated = dexMigratedResult.tokens;
 
     const launchMap = new Map<string, BaseCandidate>();
     for (const entry of tagCandidates(newLaunches, "newLaunches", bnbPriceUsd)) {
@@ -181,6 +201,20 @@ export class FourMemeClient {
 
     return {
       asOf: new Date().toISOString(),
+      dataQuality: {
+        freshness: [
+          {
+            expectedCadence: "Four.Meme meme-api discovery feeds are fetched live for each run.",
+            retrievedAt,
+            sourceObservedAt: new Date().toISOString(),
+          },
+        ],
+        providerErrors,
+        status: resolveDataQualityStatus(providerErrors.length, 4),
+        summary: providerErrors.length === 0
+          ? "All Four.Meme discovery feeds returned usable payloads."
+          : `${4 - providerErrors.length} of 4 Four.Meme discovery feeds returned usable payloads; failed feeds are preserved in providerErrors.`,
+      },
       sourceBaseUrl: this.apiBaseUrl,
       sourceEndpoints: [...new Set(Object.values(FOUR_MEME_DISCOVERY_ENDPOINTS))],
       venue: "fourmeme",
@@ -467,26 +501,56 @@ function mergeCandidates(current: BaseCandidate, incoming: BaseCandidate): BaseC
   };
 }
 
-async function fetchTokenSearch(type: string, status: string, pageSize: number): Promise<RawToken[]> {
-  const result = await postFourMeme<FourMemeListResponse | RawToken[]>("/public/token/search", {
-    type,
-    listType: "NOR",
-    status,
-    sort: "DESC",
-    pageIndex: 1,
-    pageSize,
-  }).catch(() => []);
-
-  return Array.isArray(result) ? result : result.list ?? [];
+async function fetchTokenSearch(type: string, status: string, pageSize: number): Promise<FeedFetchResult> {
+  const feed = "newLaunches" satisfies FourMemeDiscoveryFeed;
+  try {
+    const result = await postFourMeme<FourMemeListResponse | RawToken[]>("/public/token/search", {
+      type,
+      listType: "NOR",
+      status,
+      sort: "DESC",
+      pageIndex: 1,
+      pageSize,
+    });
+    return {
+      feed,
+      tokens: Array.isArray(result) ? result : result.list ?? [],
+    };
+  } catch (error) {
+    return {
+      error: toProviderError({
+        endpoint: FOUR_MEME_DISCOVERY_ENDPOINTS[feed],
+        error,
+        source: "Four.Meme Meme API",
+      }),
+      feed,
+      tokens: [],
+    };
+  }
 }
 
-async function fetchRanking(type: string, pageSize: number): Promise<RawToken[]> {
-  const result = await postFourMeme<FourMemeListResponse | RawToken[]>("/public/token/ranking", {
-    type,
-    pageSize,
-  }).catch(() => []);
-
-  return Array.isArray(result) ? result : result.list ?? [];
+async function fetchRanking(type: string, pageSize: number): Promise<FeedFetchResult> {
+  const feed = resolveRankingFeed(type);
+  try {
+    const result = await postFourMeme<FourMemeListResponse | RawToken[]>("/public/token/ranking", {
+      type,
+      pageSize,
+    });
+    return {
+      feed,
+      tokens: Array.isArray(result) ? result : result.list ?? [],
+    };
+  } catch (error) {
+    return {
+      error: toProviderError({
+        endpoint: FOUR_MEME_DISCOVERY_ENDPOINTS[feed],
+        error,
+        source: "Four.Meme Meme API",
+      }),
+      feed,
+      tokens: [],
+    };
+  }
 }
 
 async function postFourMeme<T>(path: string, body: Record<string, unknown>): Promise<T> {
@@ -673,4 +737,54 @@ function selectMaxOptional(...values: Array<number | undefined>): number | undef
 
 export function createFourMemeClient(): FourMemeClient {
   return new FourMemeClient();
+}
+
+function resolveRankingFeed(type: string): FourMemeDiscoveryFeed {
+  if (type === "VOL_DAY_1") {
+    return "volumeLeaders";
+  }
+
+  if (type === "HOT") {
+    return "hot";
+  }
+
+  if (type === "DEX") {
+    return "dexMigrated";
+  }
+
+  return "hot";
+}
+
+function resolveDataQualityStatus(errorCount: number, sourceCount: number): DataQuality["status"] {
+  if (errorCount === 0) {
+    return "complete";
+  }
+
+  if (errorCount >= sourceCount) {
+    return "failed";
+  }
+
+  return "partial";
+}
+
+function toProviderError(input: {
+  endpoint: string;
+  error: unknown;
+  source: string;
+}): ProviderError {
+  const message = input.error instanceof Error ? input.error.message : String(input.error);
+  return {
+    endpoint: input.endpoint,
+    message: sanitizeProviderErrorMessage(message),
+    observedAt: new Date().toISOString(),
+    recoverable: true,
+    source: input.source,
+  };
+}
+
+function sanitizeProviderErrorMessage(message: string): string {
+  return message
+    .replace(/(api[-_ ]?key|authorization|bearer)\s*[:=]\s*[A-Za-z0-9_.:-]+/giu, "$1=[redacted]")
+    .replace(/0x[a-fA-F0-9]{64}/gu, "0x[redacted-private-key]")
+    .slice(0, 500);
 }

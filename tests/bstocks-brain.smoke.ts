@@ -139,6 +139,7 @@ function createMarketContext(overrides: {
 
   return {
     asOf: AS_OF,
+    dataQuality: createFixtureDataQuality(),
     source: "coinmarketcap",
     transport: "rest",
     global: {
@@ -216,6 +217,7 @@ function createBstocksSnapshot(overrides: {
 
   return {
     asOf: AS_OF,
+    dataQuality: createFixtureDataQuality(),
     source: "coinmarketcap",
     transport: "rest",
     universeVersion: "0.1.0",
@@ -290,6 +292,15 @@ function createBstocksTokenInfo(): BstocksTokenInfoSnapshot {
         observedAt: AS_OF,
       },
     ],
+  };
+}
+
+function createFixtureDataQuality() {
+  return {
+    freshness: [],
+    providerErrors: [],
+    status: "complete" as const,
+    summary: "Fixture data for deterministic smoke testing.",
   };
 }
 

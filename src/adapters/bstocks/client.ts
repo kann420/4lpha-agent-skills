@@ -6,6 +6,7 @@ import {
   type CmcDataProvider,
   type CmcDataTransport,
 } from "../cmc/client.js";
+import type { DataQuality, ProviderError } from "../../types/artifact-metadata.js";
 
 const BSTOCKS_UNIVERSE_PATH = new URL("../../../data/bstocks-universe.json", import.meta.url);
 
@@ -44,6 +45,7 @@ export interface BstocksInstrumentSnapshot {
 
 export interface BstocksUniverseSnapshot {
   asOf: string;
+  dataQuality: DataQuality;
   source: "coinmarketcap";
   transport: CmcDataTransport;
   universeVersion: string;
@@ -109,9 +111,36 @@ export class BstocksClient {
       });
 
     const asOfCandidates = candidates.map((candidate) => candidate.observedAt).sort();
+    const missingQuoteIds = quoteIds.filter((id) => !quotesById.has(id));
+    const providerErrors: ProviderError[] = missingQuoteIds.map((id) => ({
+      message: `CMC quote snapshot did not return allowlisted bStocks CMC ID ${id}.`,
+      observedAt: new Date().toISOString(),
+      recoverable: true,
+      source: "CoinMarketCap bStocks quote snapshot",
+      tool: "get_crypto_quotes_latest",
+    }));
+    const asOf = asOfCandidates.at(-1) ?? new Date().toISOString();
 
     return {
-      asOf: asOfCandidates.at(-1) ?? new Date().toISOString(),
+      asOf,
+      dataQuality: {
+        freshness: [
+          {
+            expectedCadence: "CoinMarketCap latest quotes are fetched once per bStocks generation run.",
+            retrievedAt: new Date().toISOString(),
+            sourceObservedAt: asOf,
+          },
+        ],
+        providerErrors,
+        status: providerErrors.length === 0
+          ? "complete"
+          : candidates.length === 0
+            ? "failed"
+            : "partial",
+        summary: providerErrors.length === 0
+          ? "All allowlisted bStocks instruments returned current CMC quote payloads."
+          : `${candidates.length} of ${selectionUniverse.length} allowlisted bStocks instruments returned current CMC quote payloads.`,
+      },
       source: "coinmarketcap",
       transport: this.cmcProvider.transport,
       universeVersion: universeFile.version,

@@ -1,0 +1,106 @@
+{
+  "version": "0.1.0",
+  "methodologyNote": "Pinned replay-pack snapshots for methodology evidence only. These fixtures test selection and risk-gate behavior; they do not claim profitability, safety, or future performance.",
+  "snapshots": [
+    {
+      "id": "fourmeme-pack-001",
+      "asOf": "2026-06-18T04:00:00.000Z",
+      "allowedBuckets": ["safe2ape", "gemHunt"],
+      "candidates": [
+        {"symbol": "FOUR", "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 84, "categoryScore": 74, "volume24hUsd": 186000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "recorded-fourmeme-contract"},
+        {"symbol": "BNBMAX", "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 81, "volume24hUsd": 620000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.75, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "WATCH", "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 22, "categoryScore": 55, "volume24hUsd": 210000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-002",
+      "asOf": "2026-06-18T05:00:00.000Z",
+      "allowedBuckets": ["safe2ape"],
+      "candidates": [
+        {"symbol": "APEX", "tokenAddress": "0xa49f2d91c8b736e4051a2b3c4d5e6f708192a3b4", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 71, "categoryScore": 69, "volume24hUsd": 94000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "SURGE", "tokenAddress": "0xb38e4c72d1a9065f4e3d2c1b0a99887766554433", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 18, "categoryScore": 61, "volume24hUsd": 420000, "onchainRisk": "critical", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "EMBER", "tokenAddress": "0xc27d5b61e0f94a83b72c61d50e49f38a2716b504", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 73, "volume24hUsd": 380000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.8, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-003",
+      "asOf": "2026-06-18T06:00:00.000Z",
+      "allowedBuckets": ["safe2ape", "gemHunt"],
+      "candidates": [
+        {"symbol": "NOVA", "tokenAddress": "0xd16c4a50f9e83b72c61d50e49f38a2716b504a93", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 58, "categoryScore": 66, "volume24hUsd": 76000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.7, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "BLAST", "tokenAddress": "0xe05b3948d7c62a51f40e39d28c17b06a95f84e73", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 84, "volume24hUsd": 510000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "STACK", "tokenAddress": "0xf94a2837c6b51e40d39c28b17a06f95e84d73c62", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 77, "categoryScore": 52, "volume24hUsd": 690000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-004",
+      "asOf": "2026-06-18T07:00:00.000Z",
+      "allowedBuckets": ["safe2ape"],
+      "candidates": [
+        {"symbol": "PULSE", "tokenAddress": "0x13579bdf2468ace013579bdf2468ace013579bdf", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 65, "categoryScore": 70, "volume24hUsd": 121000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "HYPE", "tokenAddress": "0x2468ace013579bdf2468ace013579bdf2468ace0", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 34, "categoryScore": 59, "volume24hUsd": 540000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "MINT", "tokenAddress": "0x369cf258147ad0369cf258147ad0369cf258147a", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 48, "categoryScore": 63, "volume24hUsd": 99000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-005",
+      "asOf": "2026-06-18T08:00:00.000Z",
+      "allowedBuckets": ["safe2ape", "gemHunt"],
+      "candidates": [
+        {"symbol": "ROCKET", "tokenAddress": "0x48ad159e26bf370c48ad159e26bf370c48ad159e", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 88, "volume24hUsd": 730000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.8, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "FADE", "tokenAddress": "0x59be26af37c048ad59be26af37c048ad59be26af", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 81, "categoryScore": 45, "volume24hUsd": 810000, "onchainRisk": "critical", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "SPARK", "tokenAddress": "0x6acf37b048ad159e6acf37b048ad159e6acf37b0", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 69, "categoryScore": 72, "volume24hUsd": 149000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-006",
+      "asOf": "2026-06-18T09:00:00.000Z",
+      "allowedBuckets": ["safe2ape"],
+      "candidates": [
+        {"symbol": "ORBIT", "tokenAddress": "0x7bd048c159e26af37bd048c159e26af37bd048c1", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 92, "categoryScore": 78, "volume24hUsd": 260000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.85, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "NOISE", "tokenAddress": "0x8ce159d26af37b048ce159d26af37b048ce159d2", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 14, "categoryScore": 40, "volume24hUsd": 1000000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "STEADY", "tokenAddress": "0x9df26ae37b048c159df26ae37b048c159df26ae3", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 56, "categoryScore": 64, "volume24hUsd": 88000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-007",
+      "asOf": "2026-06-18T10:00:00.000Z",
+      "allowedBuckets": ["safe2ape", "gemHunt"],
+      "candidates": [
+        {"symbol": "WAVE", "tokenAddress": "0xae037bf48c159d26ae037bf48c159d26ae037bf4", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 77, "volume24hUsd": 410000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "RISK", "tokenAddress": "0xbf148c059d26ae37bf148c059d26ae37bf148c05", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 50, "volume24hUsd": 950000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "GLIDE", "tokenAddress": "0xc0259d16ae37bf48c0259d16ae37bf48c0259d16", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 62, "categoryScore": 71, "volume24hUsd": 134000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.9, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-008",
+      "asOf": "2026-06-18T11:00:00.000Z",
+      "allowedBuckets": ["safe2ape"],
+      "candidates": [
+        {"symbol": "DRIFT", "tokenAddress": "0xd136ae27bf48c059d136ae27bf48c059d136ae27", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 53, "categoryScore": 60, "volume24hUsd": 72000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "VAULT", "tokenAddress": "0xe247bf38c059d16ae247bf38c059d16ae247bf38", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 73, "categoryScore": 76, "volume24hUsd": 330000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.85, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "SPAM", "tokenAddress": "0xf358c049d16ae27bf358c049d16ae27bf358c049", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 12, "categoryScore": 38, "volume24hUsd": 670000, "onchainRisk": "critical", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-009",
+      "asOf": "2026-06-18T12:00:00.000Z",
+      "allowedBuckets": ["safe2ape", "gemHunt"],
+      "candidates": [
+        {"symbol": "LIFT", "tokenAddress": "0x1029384756abcdef1029384756abcdef10293847", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 68, "categoryScore": 67, "volume24hUsd": 112000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "BLOW", "tokenAddress": "0x2138495067abcdef2138495067abcdef21384950", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 51, "categoryScore": 44, "volume24hUsd": 590000, "onchainRisk": "high", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "PRIME", "tokenAddress": "0x3249506178abcdef3249506178abcdef32495061", "bucket": "gemHunt", "launchStage": "migrated", "bondingProgress": 100, "categoryScore": 83, "volume24hUsd": 455000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.75, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    },
+    {
+      "id": "fourmeme-pack-010",
+      "asOf": "2026-06-18T13:00:00.000Z",
+      "allowedBuckets": ["safe2ape"],
+      "candidates": [
+        {"symbol": "CLEAR", "tokenAddress": "0x4350617289abcdef4350617289abcdef43506172", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 86, "categoryScore": 79, "volume24hUsd": 280000, "onchainRisk": "low", "onchainEligible": true, "positionSizeMultiplier": 1, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "TRAP", "tokenAddress": "0x5461728390abcdef5461728390abcdef54617283", "bucket": "safe2ape", "launchStage": "new", "bondingProgress": 90, "categoryScore": 35, "volume24hUsd": 1200000, "onchainRisk": "critical", "onchainEligible": false, "positionSizeMultiplier": 0, "addressProvenance": "deterministic-fixture-address"},
+        {"symbol": "NIMBLE", "tokenAddress": "0x6572839401abcdef6572839401abcdef65728394", "bucket": "mediumRisk", "launchStage": "new", "bondingProgress": 43, "categoryScore": 62, "volume24hUsd": 170000, "onchainRisk": "medium", "onchainEligible": true, "positionSizeMultiplier": 0.8, "addressProvenance": "deterministic-fixture-address"}
+      ]
+    }
+  ]
+}

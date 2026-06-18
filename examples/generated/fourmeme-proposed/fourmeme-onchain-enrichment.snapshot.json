@@ -1,0 +1,162 @@
+{
+  "asOf": "2026-06-18T04:00:00.000Z",
+  "candidates": [
+    {
+      "addressProvenance": "deterministic-fixture-address",
+      "aggregateRisk": "low",
+      "eligibleForEntry": true,
+      "positionSizeMultiplier": 1,
+      "reviews": [
+        {
+          "metrics": {
+            "top10HolderPct": 24.6,
+            "uniqueHolderCount": 188
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "hard-risk-gate",
+          "skillId": "score_holder_concentration_risk",
+          "status": "passed",
+          "summary": "Holder concentration is acceptable for the fixture's launch-stage risk budget."
+        },
+        {
+          "metrics": {
+            "activeWallets4h": 76,
+            "buySellRatio4h": 1.32,
+            "clusterDominancePct": 19.7
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "entry-quality-gate",
+          "skillId": "review_dex_wallet_activity_profile",
+          "status": "passed",
+          "summary": "DEX wallet activity is broad enough and not dominated by a single wallet cluster."
+        },
+        {
+          "metrics": {
+            "profitableWalletSharePct": 44.9,
+            "realizedPnlUsd": 6200
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "advisory-confidence",
+          "skillId": "review_dex_wallet_pnl",
+          "status": "passed",
+          "summary": "Wallet PnL is supportive but used only as advisory confidence, not as a buy trigger."
+        }
+      ],
+      "symbol": "FOUR",
+      "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444"
+    },
+    {
+      "addressProvenance": "deterministic-fixture-address",
+      "aggregateRisk": "high",
+      "eligibleForEntry": false,
+      "positionSizeMultiplier": 0,
+      "reviews": [
+        {
+          "metrics": {
+            "top10HolderPct": 72.4,
+            "uniqueHolderCount": 42
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "hard-risk-gate",
+          "skillId": "score_holder_concentration_risk",
+          "status": "failed",
+          "summary": "Top-holder concentration is too high for active entry; keep watchlist-only."
+        },
+        {
+          "metrics": {
+            "activeWallets4h": 18,
+            "buySellRatio4h": 0.41,
+            "clusterDominancePct": 63.2
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "entry-quality-gate",
+          "skillId": "review_dex_wallet_activity_profile",
+          "status": "warning",
+          "summary": "Wallet flow is narrow and seller-heavy, so activity is not enough to override concentration risk."
+        },
+        {
+          "metrics": {
+            "profitableWalletSharePct": 18.2,
+            "realizedPnlUsd": -7400
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "advisory-confidence",
+          "skillId": "review_dex_wallet_pnl",
+          "status": "warning",
+          "summary": "Wallet PnL is weak and remains advisory only."
+        }
+      ],
+      "symbol": "WATCH",
+      "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd"
+    },
+    {
+      "addressProvenance": "deterministic-fixture-address",
+      "aggregateRisk": "medium",
+      "eligibleForEntry": true,
+      "positionSizeMultiplier": 0.75,
+      "reviews": [
+        {
+          "metrics": {
+            "top10HolderPct": 34.8,
+            "uniqueHolderCount": 840
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "hard-risk-gate",
+          "skillId": "score_holder_concentration_risk",
+          "status": "warning",
+          "summary": "Holder concentration is elevated but below the hard rejection threshold; reduce size."
+        },
+        {
+          "metrics": {
+            "activeWallets4h": 124,
+            "buySellRatio4h": 1.18,
+            "clusterDominancePct": 28.5
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "entry-quality-gate",
+          "skillId": "review_dex_wallet_activity_profile",
+          "status": "passed",
+          "summary": "DEX wallet activity is broad enough and not dominated by a single wallet cluster."
+        },
+        {
+          "metrics": {
+            "profitableWalletSharePct": 51.4,
+            "realizedPnlUsd": 18400
+          },
+          "observedAt": "2026-06-18T04:00:00.000Z",
+          "role": "advisory-confidence",
+          "skillId": "review_dex_wallet_pnl",
+          "status": "passed",
+          "summary": "Wallet PnL is supportive but used only as advisory confidence, not as a buy trigger."
+        }
+      ],
+      "symbol": "BNBMAX",
+      "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345"
+    }
+  ],
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live CMC Skills Marketplace calls should be timestamped per candidate contract.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "Deterministic CMC Skills Marketplace on-chain enrichment fixture for shortlisted Four.Meme contracts; not a live on-chain claim."
+  },
+  "skillExecution": {
+    "mode": "recorded",
+    "reason": "Replay fixture records the expected output contract for curated CMC Skills Marketplace on-chain enrichment; it is not a live cloud execution claim.",
+    "sourceUrl": "https://coinmarketcap.com/api/skills-marketplace/",
+    "status": "matched"
+  },
+  "skills": [
+    "score_holder_concentration_risk",
+    "review_dex_wallet_activity_profile",
+    "review_dex_wallet_pnl"
+  ],
+  "source": "cmc-skills-marketplace-fixture",
+  "summary": "Applied curated on-chain skill outputs after Four.Meme shortlist: holder concentration as a hard risk gate, DEX wallet activity as entry quality, and wallet PnL as advisory confidence only."
+}

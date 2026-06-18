@@ -1,4 +1,12 @@
 import type {
+  ArtifactRef,
+  DataQuality,
+  FreshnessRecord,
+  ProviderError,
+} from "./artifact-metadata.js";
+import type { SkillRoute } from "../skills/marketplace-router.js";
+import type { FourMemeOnchainEnrichmentSnapshot } from "./fourmeme-onchain-enrichment.js";
+import type {
   StrategyBrainAgentReview,
   StrategyBrainMode,
   StrategyBrainProvider,
@@ -62,6 +70,10 @@ export type {
 };
 
 export interface StrategySpec {
+  artifactRefs?: ArtifactRef[];
+  dataQuality?: DataQuality;
+  onchainEnrichment?: FourMemeOnchainEnrichmentSnapshot;
+  skillRoute?: SkillRoute;
   version: string;
   strategyId: string;
   generatedAt: string;
@@ -117,3 +129,10 @@ export interface StrategySpec {
   rationale: string;
   rejectionReasons?: Condition[];
 }
+
+export type {
+  ArtifactRef,
+  DataQuality,
+  FreshnessRecord,
+  ProviderError,
+};

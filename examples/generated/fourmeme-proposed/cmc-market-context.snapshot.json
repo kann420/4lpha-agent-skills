@@ -1,0 +1,73 @@
+{
+  "asOf": "2026-06-18T04:00:00.000Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live demo uses Agent Hub MCP.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "Deterministic supportive-regime fixture for judge replay; not a live market claim."
+  },
+  "source": "coinmarketcap",
+  "transport": "agent-hub-mcp",
+  "global": {
+    "totalMarketCapUsd": 3480000000000,
+    "totalVolume24hUsd": 132000000000,
+    "totalMarketCapChange24hPct": 1.25,
+    "btcDominancePct": 53.4,
+    "btcDominanceChange24hPct": -0.12,
+    "ethDominancePct": 17.9,
+    "observedAt": "2026-06-18T04:00:00.000Z"
+  },
+  "fearGreed": {
+    "value": 64,
+    "classification": "Greed",
+    "observedAt": "2026-06-18T04:00:00.000Z"
+  },
+  "bnb": {
+    "assetId": 1839,
+    "name": "BNB",
+    "symbol": "BNB",
+    "cmcRank": 5,
+    "priceUsd": 652.4,
+    "volume24hUsd": 1840000000,
+    "percentChange1h": 0.25,
+    "percentChange24h": 1.18,
+    "percentChange7d": 4.7,
+    "percentChange30d": 7.9,
+    "marketCapUsd": 96000000000,
+    "marketCapDominancePct": 2.76,
+    "observedAt": "2026-06-18T04:00:00.000Z"
+  },
+  "technicalIndicators": {
+    "assetId": 1839,
+    "macd": {
+      "histogram": 0.42,
+      "line": 1.84,
+      "signal": 1.42
+    },
+    "movingAverages": [
+      {
+        "period": "20",
+        "type": "ema",
+        "value": 640.2
+      },
+      {
+        "period": "50",
+        "type": "ema",
+        "value": 626.8
+      }
+    ],
+    "observedAt": "2026-06-18T04:00:00.000Z",
+    "rsi": 58.4,
+    "source": "coinmarketcap",
+    "sourceTool": "get_crypto_technical_analysis",
+    "summary": "Fixture BNB TA: RSI 58.4, MACD histogram positive, price above EMA20 and EMA50.",
+    "symbol": "BNB",
+    "transport": "agent-hub-mcp"
+  }
+}

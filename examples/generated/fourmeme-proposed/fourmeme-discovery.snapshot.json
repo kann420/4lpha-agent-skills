@@ -1,0 +1,163 @@
+{
+  "asOf": "2026-06-18T04:00:00.000Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live demo uses Four.Meme meme-api.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "Deterministic Four.Meme discovery fixture for judge replay; not a live venue claim."
+  },
+  "sourceBaseUrl": "fixture://fourmeme-proposed",
+  "sourceEndpoints": [
+    "fixture://fourmeme-proposed/new-launches",
+    "fixture://fourmeme-proposed/volume-leaders",
+    "fixture://fourmeme-proposed/hot",
+    "fixture://fourmeme-proposed/dex-migrated"
+  ],
+  "venue": "fourmeme",
+  "feedCounts": {
+    "newLaunches": 1,
+    "volumeLeaders": 2,
+    "hot": 2,
+    "dexMigrated": 1
+  },
+  "safe2apeCandidates": [
+    {
+      "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444",
+      "venueUrl": "https://four.meme/en/token/0x0a43fc31a73013089df59194872ecae4cae14444",
+      "symbol": "FOUR",
+      "name": "Four Meme Signal",
+      "createdAt": "2026-06-18T02:30:00.000Z",
+      "marketCapUsd": 92000,
+      "volume24hUsd": 186000,
+      "volume4hUsd": 64000,
+      "priceUsd": 0.00092,
+      "holders": 188,
+      "bondingProgress": 84,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "newLaunches",
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 74
+    }
+  ],
+  "mediumRiskCandidates": [
+    {
+      "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+      "venueUrl": "https://four.meme/en/token/0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+      "symbol": "WATCH",
+      "name": "Watchlist Only",
+      "createdAt": "2026-06-18T01:15:00.000Z",
+      "marketCapUsd": 52000,
+      "volume24hUsd": 210000,
+      "volume4hUsd": 41000,
+      "priceUsd": 0.00052,
+      "holders": 42,
+      "bondingProgress": 22,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 55
+    }
+  ],
+  "gemHuntCandidates": [
+    {
+      "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+      "venueUrl": "https://four.meme/en/token/0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+      "symbol": "BNBMAX",
+      "name": "BNB Max Rotation",
+      "createdAt": "2026-06-17T18:45:00.000Z",
+      "marketCapUsd": 420000,
+      "volume24hUsd": 620000,
+      "volume4hUsd": 92000,
+      "priceUsd": 0.0042,
+      "holders": 840,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated",
+        "volumeLeaders"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 81
+    }
+  ],
+  "selectedCandidates": [
+    {
+      "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444",
+      "venueUrl": "https://four.meme/en/token/0x0a43fc31a73013089df59194872ecae4cae14444",
+      "symbol": "FOUR",
+      "name": "Four Meme Signal",
+      "createdAt": "2026-06-18T02:30:00.000Z",
+      "marketCapUsd": 92000,
+      "volume24hUsd": 186000,
+      "volume4hUsd": 64000,
+      "priceUsd": 0.00092,
+      "holders": 188,
+      "bondingProgress": 84,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "newLaunches",
+        "volumeLeaders",
+        "hot"
+      ],
+      "selectionBucket": "safe2ape",
+      "categoryScore": 74
+    },
+    {
+      "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+      "venueUrl": "https://four.meme/en/token/0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+      "symbol": "WATCH",
+      "name": "Watchlist Only",
+      "createdAt": "2026-06-18T01:15:00.000Z",
+      "marketCapUsd": 52000,
+      "volume24hUsd": 210000,
+      "volume4hUsd": 41000,
+      "priceUsd": 0.00052,
+      "holders": 42,
+      "bondingProgress": 22,
+      "graduated": false,
+      "launchStage": "new",
+      "discoveryFeeds": [
+        "hot"
+      ],
+      "selectionBucket": "mediumRisk",
+      "categoryScore": 55
+    },
+    {
+      "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+      "venueUrl": "https://four.meme/en/token/0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+      "symbol": "BNBMAX",
+      "name": "BNB Max Rotation",
+      "createdAt": "2026-06-17T18:45:00.000Z",
+      "marketCapUsd": 420000,
+      "volume24hUsd": 620000,
+      "volume4hUsd": 92000,
+      "priceUsd": 0.0042,
+      "holders": 840,
+      "bondingProgress": 100,
+      "graduated": true,
+      "launchStage": "migrated",
+      "discoveryFeeds": [
+        "dexMigrated",
+        "volumeLeaders"
+      ],
+      "selectionBucket": "gemHunt",
+      "categoryScore": 81
+    }
+  ]
+}

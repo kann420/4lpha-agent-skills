@@ -17,6 +17,9 @@
     "candidates"
   ],
   "properties": {
+    "dataQuality": {
+      "$ref": "#/$defs/dataQuality"
+    },
     "asOf": {
       "type": "string",
       "format": "date-time"
@@ -132,6 +135,100 @@
             "type": "string",
             "format": "date-time"
           }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freshness",
+        "providerErrors",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "freshness": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/freshnessRecord"
+          }
+        },
+        "providerErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/providerError"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "degraded",
+            "failed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "freshnessRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedCadence",
+        "retrievedAt"
+      ],
+      "properties": {
+        "expectedCadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceObservedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "providerError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "message",
+        "observedAt",
+        "recoverable",
+        "source"
+      ],
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recoverable": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": "string"
         }
       }
     }

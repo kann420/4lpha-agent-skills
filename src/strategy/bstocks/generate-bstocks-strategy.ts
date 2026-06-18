@@ -1,5 +1,6 @@
 import type { BstocksUniverseSnapshot } from "../../adapters/bstocks/client.js";
 import type { CmcMarketContext } from "../../adapters/cmc/client.js";
+import { combineDataQuality } from "../../output/data-quality.js";
 import type { Condition, EvidenceRecord } from "../../types/strategy-spec.js";
 import type { BstocksDraftStrategySpec } from "../../types/bstocks-strategy-spec.js";
 
@@ -38,6 +39,11 @@ export function generateBstocksDraftStrategySpec(
 
   return {
     version: STRATEGY_VERSION,
+    dataQuality: combineDataQuality({
+      partialSummary: "bStocks draft generated with partial source-data quality; inspect providerErrors and input artifactRefs before backtesting.",
+      sources: [marketContext.dataQuality, bstocksSnapshot.dataQuality],
+      successSummary: "bStocks draft generated from complete CMC market context and complete bStocks quote inputs.",
+    }),
     strategyId: `cmc-bnb-bstocks-${asOfDate}`,
     generatedAt: new Date().toISOString(),
     domain: "bnb-bstocks",

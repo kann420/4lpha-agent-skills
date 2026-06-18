@@ -1,5 +1,7 @@
 import { config as loadDotEnv } from "dotenv";
 
+import type { DataQuality, ProviderError } from "../../types/artifact-metadata.js";
+
 export const CMC_DOC_URLS = {
   agentHub: "https://coinmarketcap.com/api/agent/",
   bnbQuote: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB",
@@ -161,8 +163,32 @@ export interface CmcLatestQuote {
   observedAt: string;
 }
 
+export interface CmcMovingAverageSignal {
+  period: string;
+  type: "ema" | "sma" | "ma";
+  value: number;
+}
+
+export interface CmcTechnicalIndicators {
+  assetId: number;
+  macd?: {
+    histogram?: number;
+    line?: number;
+    signal?: number;
+  };
+  movingAverages: CmcMovingAverageSignal[];
+  observedAt: string;
+  rsi?: number;
+  source: "coinmarketcap";
+  sourceTool: "get_crypto_technical_analysis";
+  summary: string;
+  symbol: string;
+  transport: "agent-hub-mcp";
+}
+
 export interface CmcMarketContext {
   asOf: string;
+  dataQuality: DataQuality;
   source: "coinmarketcap";
   transport: CmcDataTransport;
   global: {
@@ -194,6 +220,7 @@ export interface CmcMarketContext {
     marketCapDominancePct: number;
     observedAt: string;
   };
+  technicalIndicators?: CmcTechnicalIndicators;
 }
 
 export interface CmcDataProvider {
@@ -237,6 +264,7 @@ export class CmcClient implements CmcDataProvider {
   ) {}
 
   async fetchMarketContext(): Promise<CmcMarketContext> {
+    const retrievedAt = new Date().toISOString();
     const [globalMetrics, fearAndGreed, bnbQuotes] = await Promise.all([
       this.requestJson<GlobalMetricsResponse>("/v1/global-metrics/quotes/latest"),
       this.requestJson<FearAndGreedResponse>("/v3/fear-and-greed/latest"),
@@ -257,6 +285,18 @@ export class CmcClient implements CmcDataProvider {
 
     return {
       asOf: asOfCandidates.sort().at(-1) ?? new Date().toISOString(),
+      dataQuality: {
+        freshness: [
+          {
+            expectedCadence: "CMC global metrics and BNB quote are sampled at the provider's latest available cadence.",
+            retrievedAt,
+            sourceObservedAt: asOfCandidates.sort().at(-1),
+          },
+        ],
+        providerErrors: [],
+        status: "complete",
+        summary: "CMC REST market context, Fear and Greed, and BNB quote were fetched successfully. Technical indicators are only attached on the Agent Hub MCP transport.",
+      },
       source: "coinmarketcap",
       transport: this.transport,
       global: {
@@ -341,10 +381,22 @@ export class CmcMcpClient implements CmcDataProvider {
   ) {}
 
   async fetchMarketContext(): Promise<CmcMarketContext> {
+    const retrievedAt = new Date().toISOString();
+    const providerErrors: ProviderError[] = [];
     const [globalMetrics, bnbQuotes] = await Promise.all([
       this.callTool<McpGlobalMetricsPayload>("get_global_metrics_latest", {}),
       this.fetchLatestQuotesByIds([BNB_CMC_ID]),
     ]);
+    const technicalIndicators = await this.fetchTechnicalIndicatorsById(BNB_CMC_ID, "BNB")
+      .catch((error: unknown) => {
+        providerErrors.push(toProviderError({
+          error,
+          observedAt: new Date().toISOString(),
+          source: "CoinMarketCap Agent Hub MCP",
+          tool: "get_crypto_technical_analysis",
+        }));
+        return undefined;
+      });
     const bnbQuote = bnbQuotes[0];
 
     if (!bnbQuote) {
@@ -358,6 +410,29 @@ export class CmcMcpClient implements CmcDataProvider {
 
     return {
       asOf: asOfCandidates.sort().at(-1) ?? new Date().toISOString(),
+      dataQuality: {
+        freshness: [
+          {
+            expectedCadence: "CMC Agent Hub MCP global metrics and BNB quote are sampled at the provider's latest available cadence.",
+            retrievedAt,
+            sourceObservedAt: asOfCandidates.sort().at(-1),
+          },
+          ...(technicalIndicators
+            ? [
+                {
+                  expectedCadence: "CMC MCP technical-analysis snapshot for BNB.",
+                  retrievedAt,
+                  sourceObservedAt: technicalIndicators.observedAt,
+                },
+              ]
+            : []),
+        ],
+        providerErrors,
+        status: providerErrors.length > 0 ? "partial" : "complete",
+        summary: providerErrors.length > 0
+          ? "CMC Agent Hub MCP market context succeeded, but at least one optional technical-analysis tool returned no usable payload."
+          : "CMC Agent Hub MCP market context, BNB quote, and BNB technical-analysis payload were fetched successfully.",
+      },
       source: "coinmarketcap",
       transport: this.transport,
       global: {
@@ -391,6 +466,7 @@ export class CmcMcpClient implements CmcDataProvider {
         marketCapDominancePct: bnbQuote.marketCapDominancePct,
         observedAt: bnbQuote.observedAt,
       },
+      ...(technicalIndicators ? { technicalIndicators } : {}),
     };
   }
 
@@ -459,6 +535,17 @@ export class CmcMcpClient implements CmcDataProvider {
     }
 
     return JSON.parse(textContent) as T;
+  }
+
+  private async fetchTechnicalIndicatorsById(
+    id: number,
+    symbol: string,
+  ): Promise<CmcTechnicalIndicators> {
+    const payload = await this.callTool<unknown>("get_crypto_technical_analysis", {
+      id: String(id),
+    });
+
+    return normalizeMcpTechnicalIndicators(payload, id, symbol);
   }
 }
 
@@ -648,4 +735,276 @@ function parseObservedAt(value: string): string {
   }
 
   return parsed.toISOString();
+}
+
+function normalizeMcpTechnicalIndicators(
+  payload: unknown,
+  assetId: number,
+  symbol: string,
+): CmcTechnicalIndicators {
+  const observedAt = findDateString(payload) ?? new Date().toISOString();
+  const rsi = findNumberByKey(payload, (key) =>
+    key === "rsi" ||
+    key === "rsi_14" ||
+    key === "rsi14" ||
+    key.includes("relative_strength_index")
+  );
+  const macdLine = findNumberByKey(payload, (key) =>
+    key === "macd" ||
+    key === "macd_line" ||
+    key === "macd_value" ||
+    key === "macdline"
+  );
+  const macdSignal = findNumberByKey(payload, (key) =>
+    (key.includes("macd") && key.includes("signal")) ||
+    key === "signalline" ||
+    key === "signal_line"
+  );
+  const macdHistogram = findNumberByKey(payload, (key) =>
+    key === "histogram" ||
+    (key.includes("macd") && (key.includes("histogram") || key.includes("hist")))
+  );
+  const movingAverages = collectMovingAverages(payload);
+  const summary = findStringByKey(payload, (key) =>
+    key === "summary" ||
+    key === "technical_summary" ||
+    key === "signal" ||
+    key === "recommendation"
+  ) ?? buildTechnicalSummary({
+    macdHistogram,
+    macdLine,
+    macdSignal,
+    movingAverages,
+    rsi,
+  });
+
+  if (rsi === undefined && macdLine === undefined && movingAverages.length === 0) {
+    throw new Error("CMC MCP technical-analysis payload did not contain RSI, MACD, or moving-average values");
+  }
+
+  return {
+    assetId,
+    movingAverages,
+    observedAt,
+    source: "coinmarketcap",
+    sourceTool: "get_crypto_technical_analysis",
+    summary,
+    symbol,
+    transport: "agent-hub-mcp",
+    ...(rsi !== undefined ? { rsi } : {}),
+    ...(macdLine !== undefined || macdSignal !== undefined || macdHistogram !== undefined
+      ? {
+          macd: {
+            ...(macdLine !== undefined ? { line: macdLine } : {}),
+            ...(macdSignal !== undefined ? { signal: macdSignal } : {}),
+            ...(macdHistogram !== undefined ? { histogram: macdHistogram } : {}),
+          },
+        }
+      : {}),
+  };
+}
+
+function findDateString(value: unknown): string | undefined {
+  const raw = findStringByKey(value, (key) =>
+    key === "last_updated" ||
+    key === "last_updated_time" ||
+    key === "observed_at" ||
+    key === "timestamp" ||
+    key === "updated_at"
+  );
+
+  if (!raw) {
+    return undefined;
+  }
+
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
+}
+
+function findStringByKey(
+  value: unknown,
+  predicate: (normalizedKey: string) => boolean,
+): string | undefined {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = findStringByKey(item, predicate);
+      if (found !== undefined) {
+        return found;
+      }
+    }
+    return undefined;
+  }
+
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  for (const [key, item] of Object.entries(value)) {
+    const normalizedKey = normalizePayloadKey(key);
+    if (predicate(normalizedKey) && typeof item === "string" && item.trim().length > 0) {
+      return item.trim();
+    }
+
+    const found = findStringByKey(item, predicate);
+    if (found !== undefined) {
+      return found;
+    }
+  }
+
+  return undefined;
+}
+
+function findNumberByKey(
+  value: unknown,
+  predicate: (normalizedKey: string) => boolean,
+): number | undefined {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = findNumberByKey(item, predicate);
+      if (found !== undefined) {
+        return found;
+      }
+    }
+    return undefined;
+  }
+
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  for (const [key, item] of Object.entries(value)) {
+    const normalizedKey = normalizePayloadKey(key);
+    if (predicate(normalizedKey)) {
+      const parsed = toFiniteNumber(item);
+      if (parsed !== undefined) {
+        return parsed;
+      }
+    }
+
+    const found = findNumberByKey(item, predicate);
+    if (found !== undefined) {
+      return found;
+    }
+  }
+
+  return undefined;
+}
+
+function collectMovingAverages(value: unknown): CmcMovingAverageSignal[] {
+  const collected: CmcMovingAverageSignal[] = [];
+  visitPayload(value, (key, item) => {
+    const normalizedKey = normalizePayloadKey(key);
+    const compactMatch = normalizedKey.match(/\b(sma|ema|ma)[_-]?(\d+)\b/u);
+    const verboseMatch = normalizedKey.match(/\b(simple|exponential)_moving_average_?(\d+)?(?:_day)?\b/u);
+    if (!compactMatch && !verboseMatch) {
+      return;
+    }
+
+    const parsed = toFiniteNumber(item);
+    if (parsed === undefined) {
+      return;
+    }
+
+    const type = compactMatch
+      ? compactMatch[1] as CmcMovingAverageSignal["type"]
+      : verboseMatch?.[1] === "exponential"
+        ? "ema"
+        : "sma";
+    const period = compactMatch?.[2] ?? verboseMatch?.[2] ?? "unknown";
+
+    collected.push({
+      period,
+      type,
+      value: parsed,
+    });
+  });
+
+  const seen = new Set<string>();
+  return collected.filter((item) => {
+    const key = `${item.type}-${item.period}`;
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  }).slice(0, 8);
+}
+
+function visitPayload(
+  value: unknown,
+  visitor: (key: string, value: unknown) => void,
+): void {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      visitPayload(item, visitor);
+    }
+    return;
+  }
+
+  if (!isRecord(value)) {
+    return;
+  }
+
+  for (const [key, item] of Object.entries(value)) {
+    visitor(key, item);
+    visitPayload(item, visitor);
+  }
+}
+
+function buildTechnicalSummary(input: {
+  macdHistogram?: number;
+  macdLine?: number;
+  macdSignal?: number;
+  movingAverages: CmcMovingAverageSignal[];
+  rsi?: number;
+}): string {
+  const parts = [
+    input.rsi !== undefined ? `RSI ${input.rsi.toFixed(2)}` : undefined,
+    input.macdLine !== undefined
+      ? `MACD ${input.macdLine.toFixed(4)}${input.macdSignal !== undefined ? ` / signal ${input.macdSignal.toFixed(4)}` : ""}${input.macdHistogram !== undefined ? ` / histogram ${input.macdHistogram.toFixed(4)}` : ""}`
+      : undefined,
+    input.movingAverages.length > 0
+      ? `moving averages ${input.movingAverages.map((item) => `${item.type.toUpperCase()}${item.period}=${item.value.toFixed(2)}`).join(", ")}`
+      : undefined,
+  ].filter((part): part is string => part !== undefined);
+
+  return parts.length > 0
+    ? parts.join("; ")
+    : "CMC MCP technical-analysis payload contained no normalized indicator summary.";
+}
+
+function toProviderError(input: {
+  error: unknown;
+  observedAt: string;
+  source: string;
+  tool?: string;
+}): ProviderError {
+  const message = input.error instanceof Error ? input.error.message : String(input.error);
+  return {
+    message: sanitizeProviderErrorMessage(message),
+    observedAt: input.observedAt,
+    recoverable: true,
+    source: input.source,
+    ...(input.tool ? { tool: input.tool } : {}),
+  };
+}
+
+function sanitizeProviderErrorMessage(message: string): string {
+  return message
+    .replace(/(api[-_ ]?key|authorization|bearer)\s*[:=]\s*[A-Za-z0-9_.:-]+/giu, "$1=[redacted]")
+    .replace(/0x[a-fA-F0-9]{64}/gu, "0x[redacted-private-key]")
+    .slice(0, 500);
+}
+
+function normalizePayloadKey(key: string): string {
+  return key.trim().toLowerCase().replace(/\s+/gu, "_");
+}
+
+function toFiniteNumber(value: unknown): number | undefined {
+  const parsed = typeof value === "number" ? value : typeof value === "string" ? Number(value.replace(/,/gu, "")) : NaN;
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }

@@ -1,0 +1,58 @@
+{
+  "catalogSource": "local-marketplace-routing-contract",
+  "catalogVersion": "0.1.0",
+  "optionalEnrichments": [
+    "score_holder_concentration_risk",
+    "review_dex_wallet_activity_profile",
+    "review_dex_wallet_pnl",
+    "cmc_crypto_research"
+  ],
+  "query": "Generate a BNB Chain Four.Meme meme-token strategy from CMC market context and Four.Meme launch signals.",
+  "rejectedSkills": [
+    {
+      "reason": "Not selected because the query routed to the fourmeme lane, not bstocks.",
+      "skillId": "4lpha_bstocks_strategy_skill"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is data; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "cmc_mcp"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is context; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "cmc_market_report"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is research; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "cmc_crypto_research"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is onchain-risk; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "score_holder_concentration_risk"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is onchain-entry-quality; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "review_dex_wallet_activity_profile"
+    },
+    {
+      "reason": "Not selected as the primary route because this skill is onchain-advisory; it may still be used as data, context, research, or on-chain enrichment.",
+      "skillId": "review_dex_wallet_pnl"
+    }
+  ],
+  "requiredInputs": [
+    "cmc_market_context",
+    "fourmeme_discovery_snapshot"
+  ],
+  "routeStatus": "primary_selected",
+  "routeType": "find_skill-local-contract",
+  "routedAt": "2026-06-18T06:12:10.166Z",
+  "routingReason": "Selected 4lpha_fourmeme_strategy_skill as primary because the query matched curated keywords: four.meme, meme, launch, strategy.",
+  "selectedSkill": "4lpha_fourmeme_strategy_skill",
+  "selectedSkillLabel": "4lpha Four.Meme Strategy Skill",
+  "selectedSkillRole": "primary",
+  "skillExecution": {
+    "mode": "local-contract",
+    "reason": "Matched against the repo's curated marketplace-ready routing contract; live cloud execution is not claimed by this artifact.",
+    "sourceUrl": "https://coinmarketcap.com/api/skills-marketplace/",
+    "status": "matched"
+  }
+}

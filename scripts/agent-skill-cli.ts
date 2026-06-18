@@ -211,22 +211,32 @@ async function handleMenu(args: string[]): Promise<void> {
           description: "Add a CoinMarketCap API key for live CMC-backed data.",
         },
         {
-          name: "1. Overview",
+          name: "1. Generate strategy overview",
           value: "demo",
           description: "Generate live lane artifacts and validate the selected strategy spec.",
         },
         {
-          name: "2. Fetch token info (Four.Meme + bStocks)",
+          name: "2. Live strategy run",
+          value: "judge.live",
+          description: "Generate and validate a live CMC Agent Hub strategy run.",
+        },
+        {
+          name: "3. Fetch token info (Four.Meme + bStocks)",
           value: "token.info",
           description: "Fetch a contract-level token snapshot for brain review.",
         },
         {
-          name: "3. BNBAgent dry-run",
+          name: "4. Reproducible replay",
+          value: "judge.replay",
+          description: "Run the proposed-case fixture, replay pack, and readiness checks.",
+        },
+        {
+          name: "5. BNBAgent dry-run",
           value: "bnbagent.dry-run",
           description: "Run official BNBAgent SDK preflight without broadcasting a transaction.",
         },
         {
-          name: "4. Exit",
+          name: "6. Exit",
           value: "exit",
           description: "Close the menu without running another command.",
         },
@@ -284,6 +294,12 @@ async function runMenuChoice(choice: string, plain: boolean): Promise<MenuChoice
       await handleStrategyGenerate(["--lane", lane, ...inheritedFlags], { commandLabel: "example.generate", judgeMode: true });
       return "prompt-next";
     }
+    case "judge.live":
+      await handleJudgeLiveMenuCommand(plain);
+      return "prompt-next";
+    case "judge.replay":
+      await handleJudgeReplayMenuCommand(plain);
+      return "prompt-next";
     case "catalog.list":
       printCatalogList(plain);
       return "prompt-next";
@@ -320,6 +336,33 @@ async function runMenuChoice(choice: string, plain: boolean): Promise<MenuChoice
     default:
       throw new Error(`Unknown menu choice: ${choice}`);
   }
+}
+
+async function handleJudgeLiveMenuCommand(plain: boolean): Promise<void> {
+  const ui = createCliUi({ plain });
+  ui.banner("judge-live", "Live CMC Agent Hub path. A rejected strategy is still a valid backtestable output when gates fail.");
+  ui.keyValue("Command", "judge:live", "accent");
+  ui.spacer();
+
+  await runTsxScript("scripts/probe-skill-marketplace.ts", ["--plain"]);
+  await handleStrategyGenerate(["--cmc-provider", "agent-hub-mcp", "--plain"], {
+    commandLabel: "example.generate",
+    judgeMode: true,
+  });
+  await handleStrategyValidate(["--lane", "fourmeme", "examples/generated/cmc-market-regime.strategy.json", "--plain"]);
+}
+
+async function handleJudgeReplayMenuCommand(plain: boolean): Promise<void> {
+  const ui = createCliUi({ plain });
+  ui.banner("judge-replay", "Offline fixture/replay path. This proves the happy path and methodology without claiming live profitability.");
+  ui.keyValue("Command", "judge:replay", "accent");
+  ui.spacer();
+
+  await runTsxScript("scripts/generate-fourmeme-proposed-fixture.ts");
+  await runTsxScript("scripts/replay-fourmeme-fixture.ts");
+  await runTsxScript("scripts/replay-fourmeme-pack.ts");
+  await runTsxScript("scripts/validate-examples.ts");
+  await runTsxScript("scripts/validate-judge-readiness.ts");
 }
 
 async function handleCmcApiKeySetup(plain: boolean): Promise<void> {
@@ -969,6 +1012,15 @@ async function runChildProcess(command: string, args: string[]): Promise<void> {
       reject(new Error(`Command failed with exit code ${code ?? "unknown"}: ${command} ${args.join(" ")}`));
     });
   });
+}
+
+async function runTsxScript(scriptPath: string, args: string[] = []): Promise<void> {
+  await runChildProcess(process.execPath, [
+    "--import",
+    "tsx",
+    resolve(REPO_ROOT, scriptPath),
+    ...args,
+  ]);
 }
 
 function parseFlags(

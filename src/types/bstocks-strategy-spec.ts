@@ -1,6 +1,8 @@
 import type {
   Assumption,
+  ArtifactRef,
   Condition,
+  DataQuality,
   EvidenceRecord,
   RiskControl,
   Rule,
@@ -8,6 +10,8 @@ import type {
 import type { StrategyBrainReview } from "./strategy-brain.js";
 
 export interface BstocksStrategyBase {
+  artifactRefs?: ArtifactRef[];
+  dataQuality?: DataQuality;
   version: string;
   strategyId: string;
   generatedAt: string;

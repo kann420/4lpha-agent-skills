@@ -1,11 +1,33 @@
 {
   "version": "0.1.0",
-  "strategyId": "cmc-bnb-bstocks-2026-06-17T13-13-04-000Z",
-  "generatedAt": "2026-06-17T13:14:35.051Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "CMC Agent Hub MCP global metrics and BNB quote are sampled at the provider's latest available cadence.",
+        "retrievedAt": "2026-06-18T05:16:12.615Z",
+        "sourceObservedAt": "2026-06-18T05:15:00.000Z"
+      },
+      {
+        "expectedCadence": "CMC MCP technical-analysis snapshot for BNB.",
+        "retrievedAt": "2026-06-18T05:16:12.615Z",
+        "sourceObservedAt": "2026-06-18T05:16:14.064Z"
+      },
+      {
+        "expectedCadence": "CoinMarketCap latest quotes are fetched once per bStocks generation run.",
+        "retrievedAt": "2026-06-18T05:16:13.377Z",
+        "sourceObservedAt": "2026-06-18T05:15:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "bStocks draft generated from complete CMC market context and complete bStocks quote inputs."
+  },
+  "strategyId": "cmc-bnb-bstocks-2026-06-18T05-15-00-000Z",
+  "generatedAt": "2026-06-18T05:16:14.065Z",
   "domain": "bnb-bstocks",
   "status": "rejected",
   "inputWindow": {
-    "asOf": "2026-06-17T13:13:04.000Z",
+    "asOf": "2026-06-18T05:15:00.000Z",
     "barInterval": "1h",
     "lookback": "7d"
   },
@@ -26,43 +48,30 @@
     ],
     "sampleCandidates": [
       {
-        "cmcId": 40217,
-        "symbol": "SPCXB",
-        "name": "SpaceX Tokenized bStocks",
+        "cmcId": 40212,
+        "symbol": "MUB",
+        "name": "Micron Technology Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 209.32670502046332,
-        "volume24hUsd": 58001441.92266029,
-        "marketCapUsd": 36005775.38109372,
-        "percentChange24h": 5.49438209,
-        "percentChange7d": 30.82919064,
-        "observedAt": "2026-06-17T13:13:04.000Z"
+        "priceUsd": 1079.0929119435214,
+        "volume24hUsd": 3358686.3063557,
+        "marketCapUsd": 4742270.76,
+        "percentChange24h": 1.99401995,
+        "percentChange7d": 17.82551334,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
-        "cmcId": 40214,
-        "symbol": "TSLAB",
-        "name": "Tesla Tokenized bStocks",
+        "cmcId": 40213,
+        "symbol": "CRCLB",
+        "name": "Circle Internet Group Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 401.07949236065116,
-        "volume24hUsd": 2656184.60069755,
-        "marketCapUsd": 1532209.303678652,
-        "percentChange24h": -1.0072507,
-        "percentChange7d": 1.97760149,
-        "observedAt": "2026-06-17T13:13:04.000Z"
-      },
-      {
-        "cmcId": 40215,
-        "symbol": "NVDAB",
-        "name": "NVIDIA Tokenized bStocks",
-        "issuer": "bStocks",
-        "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 208.66039162825064,
-        "volume24hUsd": 1043963.75665832,
-        "marketCapUsd": 3517546.8897810127,
-        "percentChange24h": -1.19406405,
-        "percentChange7d": 2.77915886,
-        "observedAt": "2026-06-17T13:13:04.000Z"
+        "priceUsd": 80.78767438685631,
+        "volume24hUsd": 2299881.4425175,
+        "marketCapUsd": 4075993.62,
+        "percentChange24h": 0.25448264,
+        "percentChange7d": -3.85843669,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
         "cmcId": 40216,
@@ -70,25 +79,38 @@
         "name": "SanDisk Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 2058.874050485169,
-        "volume24hUsd": 2761026.0695987,
-        "marketCapUsd": 2254514.681405066,
-        "percentChange24h": -2.86565453,
-        "percentChange7d": 12.78006113,
-        "observedAt": "2026-06-17T13:13:04.000Z"
+        "priceUsd": 2021.6318812593045,
+        "volume24hUsd": 3429035.06592392,
+        "marketCapUsd": 2736683.33,
+        "percentChange24h": -1.05822606,
+        "percentChange7d": 10.74002662,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
-        "cmcId": 40212,
-        "symbol": "MUB",
-        "name": "Micron Technology Tokenized bStocks",
+        "cmcId": 40214,
+        "symbol": "TSLAB",
+        "name": "Tesla Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 1053.2101928032216,
-        "volume24hUsd": 3194342.82045623,
-        "marketCapUsd": 4431365.885776581,
-        "percentChange24h": -3.73196264,
-        "percentChange7d": 14.99939463,
-        "observedAt": "2026-06-17T13:13:04.000Z"
+        "priceUsd": 397.8428096527467,
+        "volume24hUsd": 2616667.04861863,
+        "marketCapUsd": 1570680.37,
+        "percentChange24h": -1.31417118,
+        "percentChange7d": 1.15464957,
+        "observedAt": "2026-06-18T05:14:00.000Z"
+      },
+      {
+        "cmcId": 40215,
+        "symbol": "NVDAB",
+        "name": "NVIDIA Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 205.76571712548835,
+        "volume24hUsd": 1544751.51062935,
+        "marketCapUsd": 3567894.35,
+        "percentChange24h": -1.46451988,
+        "percentChange7d": 1.35333862,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       }
     ]
   },
@@ -145,7 +167,7 @@
       "description": "Require 24h quoted volume to remain at or above the current bStocks universe median so the strategy stays in the more active names.",
       "metric": "bstocks.volume_24h_usd",
       "operator": ">=",
-      "value": 2708605.34
+      "value": 2987676.68
     },
     {
       "id": "bstocks-allowlist-gate",
@@ -276,48 +298,62 @@
   "evidence": [
     {
       "source": "CoinMarketCap Global Metrics API",
-      "observedAt": "2026-06-17T13:12:59.999Z",
-      "summary": "Total crypto market cap is 2232950911455 USD with a 24h change of -1.52%.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Total crypto market cap is 2200000000000 USD with a 24h change of -2.65%.",
       "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
     },
     {
       "source": "CoinMarketCap Fear and Greed API",
-      "observedAt": "2026-06-17T13:08:10.032Z",
-      "summary": "Fear and Greed is 23 and classified as Fear.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Fear and Greed is 21 and classified as Fear.",
       "url": "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
     },
     {
       "source": "CoinMarketCap BNB Quote API",
-      "observedAt": "2026-06-17T13:13:04.000Z",
-      "summary": "BNB trades at 609.33 USD with -0.22% 24h change.",
+      "observedAt": "2026-06-18T05:15:00.000Z",
+      "summary": "BNB trades at 588.47 USD with -3.04% 24h change.",
       "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB"
     },
     {
       "source": "CoinMarketCap bStocks quote snapshot",
-      "observedAt": "2026-06-17T13:13:04.000Z",
-      "summary": "Tracked 6 bStocks symbols from the committed allowlist. Leading names: SPCXB (40217) 24h 5.49%, 7d 30.83%, price $209.33, volume $58.00M; TSLAB (40214) 24h -1.01%, 7d 1.98%, price $401.08, volume $2.66M; NVDAB (40215) 24h -1.19%, 7d 2.78%, price $208.66, volume $1.04M.",
-      "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=40213,40212,40215,40216,40217,40214"
+      "observedAt": "2026-06-18T05:15:00.000Z",
+      "summary": "Tracked 6 bStocks symbols from the committed allowlist. Leading names: MUB (40212) 24h 1.99%, 7d 17.83%, price $1079.09, volume $3.36M; CRCLB (40213) 24h 0.25%, 7d -3.86%, price $80.79, volume $2.30M; SNDKB (40216) 24h -1.06%, 7d 10.74%, price $2021.63, volume $3.43M.",
+      "url": "https://mcp.coinmarketcap.com/mcp#tool=get_crypto_quotes_latest&id=40213,40212,40215,40216,40217,40214"
     }
   ],
-  "rationale": "CMC conditions do not justify activating fresh bStocks rotation exposure yet. The current CMC snapshot shows Fear and Greed at 23, total market cap change at -1.52% over 24h, and BNB at -0.22% over 24h. The bStocks lane currently tracks 6 quoteable symbols from the committed allowlist, with SPCXB (5.49%), TSLAB (-1.01%), NVDAB (-1.19%) leading the 24h relative-strength table. This lane is intentionally shallow for the current milestone: it proves repo structure, CMC-backed pricing, and explicit backtestable rules without mixing in Four.Meme heuristics.",
+  "rationale": "CMC conditions do not justify activating fresh bStocks rotation exposure yet. The current CMC snapshot shows Fear and Greed at 21, total market cap change at -2.65% over 24h, and BNB at -3.04% over 24h. The bStocks lane currently tracks 6 quoteable symbols from the committed allowlist, with MUB (1.99%), CRCLB (0.25%), SNDKB (-1.06%) leading the 24h relative-strength table. This lane is intentionally shallow for the current milestone: it proves repo structure, CMC-backed pricing, and explicit backtestable rules without mixing in Four.Meme heuristics.",
   "rejectionReasons": [
     {
-      "description": "Total crypto market cap is -1.52% over 24h, below the flat-to-up gate.",
+      "description": "Total crypto market cap is -2.65% over 24h, below the flat-to-up gate.",
       "metric": "cmc.global.total_market_cap_change_24h_pct",
       "operator": "<",
       "value": 0
     },
     {
-      "description": "CMC Fear and Greed is 23, below the bStocks activation threshold of 45.",
+      "description": "CMC Fear and Greed is 21, below the bStocks activation threshold of 45.",
       "metric": "cmc.fear_and_greed.value",
       "operator": "<",
       "value": 45
     },
     {
-      "description": "BNB 24h performance is -0.22%, below the non-negative venue-support gate.",
+      "description": "BNB 24h performance is -3.04%, below the non-negative venue-support gate.",
       "metric": "cmc.bnb.percent_change_24h",
       "operator": "<",
       "value": 0
+    }
+  ],
+  "artifactRefs": [
+    {
+      "label": "cmc-market-context.snapshot.json",
+      "path": "cmc-market-context.snapshot.json",
+      "role": "input",
+      "sha256": "270f5848528239bea3837df76582f74ca32ec41071c483f95ba41d82600b093b"
+    },
+    {
+      "label": "bstocks-universe.snapshot.json",
+      "path": "bstocks-universe.snapshot.json",
+      "role": "input",
+      "sha256": "8a17765d7acd5890eaea98990905de2ec8071ef8f6aef31afccc97fde01b96ad"
     }
   ]
 }

@@ -24,6 +24,21 @@
     "rationale"
   ],
   "properties": {
+    "artifactRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "dataQuality": {
+      "$ref": "#/$defs/dataQuality"
+    },
+    "onchainEnrichment": {
+      "$ref": "#/$defs/onchainEnrichment"
+    },
+    "skillRoute": {
+      "$ref": "#/$defs/skillRoute"
+    },
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$"
@@ -222,6 +237,504 @@
     }
   },
   "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "path",
+        "role",
+        "sha256"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "input",
+            "output",
+            "summary"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freshness",
+        "providerErrors",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "freshness": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/freshnessRecord"
+          }
+        },
+        "providerErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/providerError"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "degraded",
+            "failed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "skillRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalogSource",
+        "catalogVersion",
+        "optionalEnrichments",
+        "query",
+        "rejectedSkills",
+        "requiredInputs",
+        "routeStatus",
+        "routeType",
+        "routedAt",
+        "routingReason",
+        "selectedSkill",
+        "selectedSkillLabel",
+        "selectedSkillRole",
+        "skillExecution"
+      ],
+      "properties": {
+        "catalogSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalogVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "optionalEnrichments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rejectedSkills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rejectedSkillRoute"
+          }
+        },
+        "requiredInputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "routeStatus": {
+          "type": "string",
+          "enum": [
+            "primary_selected",
+            "context_only",
+            "no_match"
+          ]
+        },
+        "routeType": {
+          "type": "string",
+          "enum": [
+            "find_skill-local-contract"
+          ]
+        },
+        "routedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "routingReason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selectedSkill": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "selectedSkillLabel": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "selectedSkillRole": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "context",
+            "data",
+            "onchain-advisory",
+            "onchain-entry-quality",
+            "onchain-risk",
+            "primary",
+            "research",
+            null
+          ]
+        },
+        "skillExecution": {
+          "$ref": "#/$defs/skillExecution"
+        }
+      }
+    },
+    "rejectedSkillRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason",
+        "skillId"
+      ],
+      "properties": {
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skillId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "onchainEnrichment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asOf",
+        "candidates",
+        "dataQuality",
+        "skillExecution",
+        "skills",
+        "source",
+        "summary"
+      ],
+      "properties": {
+        "asOf": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/onchainCandidateReview"
+          }
+        },
+        "dataQuality": {
+          "$ref": "#/$defs/dataQuality"
+        },
+        "proofRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/onchainProofRef"
+          }
+        },
+        "skillExecution": {
+          "$ref": "#/$defs/skillExecution"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/onchainSkillId"
+          }
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "cmc-skills-marketplace-fixture",
+            "cmc-skills-marketplace-live",
+            "cmc-skills-marketplace-recorded-remote",
+            "unavailable"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "onchainCandidateReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggregateRisk",
+        "eligibleForEntry",
+        "positionSizeMultiplier",
+        "reviews",
+        "symbol",
+        "tokenAddress"
+      ],
+      "properties": {
+        "addressProvenance": {
+          "type": "string",
+          "enum": [
+            "deterministic-fixture-address",
+            "live-fourmeme-contract",
+            "recorded-fourmeme-contract"
+          ]
+        },
+        "aggregateRisk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical",
+            "unknown"
+          ]
+        },
+        "eligibleForEntry": {
+          "type": "boolean"
+        },
+        "positionSizeMultiplier": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/onchainSkillReview"
+          },
+          "minItems": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tokenAddress": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        }
+      }
+    },
+    "onchainProofRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundlePath",
+        "mode",
+        "proofSha256",
+        "skillId",
+        "tokenAddress"
+      ],
+      "properties": {
+        "bundlePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "live-execution",
+            "recorded-remote"
+          ]
+        },
+        "proofSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "skillId": {
+          "$ref": "#/$defs/onchainSkillId"
+        },
+        "tokenAddress": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        }
+      }
+    },
+    "onchainSkillReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metrics",
+        "observedAt",
+        "role",
+        "skillId",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          }
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "hard-risk-gate",
+            "entry-quality-gate",
+            "advisory-confidence"
+          ]
+        },
+        "skillId": {
+          "$ref": "#/$defs/onchainSkillId"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "warning",
+            "failed",
+            "unavailable"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "onchainSkillId": {
+      "type": "string",
+      "enum": [
+        "review_dex_wallet_activity_profile",
+        "review_dex_wallet_pnl",
+        "score_holder_concentration_risk"
+      ]
+    },
+    "skillExecution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "reason",
+        "status"
+      ],
+      "properties": {
+        "endpointName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "live-execution",
+            "local-contract",
+            "live-probe",
+            "recorded",
+            "recorded-remote"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "matched",
+            "unavailable",
+            "failed"
+          ]
+        }
+      }
+    },
+    "freshnessRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedCadence",
+        "retrievedAt"
+      ],
+      "properties": {
+        "expectedCadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceObservedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "providerError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "message",
+        "observedAt",
+        "recoverable",
+        "source"
+      ],
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recoverable": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": "string"
+        }
+      }
+    },
     "rule": {
       "type": "object",
       "additionalProperties": false,

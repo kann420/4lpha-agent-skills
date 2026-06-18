@@ -1,0 +1,746 @@
+{
+  "version": "0.1.0",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live demo uses Agent Hub MCP.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      },
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live demo uses Four.Meme meme-api.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      },
+      {
+        "expectedCadence": "Fixture snapshot pinned for deterministic replay; live CMC Skills Marketplace calls should be timestamped per candidate contract.",
+        "retrievedAt": "2026-06-18T04:00:00.000Z",
+        "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "Strategy spec generated from complete CMC market context, Four.Meme discovery, and curated CMC on-chain skill enrichment inputs."
+  },
+  "strategyId": "cmc-bnb-fourmeme-2026-06-18T04-00-00-000Z",
+  "generatedAt": "2026-06-18T10:11:37.931Z",
+  "domain": "bnb-fourmeme",
+  "status": "proposed",
+  "inputWindow": {
+    "asOf": "2026-06-18T04:00:00.000Z",
+    "barInterval": "1h",
+    "lookback": "7d"
+  },
+  "universe": {
+    "chain": "bnb-chain",
+    "venue": "fourmeme",
+    "selectionMethod": "Apply a CMC regime gate first, then scan live Four.Meme meme-api feeds and reuse the distilled 4alpha discovery buckets (Safe 2 Ape, Medium Risk, Gem Hunt) to shortlist contract-level candidates.",
+    "quoteAsset": "BNB",
+    "candidateCount": 3,
+    "bucketCounts": {
+      "safe2ape": 1,
+      "mediumRisk": 1,
+      "gemHunt": 1
+    },
+    "sampleCandidates": [
+      {
+        "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444",
+        "symbol": "FOUR",
+        "name": "Four Meme Signal",
+        "venueUrl": "https://four.meme/en/token/0x0a43fc31a73013089df59194872ecae4cae14444",
+        "marketCapUsd": 92000,
+        "volume24hUsd": 186000,
+        "volume4hUsd": 64000,
+        "holders": 188,
+        "bondingProgress": 84,
+        "discoveryFeeds": [
+          "newLaunches",
+          "volumeLeaders",
+          "hot"
+        ],
+        "selectionBucket": "safe2ape",
+        "createdAt": "2026-06-18T02:30:00.000Z",
+        "graduated": false,
+        "launchStage": "new",
+        "categoryScore": 74
+      },
+      {
+        "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+        "symbol": "WATCH",
+        "name": "Watchlist Only",
+        "venueUrl": "https://four.meme/en/token/0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+        "marketCapUsd": 52000,
+        "volume24hUsd": 210000,
+        "volume4hUsd": 41000,
+        "holders": 42,
+        "bondingProgress": 22,
+        "discoveryFeeds": [
+          "hot"
+        ],
+        "selectionBucket": "mediumRisk",
+        "createdAt": "2026-06-18T01:15:00.000Z",
+        "graduated": false,
+        "launchStage": "new",
+        "categoryScore": 55
+      },
+      {
+        "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+        "symbol": "BNBMAX",
+        "name": "BNB Max Rotation",
+        "venueUrl": "https://four.meme/en/token/0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+        "marketCapUsd": 420000,
+        "volume24hUsd": 620000,
+        "volume4hUsd": 92000,
+        "holders": 840,
+        "bondingProgress": 100,
+        "discoveryFeeds": [
+          "dexMigrated",
+          "volumeLeaders"
+        ],
+        "selectionBucket": "gemHunt",
+        "createdAt": "2026-06-17T18:45:00.000Z",
+        "graduated": true,
+        "launchStage": "migrated",
+        "categoryScore": 81
+      }
+    ]
+  },
+  "regime": {
+    "label": "risk-on-bnb-meme-rotation",
+    "summary": "Broad market conditions are supportive, BNB is showing strength, and BTC dominance is not crowding out alt rotation.",
+    "confidence": 0.83
+  },
+  "entryRules": [
+    {
+      "id": "market-cap-risk-gate",
+      "description": "Only scan Four.Meme candidates when total crypto market cap is flat-to-up versus the prior 24h snapshot.",
+      "metric": "cmc.global.total_market_cap_change_24h_pct",
+      "operator": ">=",
+      "value": 0
+    },
+    {
+      "id": "fear-greed-risk-gate",
+      "description": "Only activate the strategy when CMC Fear and Greed is above the defensive floor.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": ">=",
+      "value": 35
+    },
+    {
+      "id": "bnb-trend-24h-gate",
+      "description": "Require BNB to hold non-negative 24h momentum before taking Four.Meme continuation setups.",
+      "metric": "cmc.bnb.percent_change_24h",
+      "operator": ">=",
+      "value": 0
+    },
+    {
+      "id": "bnb-trend-7d-gate",
+      "description": "Require BNB to maintain at least modest 7d strength to justify BNB-native meme rotation exposure.",
+      "metric": "cmc.bnb.percent_change_7d",
+      "operator": ">=",
+      "value": 2
+    },
+    {
+      "id": "btc-dominance-rotation-gate",
+      "description": "Avoid fresh meme exposure when BTC dominance is accelerating too hard against alt rotation.",
+      "metric": "cmc.global.btc_dominance_change_24h_pct",
+      "operator": "<=",
+      "value": 0.25
+    },
+    {
+      "id": "fourmeme-discovery-bucket-gate",
+      "description": "Only allow candidates that land in the approved Four.Meme discovery buckets for the current market regime.",
+      "metric": "fourmeme.discovery_bucket",
+      "operator": "in",
+      "value": [
+        "safe2ape",
+        "gemHunt"
+      ],
+      "notes": "Safe 2 Ape handles launch-phase continuation; Gem Hunt handles post-migration continuation. Medium Risk stays watchlist-only in this slice."
+    },
+    {
+      "id": "fourmeme-launch-stage-gate",
+      "description": "Match the allowed launch stage to the selected discovery buckets.",
+      "metric": "fourmeme.launch_stage",
+      "operator": "in",
+      "value": [
+        "new",
+        "migrated"
+      ]
+    },
+    {
+      "id": "fourmeme-launch-age-min",
+      "description": "Ignore listings that are too new for spread and identity noise to settle.",
+      "metric": "fourmeme.launch_age_minutes",
+      "operator": ">=",
+      "value": 15
+    },
+    {
+      "id": "fourmeme-launch-age-max",
+      "description": "Focus on the first day of activity so the setup remains a launch-phase strategy rather than a general momentum chase.",
+      "metric": "fourmeme.launch_age_minutes",
+      "operator": "<=",
+      "value": 1440
+    },
+    {
+      "id": "fourmeme-volume-floor",
+      "description": "Require non-trivial venue activity from the Four.Meme discovery scan before entry.",
+      "metric": "fourmeme.volume_24h_usd",
+      "operator": ">=",
+      "value": 50000
+    },
+    {
+      "id": "fourmeme-bonding-progress-floor",
+      "description": "Require launch-phase candidates to show meaningful bonding progress before entry so the setup is not just the first few minutes of noise.",
+      "metric": "fourmeme.bonding_progress_pct",
+      "operator": ">=",
+      "value": 50
+    },
+    {
+      "id": "cmc-bnb-rsi-overheat-filter",
+      "description": "Use CMC MCP BNB RSI as an advisory overheat filter before activating Four.Meme continuation exposure.",
+      "metric": "cmc.bnb.technical.rsi",
+      "operator": "<=",
+      "value": 75
+    },
+    {
+      "id": "cmc-skill-holder-concentration-gate",
+      "description": "Reject Four.Meme candidates whose CMC on-chain holder-concentration skill reports high or critical concentration risk.",
+      "metric": "cmc.skills.score_holder_concentration_risk.aggregate_risk",
+      "operator": "not_in",
+      "value": [
+        "high",
+        "critical"
+      ]
+    },
+    {
+      "id": "cmc-skill-dex-wallet-activity-gate",
+      "description": "Require shortlisted contracts to show organic or improving DEX wallet activity before entry.",
+      "metric": "cmc.skills.review_dex_wallet_activity_profile.status",
+      "operator": "in",
+      "value": [
+        "passed",
+        "warning"
+      ],
+      "notes": "A warning keeps the candidate eligible only with reduced position sizing if the holder-concentration gate still passes."
+    }
+  ],
+  "exitRules": [
+    {
+      "id": "hard-stop-loss",
+      "description": "Exit the position when drawdown from entry reaches the hard stop threshold.",
+      "metric": "trade.drawdown_pct_from_entry",
+      "operator": "<=",
+      "value": -12
+    },
+    {
+      "id": "take-profit",
+      "description": "Lock in strength once the continuation move reaches the defined take-profit target.",
+      "metric": "trade.unrealized_return_pct",
+      "operator": ">=",
+      "value": 25
+    },
+    {
+      "id": "time-stop",
+      "description": "Exit if the trade has not resolved within one day of launch-phase momentum.",
+      "metric": "trade.holding_period_hours",
+      "operator": ">=",
+      "value": 24
+    },
+    {
+      "id": "regime-break-exit",
+      "description": "Flatten open exposure if the market regime gate flips risk-off after entry.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": "<",
+      "value": 35
+    }
+  ],
+  "riskControls": [
+    {
+      "id": "position-size-cap",
+      "description": "Cap each position at 0.5% of strategy equity.",
+      "type": "position-sizing",
+      "value": 0.5
+    },
+    {
+      "id": "portfolio-exposure-cap",
+      "description": "Cap concurrent Four.Meme exposure at 1.5% of strategy equity.",
+      "type": "exposure-cap",
+      "value": 1.5
+    },
+    {
+      "id": "daily-loss-cap",
+      "description": "Stop taking fresh entries after 1.0% daily strategy drawdown.",
+      "type": "daily-loss-limit",
+      "value": 1
+    },
+    {
+      "id": "liquidity-filter",
+      "description": "Skip candidates that do not survive the live Four.Meme discovery bucket scan, even if the broader market regime is supportive.",
+      "type": "liquidity-filter",
+      "value": "discovery-bucket-required"
+    },
+    {
+      "id": "stopout-cooldown",
+      "description": "Wait two hours after a stop-out before re-entering any Four.Meme candidate.",
+      "type": "cooldown",
+      "value": "2h"
+    },
+    {
+      "id": "cmc-skill-onchain-position-adjuster",
+      "description": "Scale Four.Meme position size down using the weakest on-chain multiplier among candidates that remain eligible after hard gates.",
+      "type": "position-sizing",
+      "value": 0.75
+    },
+    {
+      "id": "cmc-skill-wallet-pnl-advisory-only",
+      "description": "Treat DEX wallet PnL review as confidence context only; never use wallet PnL alone as a buy trigger.",
+      "type": "position-sizing",
+      "value": "advisory-only"
+    }
+  ],
+  "invalidation": [
+    {
+      "description": "Invalidate the setup if Fear and Greed drops back below the strategy floor.",
+      "metric": "cmc.fear_and_greed.value",
+      "operator": "<",
+      "value": 35
+    },
+    {
+      "description": "Invalidate the setup if total crypto market cap turns negative again on a 24h basis.",
+      "metric": "cmc.global.total_market_cap_change_24h_pct",
+      "operator": "<",
+      "value": 0
+    },
+    {
+      "description": "Invalidate the setup if BNB loses its 7d strength bias.",
+      "metric": "cmc.bnb.percent_change_7d",
+      "operator": "<",
+      "value": 2
+    },
+    {
+      "description": "Invalidate a shortlisted Four.Meme candidate if later CMC on-chain skill replay marks holder concentration as high or critical.",
+      "metric": "cmc.skills.score_holder_concentration_risk.aggregate_risk",
+      "operator": "in",
+      "value": "high,critical"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "cmc-snapshot-lag",
+      "description": "CMC market metrics are treated as the authoritative snapshot for regime gating at hourly granularity.",
+      "impact": "Backtests should sample the same hourly snapshot cadence rather than tick-level data."
+    },
+    {
+      "id": "contract-level-identity",
+      "description": "Four.Meme candidates are evaluated by chain and contract address, not by symbol alone.",
+      "impact": "Backtests must join venue data on contract identity to avoid ticker collisions."
+    },
+    {
+      "id": "execution-friction",
+      "description": "The liquidity floor is intended to keep slippage assumptions within a small-cap but still testable range.",
+      "impact": "Backtests should model slippage and fees explicitly instead of assuming perfect fills."
+    },
+    {
+      "id": "cmc-skill-marketplace-onchain-enrichment",
+      "description": "Curated CMC Skills Marketplace on-chain enrichments are applied only after Four.Meme has produced a contract-level shortlist.",
+      "impact": "Backtests should treat holder concentration and DEX wallet activity as timestamped candidate filters, while wallet PnL remains advisory and never proves profitability."
+    },
+    {
+      "id": "4alpha-global-learning-policy",
+      "description": "The strategy spec is reviewed by a distilled 4alpha global learning policy before validation.",
+      "impact": "Backtests should treat the brain review verdict as an activation gate, not as an execution instruction."
+    },
+    {
+      "id": "4alpha-smart-wallet-doctrine",
+      "description": "The Four.Meme skill applies a smart-wallet entry doctrine distilled from 4alpha custom skill research as an advisory review policy.",
+      "impact": "Backtests may use currently available market-cap, volume, holder, bonding, bucket, and attached on-chain enrichment fields immediately; deeper smart-wallet cluster or short-window buy/sell flow should remain explicit future evidence when no adapter snapshot is attached."
+    }
+  ],
+  "evidence": [
+    {
+      "source": "CoinMarketCap Global Metrics API",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "Total crypto market cap is 3480000000000 USD with a 24h change of 1.25%. BTC dominance is 53.40% with a 24h change of -0.12%.",
+      "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
+    },
+    {
+      "source": "CoinMarketCap Fear and Greed API",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "Fear and Greed is 64 and classified as Greed.",
+      "url": "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
+    },
+    {
+      "source": "CoinMarketCap BNB Quote API",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "BNB trades at 652.40 USD with 1.18% 24h change and 4.70% 7d change.",
+      "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB"
+    },
+    {
+      "source": "Four.Meme Meme API discovery feeds",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "Scanned Four.Meme feeds via meme-api with counts new=1, volume=2, hot=2, dex=1. Bucket counts are safe2ape=1, mediumRisk=1, gemHunt=1. Leading names: FOUR/Four Meme Signal (0x0a43fc31a73013089df59194872ecae4cae14444) bucket safe2ape, feeds newLaunches+volumeLeaders+hot, MC $92.00K, Vol $186.00K; WATCH/Watchlist Only (0x5f0e1d2c3b4a69788766554433221100aabbccdd) bucket mediumRisk, feeds hot, MC $52.00K, Vol $210.00K; BNBMAX/BNB Max Rotation (0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345) bucket gemHunt, feeds dexMigrated+volumeLeaders, MC $420.00K, Vol $620.00K.",
+      "url": "fixture://fourmeme-proposed"
+    },
+    {
+      "source": "CoinMarketCap BNB Technical Analysis MCP",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "CMC MCP technical-analysis tool returned BNB indicators: Fixture BNB TA: RSI 58.4, MACD histogram positive, price above EMA20 and EMA50..",
+      "url": "https://mcp.coinmarketcap.com/mcp#tool=get_crypto_technical_analysis&id=1839"
+    },
+    {
+      "source": "CMC Skills Marketplace on-chain enrichment",
+      "observedAt": "2026-06-18T04:00:00.000Z",
+      "summary": "Applied curated on-chain skill outputs after Four.Meme shortlist: holder concentration as a hard risk gate, DEX wallet activity as entry quality, and wallet PnL as advisory confidence only. Candidates: FOUR 0x0a43fc31a73013089df59194872ecae4cae14444 risk=low eligible=true size=1 reviews=score_holder_concentration_risk:passed/review_dex_wallet_activity_profile:passed/review_dex_wallet_pnl:passed; WATCH 0x5f0e1d2c3b4a69788766554433221100aabbccdd risk=high eligible=false size=0 reviews=score_holder_concentration_risk:failed/review_dex_wallet_activity_profile:warning/review_dex_wallet_pnl:warning; BNBMAX 0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345 risk=medium eligible=true size=0.75 reviews=score_holder_concentration_risk:warning/review_dex_wallet_activity_profile:passed/review_dex_wallet_pnl:passed.",
+      "url": "https://coinmarketcap.com/api/skills-marketplace/"
+    },
+    {
+      "source": "4Alpha Global Learning Policy",
+      "observedAt": "2026-06-15T00:00:00.000Z",
+      "summary": "Applied 12 learned lesson(s) through multi-agent review."
+    },
+    {
+      "source": "4Alpha Four.Meme Smart-Wallet Doctrine",
+      "observedAt": "2026-06-15T00:00:00.000Z",
+      "summary": "Applied advisory setup modes, smart-wallet confirmation requirements, 5-of-8 entry checklist, and avoid rules as strategy-spec review policy."
+    }
+  ],
+  "strategyThesis": "Use CMC market regime as the first gate, then only promote contract-level Four.Meme candidates that survive the approved discovery bucket rules. Current BNB 7d strength is 4.70%, Fear and Greed is 64, and the venue scan produced safe2ape=1, mediumRisk=1, gemHunt=1. The multi-agent brain approved activation because 2 sampled candidate(s) match the approved bucket gate, the final review preserved explicit risk controls, and the smart-wallet doctrine is represented as evidence requirements rather than execution permission.",
+  "brainReview": {
+    "mode": "multi-agent",
+    "provider": "local-rules",
+    "status": "approved",
+    "finalVerdict": "approve",
+    "strategyThesis": "Use CMC market regime as the first gate, then only promote contract-level Four.Meme candidates that survive the approved discovery bucket rules. Current BNB 7d strength is 4.70%, Fear and Greed is 64, and the venue scan produced safe2ape=1, mediumRisk=1, gemHunt=1. The multi-agent brain approved activation because 2 sampled candidate(s) match the approved bucket gate, the final review preserved explicit risk controls, and the smart-wallet doctrine is represented as evidence requirements rather than execution permission.",
+    "learning": {
+      "policyVersion": "0.1.0+smart-wallet-0.1.0",
+      "source": "distilled-from-4alpha-global-learning; 4alpha-custom-fourmeme-smart-wallet-entry-doctrine",
+      "appliedLessonIds": [
+        "contract-identity-first",
+        "negative-close-cluster-cooldown",
+        "medium-risk-watchlist-only",
+        "smart-wallet:contract-address-grouping",
+        "smart-wallet:hard-gates-override-doctrine",
+        "smart-wallet:avoid-dead-liquidity",
+        "social-missing-is-neutral",
+        "smart-wallet:confirmation-levels",
+        "smart-wallet:missing-wallet-flow-is-future-evidence",
+        "smart-wallet:setup-mode:confirmed-momentum",
+        "smart-wallet:setup-mode:mature-narrative",
+        "smart-wallet:entry-checklist-5-of-8"
+      ],
+      "summary": "Never approve a meme-token setup by symbol alone. Contract address, venue, chain, and timestamp must be preserved. Recent clusters of failed entries should create a temporary cooldown instead of repeated re-entry. Medium Risk discovery names are useful watchlist material, but they should not become active entries without a supportive regime and confirmation. Missing social/KOL data is neutral, not bearish. Explicit bearish social evidence, wash-trading evidence, or suspicious fresh-wallet behavior should block. Smart-wallet doctrine applied 8 advisory rule(s): smart-wallet:contract-address-grouping, smart-wallet:hard-gates-override-doctrine, smart-wallet:avoid-dead-liquidity, smart-wallet:confirmation-levels, smart-wallet:missing-wallet-flow-is-future-evidence, smart-wallet:setup-mode:confirmed-momentum, smart-wallet:setup-mode:mature-narrative, smart-wallet:entry-checklist-5-of-8."
+    },
+    "agents": [
+      {
+        "appliedLessonIds": [
+          "contract-identity-first",
+          "negative-close-cluster-cooldown",
+          "medium-risk-watchlist-only",
+          "smart-wallet:contract-address-grouping",
+          "smart-wallet:hard-gates-override-doctrine",
+          "smart-wallet:avoid-dead-liquidity"
+        ],
+        "model": "local-safety-rules@0.1.0",
+        "role": "safety",
+        "verdict": "approve",
+        "confidence": 0.78,
+        "summary": "Safety approved the spec for downstream review with strict size, invalidation controls, and smart-wallet doctrine evidence boundaries.",
+        "reasons": [
+          "Contract-level identity is present for sampled candidates.",
+          "The strategy includes explicit stop, exposure, cooldown, and invalidation controls.",
+          "The CMC regime gate remains visible before venue selection.",
+          "Smart-wallet doctrine is advisory only and cannot bypass hard safety gates."
+        ]
+      },
+      {
+        "appliedLessonIds": [
+          "medium-risk-watchlist-only",
+          "social-missing-is-neutral",
+          "smart-wallet:confirmation-levels",
+          "smart-wallet:missing-wallet-flow-is-future-evidence"
+        ],
+        "model": "local-social-rules@0.1.0",
+        "role": "social",
+        "verdict": "approve",
+        "confidence": 0.7,
+        "summary": "Social review approved using Four.Meme feed presence as a weak venue-attention proxy while preserving smart-wallet cluster requirements as future evidence.",
+        "reasons": [
+          "3 selected candidate(s) appeared in hot, volume, or DEX-migrated feeds.",
+          "No external KOL or wallet-social feed is claimed in this repo slice.",
+          "Missing social data is treated as neutral according to the global learning policy.",
+          "Smart-wallet cluster confirmation is required as future evidence before converting watchlist names into active entries."
+        ]
+      },
+      {
+        "appliedLessonIds": [
+          "contract-identity-first",
+          "medium-risk-watchlist-only",
+          "social-missing-is-neutral",
+          "smart-wallet:confirmation-levels",
+          "smart-wallet:missing-wallet-flow-is-future-evidence",
+          "smart-wallet:setup-mode:confirmed-momentum",
+          "smart-wallet:setup-mode:mature-narrative",
+          "smart-wallet:entry-checklist-5-of-8"
+        ],
+        "model": "local-gatekeeper-rules@0.1.0",
+        "role": "gatekeeper",
+        "verdict": "approve",
+        "confidence": 0.78,
+        "summary": "Gatekeeper approved the strategy spec for backtesting and paper evaluation.",
+        "reasons": [
+          "2 sampled candidate(s) match the currently approved entry bucket.",
+          "Safety and Social reviews both approved downstream review.",
+          "The smart-wallet doctrine is represented as evidence requirements, not as execution permission.",
+          "The strategy remains a spec output, not an execution command."
+        ]
+      }
+    ]
+  },
+  "rationale": "CMC conditions support deploying the Four.Meme launch-phase strategy. The current CMC snapshot shows Fear and Greed at 64, total market cap change at 1.25% over 24h, and BNB at 4.70% over 7d. The venue scan is no longer hypothetical: the current Four.Meme discovery snapshot produced 3 featured candidates across Safe 2 Ape (1), Medium Risk (1), and Gem Hunt (1), with FOUR/Four Meme Signal (safe2ape), WATCH/Watchlist Only (mediumRisk), BNBMAX/BNB Max Rotation (gemHunt) as the leading names. CMC Skills Marketplace on-chain enrichment reviewed shortlisted contracts with holder concentration, DEX wallet activity, and wallet PnL signals; PnL is treated as advisory only. Brain review: Gatekeeper approved the strategy spec for backtesting and paper evaluation.",
+  "onchainEnrichment": {
+    "asOf": "2026-06-18T04:00:00.000Z",
+    "candidates": [
+      {
+        "addressProvenance": "deterministic-fixture-address",
+        "aggregateRisk": "low",
+        "eligibleForEntry": true,
+        "positionSizeMultiplier": 1,
+        "reviews": [
+          {
+            "metrics": {
+              "top10HolderPct": 24.6,
+              "uniqueHolderCount": 188
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "hard-risk-gate",
+            "skillId": "score_holder_concentration_risk",
+            "status": "passed",
+            "summary": "Holder concentration is acceptable for the fixture's launch-stage risk budget."
+          },
+          {
+            "metrics": {
+              "activeWallets4h": 76,
+              "buySellRatio4h": 1.32,
+              "clusterDominancePct": 19.7
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "entry-quality-gate",
+            "skillId": "review_dex_wallet_activity_profile",
+            "status": "passed",
+            "summary": "DEX wallet activity is broad enough and not dominated by a single wallet cluster."
+          },
+          {
+            "metrics": {
+              "profitableWalletSharePct": 44.9,
+              "realizedPnlUsd": 6200
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "advisory-confidence",
+            "skillId": "review_dex_wallet_pnl",
+            "status": "passed",
+            "summary": "Wallet PnL is supportive but used only as advisory confidence, not as a buy trigger."
+          }
+        ],
+        "symbol": "FOUR",
+        "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444"
+      },
+      {
+        "addressProvenance": "deterministic-fixture-address",
+        "aggregateRisk": "high",
+        "eligibleForEntry": false,
+        "positionSizeMultiplier": 0,
+        "reviews": [
+          {
+            "metrics": {
+              "top10HolderPct": 72.4,
+              "uniqueHolderCount": 42
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "hard-risk-gate",
+            "skillId": "score_holder_concentration_risk",
+            "status": "failed",
+            "summary": "Top-holder concentration is too high for active entry; keep watchlist-only."
+          },
+          {
+            "metrics": {
+              "activeWallets4h": 18,
+              "buySellRatio4h": 0.41,
+              "clusterDominancePct": 63.2
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "entry-quality-gate",
+            "skillId": "review_dex_wallet_activity_profile",
+            "status": "warning",
+            "summary": "Wallet flow is narrow and seller-heavy, so activity is not enough to override concentration risk."
+          },
+          {
+            "metrics": {
+              "profitableWalletSharePct": 18.2,
+              "realizedPnlUsd": -7400
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "advisory-confidence",
+            "skillId": "review_dex_wallet_pnl",
+            "status": "warning",
+            "summary": "Wallet PnL is weak and remains advisory only."
+          }
+        ],
+        "symbol": "WATCH",
+        "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd"
+      },
+      {
+        "addressProvenance": "deterministic-fixture-address",
+        "aggregateRisk": "medium",
+        "eligibleForEntry": true,
+        "positionSizeMultiplier": 0.75,
+        "reviews": [
+          {
+            "metrics": {
+              "top10HolderPct": 34.8,
+              "uniqueHolderCount": 840
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "hard-risk-gate",
+            "skillId": "score_holder_concentration_risk",
+            "status": "warning",
+            "summary": "Holder concentration is elevated but below the hard rejection threshold; reduce size."
+          },
+          {
+            "metrics": {
+              "activeWallets4h": 124,
+              "buySellRatio4h": 1.18,
+              "clusterDominancePct": 28.5
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "entry-quality-gate",
+            "skillId": "review_dex_wallet_activity_profile",
+            "status": "passed",
+            "summary": "DEX wallet activity is broad enough and not dominated by a single wallet cluster."
+          },
+          {
+            "metrics": {
+              "profitableWalletSharePct": 51.4,
+              "realizedPnlUsd": 18400
+            },
+            "observedAt": "2026-06-18T04:00:00.000Z",
+            "role": "advisory-confidence",
+            "skillId": "review_dex_wallet_pnl",
+            "status": "passed",
+            "summary": "Wallet PnL is supportive but used only as advisory confidence, not as a buy trigger."
+          }
+        ],
+        "symbol": "BNBMAX",
+        "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345"
+      }
+    ],
+    "dataQuality": {
+      "freshness": [
+        {
+          "expectedCadence": "Fixture snapshot pinned for deterministic replay; live CMC Skills Marketplace calls should be timestamped per candidate contract.",
+          "retrievedAt": "2026-06-18T04:00:00.000Z",
+          "sourceObservedAt": "2026-06-18T04:00:00.000Z"
+        }
+      ],
+      "providerErrors": [],
+      "status": "complete",
+      "summary": "Deterministic CMC Skills Marketplace on-chain enrichment fixture for shortlisted Four.Meme contracts; not a live on-chain claim."
+    },
+    "skillExecution": {
+      "mode": "recorded",
+      "reason": "Replay fixture records the expected output contract for curated CMC Skills Marketplace on-chain enrichment; it is not a live cloud execution claim.",
+      "sourceUrl": "https://coinmarketcap.com/api/skills-marketplace/",
+      "status": "matched"
+    },
+    "skills": [
+      "score_holder_concentration_risk",
+      "review_dex_wallet_activity_profile",
+      "review_dex_wallet_pnl"
+    ],
+    "source": "cmc-skills-marketplace-fixture",
+    "summary": "Applied curated on-chain skill outputs after Four.Meme shortlist: holder concentration as a hard risk gate, DEX wallet activity as entry quality, and wallet PnL as advisory confidence only."
+  },
+  "skillRoute": {
+    "catalogSource": "local-marketplace-routing-contract",
+    "catalogVersion": "0.1.0",
+    "optionalEnrichments": [
+      "score_holder_concentration_risk",
+      "review_dex_wallet_activity_profile",
+      "review_dex_wallet_pnl",
+      "cmc_crypto_research"
+    ],
+    "query": "Generate a BNB Chain Four.Meme meme-token strategy with CMC market regime, Four.Meme launch signals, holder concentration checks, DEX wallet activity, and wallet PnL review.",
+    "rejectedSkills": [
+      {
+        "reason": "Not selected because the query routed to the fourmeme lane, not bstocks.",
+        "skillId": "4lpha_bstocks_strategy_skill"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is data; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_mcp"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is context; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_market_report"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is research; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_crypto_research"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-risk; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "score_holder_concentration_risk"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-entry-quality; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "review_dex_wallet_activity_profile"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-advisory; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "review_dex_wallet_pnl"
+      }
+    ],
+    "requiredInputs": [
+      "cmc_market_context",
+      "fourmeme_discovery_snapshot"
+    ],
+    "routeStatus": "primary_selected",
+    "routeType": "find_skill-local-contract",
+    "routedAt": "2026-06-18T04:00:00.000Z",
+    "routingReason": "Selected 4lpha_fourmeme_strategy_skill as primary because the query matched curated keywords: four.meme, meme, launch, strategy.",
+    "selectedSkill": "4lpha_fourmeme_strategy_skill",
+    "selectedSkillLabel": "4lpha Four.Meme Strategy Skill",
+    "selectedSkillRole": "primary",
+    "skillExecution": {
+      "mode": "local-contract",
+      "reason": "Matched against the repo's curated marketplace-ready routing contract; live cloud execution is not claimed by this artifact.",
+      "sourceUrl": "https://coinmarketcap.com/api/skills-marketplace/",
+      "status": "matched"
+    }
+  },
+  "artifactRefs": [
+    {
+      "label": "skill-route.snapshot.json",
+      "path": "skill-route.snapshot.json",
+      "role": "input",
+      "sha256": "208d2bd0d39036af4910ea8091702b051b542078a56f78a07dbd38eba0b85a51"
+    },
+    {
+      "label": "cmc-market-context.snapshot.json",
+      "path": "cmc-market-context.snapshot.json",
+      "role": "input",
+      "sha256": "2dda68e207c27f4a290e601bfd6b612664c1f9594ab378c2cd97eb5b60f81d7f"
+    },
+    {
+      "label": "fourmeme-discovery.snapshot.json",
+      "path": "fourmeme-discovery.snapshot.json",
+      "role": "input",
+      "sha256": "dfcb659ed69ac383286c8b4f94d988cdb1c1c0923e9a11bad219a9e4c92e7e83"
+    },
+    {
+      "label": "fourmeme-onchain-enrichment.snapshot.json",
+      "path": "fourmeme-onchain-enrichment.snapshot.json",
+      "role": "input",
+      "sha256": "4555f3fbe77f126c6203c7d4fe0dece3e451d0ca18c9366867557f70cea88843"
+    }
+  ]
+}

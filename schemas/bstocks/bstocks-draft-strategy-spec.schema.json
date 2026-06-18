@@ -22,6 +22,15 @@
     "rationale"
   ],
   "properties": {
+    "artifactRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "dataQuality": {
+      "$ref": "#/$defs/dataQuality"
+    },
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$"
@@ -198,6 +207,130 @@
     }
   },
   "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "path",
+        "role",
+        "sha256"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "input",
+            "output",
+            "summary"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freshness",
+        "providerErrors",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "freshness": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/freshnessRecord"
+          }
+        },
+        "providerErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/providerError"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "degraded",
+            "failed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "freshnessRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedCadence",
+        "retrievedAt"
+      ],
+      "properties": {
+        "expectedCadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceObservedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "providerError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "message",
+        "observedAt",
+        "recoverable",
+        "source"
+      ],
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recoverable": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": "string"
+        }
+      }
+    },
     "rule": {
       "type": "object",
       "additionalProperties": false,

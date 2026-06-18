@@ -8,6 +8,7 @@ import {
   type CmcDataProvider,
   type CmcMarketContext,
 } from "../adapters/cmc/client.js";
+import { buildArtifactRef } from "../output/artifact-refs.js";
 import {
   appendBstocksTokenInfoEvidence,
   applyBstocksStrategyBrainReview,
@@ -85,19 +86,13 @@ export async function generateBstocksStrategyArtifacts(
   const brain = resolveBstocksBrainRuntimeOptions(options.brain);
 
   await emitStep(options, `Reviewing bStocks draft with ${brain.mode} brain...`);
-  const reviewedStrategySpec = await applyBstocksStrategyBrainReview({
+  let reviewedStrategySpec = await applyBstocksStrategyBrainReview({
     bstocksSnapshot,
     bstocksTokenInfo: tokenInfo,
     draftStrategySpec,
     marketContext,
     options: brain,
   });
-
-  await emitStep(options, "Validating bStocks draft schema...");
-  await validateBstocksDraftStrategySpec(draftStrategySpec);
-  await emitStep(options, "Validating bStocks reviewed schema...");
-  await validateBstocksReviewedStrategySpec(reviewedStrategySpec);
-  await mkdir(resolvedArtifactsDir, { recursive: true });
 
   const paths: BstocksArtifactPaths = {
     artifactsDir: resolvedArtifactsDir,
@@ -108,10 +103,49 @@ export async function generateBstocksStrategyArtifacts(
     reviewedStrategySpec: resolve(resolvedArtifactsDir, REVIEWED_STRATEGY_FILENAME),
     demoSummary: resolve(resolvedArtifactsDir, SUMMARY_FILENAME),
   };
+  const artifactRefs = [
+    buildArtifactRef({
+      artifactsDir: resolvedArtifactsDir,
+      path: paths.marketContext,
+      role: "input",
+      value: marketContext,
+    }),
+    buildArtifactRef({
+      artifactsDir: resolvedArtifactsDir,
+      path: paths.bstocksUniverse,
+      role: "input",
+      value: bstocksSnapshot,
+    }),
+    ...(paths.tokenInfo && tokenInfo
+      ? [
+          buildArtifactRef({
+            artifactsDir: resolvedArtifactsDir,
+            path: paths.tokenInfo,
+            role: "input",
+            value: tokenInfo,
+          }),
+        ]
+      : []),
+  ];
+  const draftStrategySpecWithRefs = {
+    ...draftStrategySpec,
+    artifactRefs,
+  };
+  reviewedStrategySpec = {
+    ...reviewedStrategySpec,
+    artifactRefs,
+  };
+
+  await emitStep(options, "Validating bStocks draft schema...");
+  await validateBstocksDraftStrategySpec(draftStrategySpecWithRefs);
+  await emitStep(options, "Validating bStocks reviewed schema...");
+  await validateBstocksReviewedStrategySpec(reviewedStrategySpec);
+  await mkdir(resolvedArtifactsDir, { recursive: true });
+
   const demoSummary = renderDemoSummary(
     marketContext,
     bstocksSnapshot,
-    draftStrategySpec,
+    draftStrategySpecWithRefs,
     reviewedStrategySpec,
     paths,
   );
@@ -120,7 +154,7 @@ export async function generateBstocksStrategyArtifacts(
     writeJsonFile(paths.marketContext, marketContext),
     writeJsonFile(paths.bstocksUniverse, bstocksSnapshot),
     ...(paths.tokenInfo && tokenInfo ? [writeJsonFile(paths.tokenInfo, tokenInfo)] : []),
-    writeJsonFile(paths.draftStrategySpec, draftStrategySpec),
+    writeJsonFile(paths.draftStrategySpec, draftStrategySpecWithRefs),
     writeJsonFile(paths.reviewedStrategySpec, reviewedStrategySpec),
     writeFile(paths.demoSummary, demoSummary, "utf8"),
   ]);
@@ -130,7 +164,7 @@ export async function generateBstocksStrategyArtifacts(
     marketContext,
     bstocksSnapshot,
     tokenInfo,
-    draftStrategySpec,
+    draftStrategySpec: draftStrategySpecWithRefs,
     reviewedStrategySpec,
     demoSummary,
   };
@@ -181,6 +215,7 @@ function renderDemoSummary(
     `Confidence: ${formatConfidence(reviewedStrategySpec.regime.confidence)}`,
     `Brain: ${reviewedStrategySpec.brainReview.mode} / ${reviewedStrategySpec.brainReview.provider}`,
     `Brain verdict: ${reviewedStrategySpec.brainReview.finalVerdict}`,
+    `Data quality: ${reviewedStrategySpec.dataQuality?.status ?? "unknown"}`,
     "",
     "## Inputs",
     `- CMC as-of: ${marketContext.asOf}`,
@@ -211,6 +246,7 @@ function renderDemoSummary(
     `- Invalidation rules: ${reviewedStrategySpec.invalidation.length}`,
     `- Brain agents: ${reviewedStrategySpec.brainReview.agents.map((agent) => `${agent.role}:${agent.verdict}`).join(", ") || "none"}`,
     `- Learned lessons applied: ${reviewedStrategySpec.brainReview.learning.appliedLessonIds.length}`,
+    `- Artifact refs: ${reviewedStrategySpec.artifactRefs?.map((ref) => `${ref.label}:${ref.sha256.slice(0, 10)}`).join(", ") || "none"}`,
     "",
     ...rejectionSection,
     "## Artifacts",

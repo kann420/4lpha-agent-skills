@@ -1,9 +1,11 @@
 import type { CmcMarketContext } from "../adapters/cmc/client.js";
 import type {
+  FourMemeCandidate,
   FourMemeDiscoverySnapshot,
   FourMemeSelectionBucket,
 } from "../adapters/fourmeme/client.js";
-import type { Condition, EvidenceRecord, StrategySpec } from "../types/strategy-spec.js";
+import { combineDataQuality } from "../output/data-quality.js";
+import type { Condition, EvidenceRecord, Rule, StrategySpec } from "../types/strategy-spec.js";
 
 const ENTRY_THRESHOLDS = {
   bnbChange24hMin: 0,
@@ -43,6 +45,11 @@ export function generateCmcMarketStrategySpec(
 
   return {
     version: STRATEGY_VERSION,
+    dataQuality: combineDataQuality({
+      partialSummary: "Strategy spec generated with partial source-data quality; inspect providerErrors and input artifactRefs before backtesting.",
+      sources: [marketContext.dataQuality, fourMemeSnapshot.dataQuality],
+      successSummary: "Strategy spec generated from complete CMC market context and complete Four.Meme discovery inputs.",
+    }),
     strategyId: `cmc-bnb-fourmeme-${asOfDate}`,
     generatedAt: new Date().toISOString(),
     domain: "bnb-fourmeme",
@@ -167,6 +174,7 @@ export function generateCmcMarketStrategySpec(
         operator: ">=",
         value: 50,
       },
+      ...buildTechnicalIndicatorEntryRules(marketContext),
     ],
     exitRules: [
       {
@@ -394,11 +402,11 @@ function buildEvidence(
       const marketCap = candidate.marketCapUsd ? `$${abbreviateUsd(candidate.marketCapUsd)}` : "n/a";
       const volume = candidate.volume24hUsd ? `$${abbreviateUsd(candidate.volume24hUsd)}` : "n/a";
 
-      return `${candidate.symbol} (${candidate.tokenAddress}) bucket ${candidate.selectionBucket}, feeds ${candidate.discoveryFeeds.join("+")}, MC ${marketCap}, Vol ${volume}`;
+      return `${formatCandidateLabel(candidate)} (${candidate.tokenAddress}) bucket ${candidate.selectionBucket}, feeds ${candidate.discoveryFeeds.join("+")}, MC ${marketCap}, Vol ${volume}`;
     })
     .join("; ");
 
-  return [
+  const evidence: EvidenceRecord[] = [
     {
       source: "CoinMarketCap Global Metrics API",
       observedAt: marketContext.global.observedAt,
@@ -424,6 +432,17 @@ function buildEvidence(
       url: fourMemeSnapshot.sourceBaseUrl,
     },
   ];
+
+  if (marketContext.technicalIndicators) {
+    evidence.push({
+      source: "CoinMarketCap BNB Technical Analysis MCP",
+      observedAt: marketContext.technicalIndicators.observedAt,
+      summary: `CMC MCP technical-analysis tool returned BNB indicators: ${marketContext.technicalIndicators.summary}.`,
+      url: "https://mcp.coinmarketcap.com/mcp#tool=get_crypto_technical_analysis&id=1839",
+    });
+  }
+
+  return evidence;
 }
 
 function buildRationale(
@@ -433,7 +452,7 @@ function buildRationale(
 ): string {
   const topSymbols = fourMemeSnapshot.selectedCandidates
     .slice(0, 3)
-    .map((candidate) => `${candidate.symbol} (${candidate.selectionBucket})`)
+    .map((candidate) => `${formatCandidateLabel(candidate)} (${candidate.selectionBucket})`)
     .join(", ");
 
   return [
@@ -469,6 +488,35 @@ function resolveAllowedBuckets(regimeLabel: string): FourMemeSelectionBucket[] {
   return ["safe2ape"];
 }
 
+function buildTechnicalIndicatorEntryRules(marketContext: CmcMarketContext): Rule[] {
+  const indicators = marketContext.technicalIndicators;
+  if (!indicators) {
+    return [];
+  }
+
+  if (typeof indicators.rsi === "number") {
+    return [
+      {
+        id: "cmc-bnb-rsi-overheat-filter",
+        description: "Use CMC MCP BNB RSI as an advisory overheat filter before activating Four.Meme continuation exposure.",
+        metric: "cmc.bnb.technical.rsi",
+        operator: "<=",
+        value: 75,
+      },
+    ];
+  }
+
+  return [
+    {
+      id: "cmc-bnb-technical-analysis-attached",
+      description: "Preserve the CMC MCP BNB technical-analysis snapshot as advisory confirmation evidence.",
+      metric: "cmc.bnb.technical.source_tool",
+      operator: "=",
+      value: indicators.sourceTool,
+    },
+  ];
+}
+
 function abbreviateUsd(value: number): string {
   if (value >= 1_000_000_000) {
     return `${(value / 1_000_000_000).toFixed(2)}B`;
@@ -483,4 +531,18 @@ function abbreviateUsd(value: number): string {
   }
 
   return value.toFixed(2);
+}
+
+function formatCandidateLabel(candidate: FourMemeCandidate): string {
+  const safeSymbol = toSafeDisplay(candidate.symbol, "non-ascii-token");
+  const safeName = toSafeDisplay(candidate.name, "");
+  return safeName && safeName !== safeSymbol ? `${safeSymbol}/${safeName}` : safeSymbol;
+}
+
+function toSafeDisplay(value: string, fallback: string): string {
+  if (!/^[\x20-\x7E]+$/u.test(value) || /(?:Ã|Â|å|æ|è|�)/u.test(value)) {
+    return fallback;
+  }
+
+  return value;
 }

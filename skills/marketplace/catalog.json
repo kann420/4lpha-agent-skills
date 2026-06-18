@@ -1,0 +1,186 @@
+{
+  "version": "0.1.0",
+  "source": "local-marketplace-routing-contract",
+  "updatedAt": "2026-06-18T00:00:00.000Z",
+  "description": "Curated CMC Skills Marketplace routing catalog for the 4lpha Track 2 strategy-skill submission. This is a marketplace-ready routing contract, not a live marketplace call.",
+  "skills": [
+    {
+      "skillId": "4lpha_fourmeme_strategy_skill",
+      "label": "4lpha Four.Meme Strategy Skill",
+      "lane": "fourmeme",
+      "role": "primary",
+      "summary": "Generate a CMC market-regime-gated Four.Meme meme-token strategy spec with explicit backtestable rules.",
+      "keywords": [
+        "fourmeme",
+        "four.meme",
+        "four meme",
+        "meme",
+        "memecoin",
+        "launch",
+        "bnb meme",
+        "strategy"
+      ],
+      "requiredInputs": [
+        "cmc_market_context",
+        "fourmeme_discovery_snapshot"
+      ],
+      "optionalEnrichments": [
+        "score_holder_concentration_risk",
+        "review_dex_wallet_activity_profile",
+        "review_dex_wallet_pnl",
+        "cmc_crypto_research"
+      ]
+    },
+    {
+      "skillId": "4lpha_bstocks_strategy_skill",
+      "label": "4lpha bStocks Strategy Skill",
+      "lane": "bstocks",
+      "role": "primary",
+      "summary": "Generate a CMC-backed bStocks relative-strength strategy spec from the maintained BNB Chain bStocks allowlist.",
+      "keywords": [
+        "bstocks",
+        "tokenized stock",
+        "tokenized-stock",
+        "stock",
+        "equity",
+        "rwa",
+        "rotation",
+        "relative strength"
+      ],
+      "requiredInputs": [
+        "cmc_market_context",
+        "bstocks_allowlist",
+        "bstocks_quote_snapshot"
+      ],
+      "optionalEnrichments": [
+        "cmc_market_report"
+      ]
+    },
+    {
+      "skillId": "cmc_mcp",
+      "label": "CMC MCP",
+      "lane": "shared",
+      "role": "data",
+      "summary": "Fetch live CMC quotes, technical analysis, holder metrics, trending narratives, news, and global market data through Agent Hub MCP.",
+      "keywords": [
+        "cmc",
+        "coinmarketcap",
+        "mcp",
+        "agent hub",
+        "quotes",
+        "technicals",
+        "holder metrics",
+        "global metrics",
+        "market data"
+      ],
+      "requiredInputs": [
+        "cmc_api_key_or_mcp_key"
+      ],
+      "optionalEnrichments": []
+    },
+    {
+      "skillId": "cmc_market_report",
+      "label": "CMC Market Report",
+      "lane": "shared",
+      "role": "context",
+      "summary": "Generate a structured market report from CMC global metrics, fear/greed, narratives, derivatives, and catalysts.",
+      "keywords": [
+        "market report",
+        "macro",
+        "narrative",
+        "derivatives",
+        "catalyst",
+        "market regime"
+      ],
+      "requiredInputs": [
+        "cmc_mcp"
+      ],
+      "optionalEnrichments": []
+    },
+    {
+      "skillId": "cmc_crypto_research",
+      "label": "CMC Crypto Research",
+      "lane": "shared",
+      "role": "research",
+      "summary": "Perform token due diligence with CMC fundamentals, tokenomics, holder distribution, technicals, news, and risk factors.",
+      "keywords": [
+        "research",
+        "due diligence",
+        "token research",
+        "fundamentals",
+        "tokenomics",
+        "holder distribution",
+        "risk factors"
+      ],
+      "requiredInputs": [
+        "cmc_token_identity"
+      ],
+      "optionalEnrichments": []
+    },
+    {
+      "skillId": "score_holder_concentration_risk",
+      "label": "Score Holder Concentration Risk",
+      "lane": "fourmeme",
+      "role": "onchain-risk",
+      "summary": "Score contract-level concentration risk from holder distribution so meme-token candidates can be downgraded or rejected before entry.",
+      "keywords": [
+        "holder concentration",
+        "top holders",
+        "supply concentration",
+        "whale concentration",
+        "rug risk",
+        "onchain"
+      ],
+      "requiredInputs": [
+        "chain",
+        "token_contract",
+        "holder_distribution"
+      ],
+      "optionalEnrichments": []
+    },
+    {
+      "skillId": "review_dex_wallet_activity_profile",
+      "label": "Review DEX Wallet Activity Profile",
+      "lane": "fourmeme",
+      "role": "onchain-entry-quality",
+      "summary": "Review DEX wallet participation, transaction diversity, and buy/sell activity profile for shortlisted meme-token contracts.",
+      "keywords": [
+        "wallet activity",
+        "dex wallets",
+        "transaction diversity",
+        "buy sell",
+        "organic activity",
+        "bot activity",
+        "onchain"
+      ],
+      "requiredInputs": [
+        "chain",
+        "token_contract",
+        "dex_activity_window"
+      ],
+      "optionalEnrichments": []
+    },
+    {
+      "skillId": "review_dex_wallet_pnl",
+      "label": "Review DEX Wallet PnL",
+      "lane": "fourmeme",
+      "role": "onchain-advisory",
+      "summary": "Review realized and unrealized PnL profile for participating DEX wallets as advisory confidence evidence only.",
+      "keywords": [
+        "wallet pnl",
+        "profitable wallets",
+        "smart money",
+        "realized pnl",
+        "unrealized pnl",
+        "advisory",
+        "onchain"
+      ],
+      "requiredInputs": [
+        "chain",
+        "token_contract",
+        "wallet_trade_window"
+      ],
+      "optionalEnrichments": []
+    }
+  ]
+}

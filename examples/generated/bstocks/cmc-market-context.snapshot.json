@@ -1,34 +1,98 @@
 {
-  "asOf": "2026-06-17T13:13:04.000Z",
+  "asOf": "2026-06-18T05:15:00.000Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "CMC Agent Hub MCP global metrics and BNB quote are sampled at the provider's latest available cadence.",
+        "retrievedAt": "2026-06-18T05:16:12.615Z",
+        "sourceObservedAt": "2026-06-18T05:15:00.000Z"
+      },
+      {
+        "expectedCadence": "CMC MCP technical-analysis snapshot for BNB.",
+        "retrievedAt": "2026-06-18T05:16:12.615Z",
+        "sourceObservedAt": "2026-06-18T05:16:14.064Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "CMC Agent Hub MCP market context, BNB quote, and BNB technical-analysis payload were fetched successfully."
+  },
   "source": "coinmarketcap",
-  "transport": "rest",
+  "transport": "agent-hub-mcp",
   "global": {
-    "totalMarketCapUsd": 2232950911454.51,
-    "totalVolume24hUsd": 70822203987.72,
-    "totalMarketCapChange24hPct": -1.51767055,
-    "btcDominancePct": 58.319781760655,
-    "btcDominanceChange24hPct": -0.128770269345,
-    "ethDominancePct": 9.496609314301,
-    "observedAt": "2026-06-17T13:12:59.999Z"
+    "totalMarketCapUsd": 2200000000000,
+    "totalVolume24hUsd": 84260000000,
+    "totalMarketCapChange24hPct": -2.65,
+    "btcDominancePct": 58.3,
+    "btcDominanceChange24hPct": -0.12,
+    "ethDominancePct": 9.51,
+    "observedAt": "2026-06-18T00:00:00.000Z"
   },
   "fearGreed": {
-    "value": 23,
+    "value": 21,
     "classification": "Fear",
-    "observedAt": "2026-06-17T13:08:10.032Z"
+    "observedAt": "2026-06-18T00:00:00.000Z"
   },
   "bnb": {
     "assetId": 1839,
     "name": "BNB",
     "symbol": "BNB",
     "cmcRank": 4,
-    "priceUsd": 609.3283656007842,
-    "volume24hUsd": 1233635119.5513034,
-    "percentChange1h": 0.53467969,
-    "percentChange24h": -0.21795213,
-    "percentChange7d": 3.61665278,
-    "percentChange30d": -5.03994681,
-    "marketCapUsd": 82127453270.9986,
-    "marketCapDominancePct": 3.6797,
-    "observedAt": "2026-06-17T13:13:04.000Z"
+    "priceUsd": 588.4663384733603,
+    "volume24hUsd": 1301130749.574653,
+    "percentChange1h": -0.57857815,
+    "percentChange24h": -3.04206641,
+    "percentChange7d": -0.88023711,
+    "percentChange30d": -8.41123482,
+    "marketCapUsd": 79315571668.47,
+    "marketCapDominancePct": 3.617,
+    "observedAt": "2026-06-18T05:15:00.000Z"
+  },
+  "technicalIndicators": {
+    "assetId": 1839,
+    "movingAverages": [
+      {
+        "period": "7",
+        "type": "sma",
+        "value": 608.13
+      },
+      {
+        "period": "30",
+        "type": "sma",
+        "value": 631.11
+      },
+      {
+        "period": "200",
+        "type": "sma",
+        "value": 711.44
+      },
+      {
+        "period": "7",
+        "type": "ema",
+        "value": 606.42
+      },
+      {
+        "period": "30",
+        "type": "ema",
+        "value": 622.36
+      },
+      {
+        "period": "200",
+        "type": "ema",
+        "value": 691.53
+      }
+    ],
+    "observedAt": "2026-06-18T05:16:14.064Z",
+    "source": "coinmarketcap",
+    "sourceTool": "get_crypto_technical_analysis",
+    "summary": "RSI 43.30; MACD -10.9200 / signal -11.4300 / histogram 0.5060; moving averages SMA7=608.13, SMA30=631.11, SMA200=711.44, EMA7=606.42, EMA30=622.36, EMA200=691.53",
+    "symbol": "BNB",
+    "transport": "agent-hub-mcp",
+    "rsi": 43.3,
+    "macd": {
+      "line": -10.92,
+      "signal": -11.43,
+      "histogram": 0.50603
+    }
   }
 }

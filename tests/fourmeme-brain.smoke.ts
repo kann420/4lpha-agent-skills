@@ -59,6 +59,7 @@ async function testMultiAgentAcceptsTokenInfo(): Promise<void> {
 function createMarketContext(): CmcMarketContext {
   return {
     asOf: AS_OF,
+    dataQuality: createFixtureDataQuality(),
     source: "coinmarketcap",
     transport: "rest",
     global: {
@@ -115,6 +116,7 @@ function createFourMemeSnapshot(): FourMemeDiscoverySnapshot {
 
   return {
     asOf: AS_OF,
+    dataQuality: createFixtureDataQuality(),
     sourceBaseUrl: "https://four.meme/meme-api/v1",
     sourceEndpoints: ["https://four.meme/meme-api/v1/public/token/ranking"],
     venue: "fourmeme",
@@ -181,6 +183,15 @@ function createTokenInfo(): FourMemeTokenInfoSnapshot {
         observedAt: AS_OF,
       },
     ],
+  };
+}
+
+function createFixtureDataQuality() {
+  return {
+    freshness: [],
+    providerErrors: [],
+    status: "complete" as const,
+    summary: "Fixture data for deterministic smoke testing.",
   };
 }
 

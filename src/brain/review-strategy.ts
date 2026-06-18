@@ -475,7 +475,7 @@ function applyReviewToSpec(input: {
       {
         id: "4alpha-smart-wallet-doctrine",
         description: "The Four.Meme skill applies a smart-wallet entry doctrine distilled from 4alpha custom skill research as an advisory review policy.",
-        impact: "Backtests may use currently available market-cap, volume, holder, bonding, and bucket fields immediately; smart-wallet cluster and short-window buy/sell flow should remain explicit future evidence until adapters provide them.",
+        impact: "Backtests may use currently available market-cap, volume, holder, bonding, bucket, and attached on-chain enrichment fields immediately; deeper smart-wallet cluster or short-window buy/sell flow should remain explicit future evidence when no adapter snapshot is attached.",
       },
     ].filter((next) => !input.strategySpec.assumptions.some((assumption) => assumption.id === next.id))),
     evidence: appendEvidence(

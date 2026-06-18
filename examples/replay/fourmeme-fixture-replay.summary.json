@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "method": "volume-only",
+    "selected": [
+      {
+        "bucket": "gemHunt",
+        "categoryScore": 81,
+        "onchainEligible": true,
+        "onchainRisk": "medium",
+        "positionSizeMultiplier": 0.75,
+        "symbol": "BNBMAX",
+        "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+        "volume24hUsd": 620000
+      },
+      {
+        "bucket": "mediumRisk",
+        "categoryScore": 55,
+        "onchainEligible": false,
+        "onchainRisk": "high",
+        "positionSizeMultiplier": 0,
+        "symbol": "WATCH",
+        "tokenAddress": "0x5f0e1d2c3b4a69788766554433221100aabbccdd",
+        "volume24hUsd": 210000
+      }
+    ]
+  },
+  "generatedAt": "2026-06-18T04:00:00.000Z",
+  "methodologyNote": "Fixture replay checks deterministic strategy selection against a simple volume-only baseline. It is methodology evidence, not profitability proof.",
+  "overlapCount": 1,
+  "sourceFixture": "examples/generated/fourmeme-proposed",
+  "strategy": {
+    "allowedBuckets": [
+      "safe2ape",
+      "gemHunt"
+    ],
+    "onchainSkills": [
+      "score_holder_concentration_risk",
+      "review_dex_wallet_activity_profile",
+      "review_dex_wallet_pnl"
+    ],
+    "selected": [
+      {
+        "bucket": "gemHunt",
+        "categoryScore": 81,
+        "onchainEligible": true,
+        "onchainRisk": "medium",
+        "positionSizeMultiplier": 0.75,
+        "symbol": "BNBMAX",
+        "tokenAddress": "0x7a1b9c2d3e4f5061728394a5b6c7d8e9f0012345",
+        "volume24hUsd": 620000
+      },
+      {
+        "bucket": "safe2ape",
+        "categoryScore": 74,
+        "onchainEligible": true,
+        "onchainRisk": "low",
+        "positionSizeMultiplier": 1,
+        "symbol": "FOUR",
+        "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444",
+        "volume24hUsd": 186000
+      }
+    ],
+    "status": "proposed"
+  }
+}

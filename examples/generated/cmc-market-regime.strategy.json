@@ -1,11 +1,33 @@
 {
   "version": "0.1.0",
-  "strategyId": "cmc-bnb-fourmeme-2026-06-17T13-19-59-999Z",
-  "generatedAt": "2026-06-17T13:21:11.493Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "CMC Agent Hub MCP global metrics and BNB quote are sampled at the provider's latest available cadence.",
+        "retrievedAt": "2026-06-18T10:12:45.904Z",
+        "sourceObservedAt": "2026-06-18T10:11:00.000Z"
+      },
+      {
+        "expectedCadence": "CMC MCP technical-analysis snapshot for BNB.",
+        "retrievedAt": "2026-06-18T10:12:45.904Z",
+        "sourceObservedAt": "2026-06-18T10:12:47.806Z"
+      },
+      {
+        "expectedCadence": "Four.Meme meme-api discovery feeds are fetched live for each run.",
+        "retrievedAt": "2026-06-18T10:12:45.958Z",
+        "sourceObservedAt": "2026-06-18T10:12:46.547Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "Strategy spec generated from complete CMC market context and complete Four.Meme discovery inputs."
+  },
+  "strategyId": "cmc-bnb-fourmeme-2026-06-18T10-11-00-000Z",
+  "generatedAt": "2026-06-18T10:12:47.808Z",
   "domain": "bnb-fourmeme",
   "status": "rejected",
   "inputWindow": {
-    "asOf": "2026-06-17T13:19:59.999Z",
+    "asOf": "2026-06-18T10:11:00.000Z",
     "barInterval": "1h",
     "lookback": "7d"
   },
@@ -14,112 +36,108 @@
     "venue": "fourmeme",
     "selectionMethod": "Apply a CMC regime gate first, then scan live Four.Meme meme-api feeds and reuse the distilled 4alpha discovery buckets (Safe 2 Ape, Medium Risk, Gem Hunt) to shortlist contract-level candidates.",
     "quoteAsset": "BNB",
-    "candidateCount": 9,
+    "candidateCount": 8,
     "bucketCounts": {
-      "safe2ape": 1,
-      "mediumRisk": 65,
-      "gemHunt": 5
+      "safe2ape": 0,
+      "mediumRisk": 59,
+      "gemHunt": 4
     },
     "sampleCandidates": [
       {
-        "tokenAddress": "0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
-        "symbol": "MAX",
-        "name": "捐款给GIGGLE",
-        "venueUrl": "https://four.meme/en/token/0x30c03f3ef3bf39db282e6e80474754ea8df441a4",
-        "marketCapUsd": 11324.048085699395,
-        "volume24hUsd": 56859.69,
-        "volume4hUsd": 25044.54,
-        "holders": 63,
-        "bondingProgress": 60,
-        "discoveryFeeds": [
-          "volumeLeaders",
-          "hot"
-        ],
-        "selectionBucket": "safe2ape",
-        "createdAt": "2026-06-17T01:16:03.000Z",
-        "graduated": false,
-        "launchStage": "new",
-        "categoryScore": 48
-      },
-      {
-        "tokenAddress": "0x89da89494878472ba8cfd509b524688675f84444",
-        "symbol": "不吃压力",
-        "name": "不吃压力",
-        "venueUrl": "https://four.meme/en/token/0x89da89494878472ba8cfd509b524688675f84444",
-        "marketCapUsd": 5258.231811279266,
-        "volume24hUsd": 95347.17,
-        "volume4hUsd": 0,
-        "holders": 62,
-        "bondingProgress": 25.1,
+        "tokenAddress": "0x0c5c7a260a47ebb3ba202f6ca754256c203b4444",
+        "symbol": "寶寶",
+        "name": "寶寶",
+        "venueUrl": "https://four.meme/en/token/0x0c5c7a260a47ebb3ba202f6ca754256c203b4444",
+        "marketCapUsd": 4120.647940379854,
+        "volume24hUsd": 95530.72,
+        "volume4hUsd": 15122.34,
+        "holders": 46,
+        "bondingProgress": 11.3,
         "discoveryFeeds": [
           "volumeLeaders",
           "hot"
         ],
         "selectionBucket": "mediumRisk",
-        "createdAt": "2026-06-17T07:28:20.000Z",
+        "createdAt": "2026-06-18T01:02:01.000Z",
         "graduated": false,
         "launchStage": "new",
         "categoryScore": 33
       },
       {
-        "tokenAddress": "0x11bca62f586185a09641aee156d53ec027db4444",
-        "symbol": "czzzzzzzzz",
-        "name": "changpeng zhao",
-        "venueUrl": "https://four.meme/en/token/0x11bca62f586185a09641aee156d53ec027db4444",
-        "marketCapUsd": 4409.744482204692,
-        "volume24hUsd": 82963.57,
-        "volume4hUsd": 0,
-        "holders": 51,
-        "bondingProgress": 15.1,
+        "tokenAddress": "0xc74c6e7ef5d744727fa28791d006a10d8b524444",
+        "symbol": "黄豆",
+        "name": "首个4k meme",
+        "venueUrl": "https://four.meme/en/token/0xc74c6e7ef5d744727fa28791d006a10d8b524444",
+        "marketCapUsd": 8405.291465704788,
+        "volume24hUsd": 47685.52,
+        "volume4hUsd": 33184.5,
+        "holders": 58,
+        "bondingProgress": 48.9,
         "discoveryFeeds": [
           "volumeLeaders",
           "hot"
         ],
         "selectionBucket": "mediumRisk",
-        "createdAt": "2026-06-17T03:08:15.000Z",
+        "createdAt": "2026-06-18T03:49:37.000Z",
         "graduated": false,
         "launchStage": "new",
-        "categoryScore": 32
+        "categoryScore": 31
       },
       {
-        "tokenAddress": "0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
-        "symbol": "ME",
-        "name": "我是最好的",
-        "venueUrl": "https://four.meme/en/token/0xea3f9272c3d1f95a94d03aef76cf5cbc4bfa4444",
-        "marketCapUsd": 3500.4683048081897,
-        "volume24hUsd": 74125.04,
-        "volume4hUsd": 74125.04,
-        "holders": 23,
-        "bondingProgress": 0.8,
+        "tokenAddress": "0xae52f3b1afb67b2744daa07da8109341eddf4444",
+        "symbol": "Lugurde",
+        "name": "chrustine Lugurde",
+        "venueUrl": "https://four.meme/en/token/0xae52f3b1afb67b2744daa07da8109341eddf4444",
+        "marketCapUsd": 5365.110511359834,
+        "volume24hUsd": 27878.42,
+        "volume4hUsd": 2427.76,
+        "holders": 41,
+        "bondingProgress": 26.3,
         "discoveryFeeds": [
           "volumeLeaders",
           "hot"
         ],
         "selectionBucket": "mediumRisk",
-        "createdAt": "2026-06-17T09:31:11.000Z",
+        "createdAt": "2026-06-17T16:44:19.000Z",
         "graduated": false,
         "launchStage": "new",
         "categoryScore": 29
       },
       {
-        "tokenAddress": "0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
-        "symbol": "妮卡",
-        "name": "妮卡",
-        "venueUrl": "https://four.meme/en/token/0x4358cad0a1eeb5cfaa9f56363c79207bc0014444",
-        "marketCapUsd": 3531.3921301299183,
-        "volume24hUsd": 72644.81,
-        "volume4hUsd": 55847.64,
-        "holders": 20,
-        "bondingProgress": 0.8,
+        "tokenAddress": "0x4e95bdd52e53115ac7ea91f6bce1114a970bffff",
+        "symbol": "Dai Dai",
+        "name": "Dai Dai",
+        "venueUrl": "https://four.meme/en/token/0x4e95bdd52e53115ac7ea91f6bce1114a970bffff",
+        "marketCapUsd": 125900.73821628815,
+        "volume24hUsd": 75122.58,
+        "volume4hUsd": 942871.73,
+        "bondingProgress": 100,
         "discoveryFeeds": [
-          "volumeLeaders",
-          "hot"
+          "dexMigrated"
         ],
         "selectionBucket": "mediumRisk",
-        "createdAt": "2026-06-16T18:17:12.000Z",
-        "graduated": false,
-        "launchStage": "new",
-        "categoryScore": 29
+        "createdAt": "2026-06-08T07:58:56.000Z",
+        "graduated": true,
+        "launchStage": "migrated",
+        "categoryScore": 27
+      },
+      {
+        "tokenAddress": "0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+        "symbol": "冬冬",
+        "name": "保护冬冬 为冬冬伸张正义",
+        "venueUrl": "https://four.meme/en/token/0x64e42d99fa091cf0507c42e21eb3c4418b9a4444",
+        "marketCapUsd": 651759.6639499218,
+        "volume24hUsd": 362319.48,
+        "volume4hUsd": 4026680,
+        "bondingProgress": 100,
+        "discoveryFeeds": [
+          "dexMigrated"
+        ],
+        "selectionBucket": "gemHunt",
+        "createdAt": "2026-06-08T06:02:27.000Z",
+        "graduated": true,
+        "launchStage": "migrated",
+        "categoryScore": 46
       }
     ]
   },
@@ -210,6 +228,13 @@
       "metric": "fourmeme.bonding_progress_pct",
       "operator": ">=",
       "value": 50
+    },
+    {
+      "id": "cmc-bnb-rsi-overheat-filter",
+      "description": "Use CMC MCP BNB RSI as an advisory overheat filter before activating Four.Meme continuation exposure.",
+      "metric": "cmc.bnb.technical.rsi",
+      "operator": "<=",
+      "value": 75
     }
   ],
   "exitRules": [
@@ -323,33 +348,39 @@
     {
       "id": "4alpha-smart-wallet-doctrine",
       "description": "The Four.Meme skill applies a smart-wallet entry doctrine distilled from 4alpha custom skill research as an advisory review policy.",
-      "impact": "Backtests may use currently available market-cap, volume, holder, bonding, and bucket fields immediately; smart-wallet cluster and short-window buy/sell flow should remain explicit future evidence until adapters provide them."
+      "impact": "Backtests may use currently available market-cap, volume, holder, bonding, bucket, and attached on-chain enrichment fields immediately; deeper smart-wallet cluster or short-window buy/sell flow should remain explicit future evidence when no adapter snapshot is attached."
     }
   ],
   "evidence": [
     {
       "source": "CoinMarketCap Global Metrics API",
-      "observedAt": "2026-06-17T13:19:59.999Z",
-      "summary": "Total crypto market cap is 2234106659768 USD with a 24h change of -1.58%. BTC dominance is 58.32% with a 24h change of -0.11%.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Total crypto market cap is 2210000000000 USD with a 24h change of -1.05%. BTC dominance is 58.24% with a 24h change of -0.18%.",
       "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
     },
     {
       "source": "CoinMarketCap Fear and Greed API",
-      "observedAt": "2026-06-17T13:08:10.032Z",
-      "summary": "Fear and Greed is 23 and classified as Fear.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Fear and Greed is 21 and classified as Fear.",
       "url": "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
     },
     {
       "source": "CoinMarketCap BNB Quote API",
-      "observedAt": "2026-06-17T13:19:04.000Z",
-      "summary": "BNB trades at 609.32 USD with -0.28% 24h change and 3.66% 7d change.",
+      "observedAt": "2026-06-18T10:11:00.000Z",
+      "summary": "BNB trades at 589.08 USD with -1.99% 24h change and -1.72% 7d change.",
       "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB"
     },
     {
       "source": "Four.Meme Meme API discovery feeds",
-      "observedAt": "2026-06-17T13:21:11.493Z",
-      "summary": "Scanned Four.Meme feeds via meme-api with counts new=50, volume=50, hot=50, dex=100. Bucket counts are safe2ape=1, mediumRisk=65, gemHunt=5. Leading names: MAX (0x30c03f3ef3bf39db282e6e80474754ea8df441a4) bucket safe2ape, feeds volumeLeaders+hot, MC $11.32K, Vol $56.86K; 不吃压力 (0x89da89494878472ba8cfd509b524688675f84444) bucket mediumRisk, feeds volumeLeaders+hot, MC $5.26K, Vol $95.35K; czzzzzzzzz (0x11bca62f586185a09641aee156d53ec027db4444) bucket mediumRisk, feeds volumeLeaders+hot, MC $4.41K, Vol $82.96K.",
+      "observedAt": "2026-06-18T10:12:46.547Z",
+      "summary": "Scanned Four.Meme feeds via meme-api with counts new=50, volume=50, hot=50, dex=100. Bucket counts are safe2ape=0, mediumRisk=59, gemHunt=4. Leading names: non-ascii-token (0x0c5c7a260a47ebb3ba202f6ca754256c203b4444) bucket mediumRisk, feeds volumeLeaders+hot, MC $4.12K, Vol $95.53K; non-ascii-token (0xc74c6e7ef5d744727fa28791d006a10d8b524444) bucket mediumRisk, feeds volumeLeaders+hot, MC $8.41K, Vol $47.69K; Lugurde/chrustine Lugurde (0xae52f3b1afb67b2744daa07da8109341eddf4444) bucket mediumRisk, feeds volumeLeaders+hot, MC $5.37K, Vol $27.88K.",
       "url": "https://four.meme/meme-api/v1"
+    },
+    {
+      "source": "CoinMarketCap BNB Technical Analysis MCP",
+      "observedAt": "2026-06-18T10:12:47.806Z",
+      "summary": "CMC MCP technical-analysis tool returned BNB indicators: RSI 43.30; MACD -10.9200 / signal -11.4300 / histogram 0.5060; moving averages SMA7=608.13, SMA30=631.11, SMA200=711.44, EMA7=606.42, EMA30=622.36, EMA200=691.53.",
+      "url": "https://mcp.coinmarketcap.com/mcp#tool=get_crypto_technical_analysis&id=1839"
     },
     {
       "source": "4Alpha Global Learning Policy",
@@ -362,13 +393,13 @@
       "summary": "Applied advisory setup modes, smart-wallet confirmation requirements, 5-of-8 entry checklist, and avoid rules as strategy-spec review policy."
     }
   ],
-  "strategyThesis": "Do not activate fresh Four.Meme exposure until the CMC regime gate improves. BNB 7d strength is 3.66%, Fear and Greed is 23, and the latest venue buckets are safe2ape=1, mediumRisk=65, gemHunt=5. The multi-agent brain keeps this strategy inactive for now: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it. Smart-wallet doctrine requirements remain explicit so the setup can be backtested or rejected without inventing missing wallet-flow data.",
+  "strategyThesis": "Do not activate fresh Four.Meme exposure until the CMC regime gate improves. BNB 7d strength is -1.72%, Fear and Greed is 21, and the latest venue buckets are safe2ape=0, mediumRisk=59, gemHunt=4. The multi-agent brain keeps this strategy inactive for now: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it. Smart-wallet doctrine requirements remain explicit so the setup can be backtested or rejected without inventing missing wallet-flow data.",
   "brainReview": {
     "mode": "multi-agent",
     "provider": "local-rules",
     "status": "blocked",
     "finalVerdict": "wait",
-    "strategyThesis": "Do not activate fresh Four.Meme exposure until the CMC regime gate improves. BNB 7d strength is 3.66%, Fear and Greed is 23, and the latest venue buckets are safe2ape=1, mediumRisk=65, gemHunt=5. The multi-agent brain keeps this strategy inactive for now: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it. Smart-wallet doctrine requirements remain explicit so the setup can be backtested or rejected without inventing missing wallet-flow data.",
+    "strategyThesis": "Do not activate fresh Four.Meme exposure until the CMC regime gate improves. BNB 7d strength is -1.72%, Fear and Greed is 21, and the latest venue buckets are safe2ape=0, mediumRisk=59, gemHunt=4. The multi-agent brain keeps this strategy inactive for now: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it. Smart-wallet doctrine requirements remain explicit so the setup can be backtested or rejected without inventing missing wallet-flow data.",
     "learning": {
       "policyVersion": "0.1.0+smart-wallet-0.1.0",
       "source": "distilled-from-4alpha-global-learning; 4alpha-custom-fourmeme-smart-wallet-entry-doctrine",
@@ -425,7 +456,7 @@
         "confidence": 0.7,
         "summary": "Social review approved using Four.Meme feed presence as a weak venue-attention proxy while preserving smart-wallet cluster requirements as future evidence.",
         "reasons": [
-          "9 selected candidate(s) appeared in hot, volume, or DEX-migrated feeds.",
+          "8 selected candidate(s) appeared in hot, volume, or DEX-migrated feeds.",
           "No external KOL or wallet-social feed is claimed in this repo slice.",
           "Missing social data is treated as neutral according to the global learning policy.",
           "Smart-wallet cluster confirmation is required as future evidence before converting watchlist names into active entries."
@@ -456,31 +487,115 @@
       }
     ]
   },
-  "rationale": "CMC conditions do not justify activating fresh Four.Meme launch-phase exposure yet. The current CMC snapshot shows Fear and Greed at 23, total market cap change at -1.58% over 24h, and BNB at 3.66% over 7d. The venue scan is no longer hypothetical: the current Four.Meme discovery snapshot produced 9 featured candidates across Safe 2 Ape (1), Medium Risk (65), and Gem Hunt (5), with MAX (safe2ape), 不吃压力 (mediumRisk), czzzzzzzzz (mediumRisk) as the leading names. Brain review: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it.",
+  "rationale": "CMC conditions do not justify activating fresh Four.Meme launch-phase exposure yet. The current CMC snapshot shows Fear and Greed at 21, total market cap change at -1.05% over 24h, and BNB at -1.72% over 7d. The venue scan is no longer hypothetical: the current Four.Meme discovery snapshot produced 8 featured candidates across Safe 2 Ape (0), Medium Risk (59), and Gem Hunt (4), with non-ascii-token (mediumRisk), non-ascii-token (mediumRisk), Lugurde/chrustine Lugurde (mediumRisk) as the leading names. Brain review: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it.",
   "rejectionReasons": [
     {
-      "description": "Total crypto market cap is -1.58% over 24h, below the flat-to-up entry gate.",
+      "description": "Total crypto market cap is -1.05% over 24h, below the flat-to-up entry gate.",
       "metric": "cmc.global.total_market_cap_change_24h_pct",
       "operator": "<",
       "value": 0
     },
     {
-      "description": "CMC Fear and Greed is 23, below the minimum activation threshold of 35.",
+      "description": "CMC Fear and Greed is 21, below the minimum activation threshold of 35.",
       "metric": "cmc.fear_and_greed.value",
       "operator": "<",
       "value": 35
     },
     {
-      "description": "BNB 24h performance is -0.28%, below the non-negative momentum gate.",
+      "description": "BNB 24h performance is -1.99%, below the non-negative momentum gate.",
       "metric": "cmc.bnb.percent_change_24h",
       "operator": "<",
       "value": 0
+    },
+    {
+      "description": "BNB 7d performance is -1.72%, below the strategy's strength floor.",
+      "metric": "cmc.bnb.percent_change_7d",
+      "operator": "<",
+      "value": 2
     },
     {
       "description": "Brain review returned wait: Gatekeeper kept the strategy inactive because the deterministic regime gate rejected it.",
       "metric": "brainReview.finalVerdict",
       "operator": "=",
       "value": "wait"
+    }
+  ],
+  "skillRoute": {
+    "catalogSource": "local-marketplace-routing-contract",
+    "catalogVersion": "0.1.0",
+    "optionalEnrichments": [
+      "score_holder_concentration_risk",
+      "review_dex_wallet_activity_profile",
+      "review_dex_wallet_pnl",
+      "cmc_crypto_research"
+    ],
+    "query": "Generate a BNB Chain Four.Meme meme-token strategy from CMC market context and Four.Meme launch signals.",
+    "rejectedSkills": [
+      {
+        "reason": "Not selected because the query routed to the fourmeme lane, not bstocks.",
+        "skillId": "4lpha_bstocks_strategy_skill"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is data; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_mcp"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is context; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_market_report"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is research; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "cmc_crypto_research"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-risk; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "score_holder_concentration_risk"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-entry-quality; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "review_dex_wallet_activity_profile"
+      },
+      {
+        "reason": "Not selected as the primary route because this skill is onchain-advisory; it may still be used as data, context, research, or on-chain enrichment.",
+        "skillId": "review_dex_wallet_pnl"
+      }
+    ],
+    "requiredInputs": [
+      "cmc_market_context",
+      "fourmeme_discovery_snapshot"
+    ],
+    "routeStatus": "primary_selected",
+    "routeType": "find_skill-local-contract",
+    "routedAt": "2026-06-18T10:12:45.902Z",
+    "routingReason": "Selected 4lpha_fourmeme_strategy_skill as primary because the query matched curated keywords: four.meme, meme, launch, strategy.",
+    "selectedSkill": "4lpha_fourmeme_strategy_skill",
+    "selectedSkillLabel": "4lpha Four.Meme Strategy Skill",
+    "selectedSkillRole": "primary",
+    "skillExecution": {
+      "mode": "local-contract",
+      "reason": "Matched against the repo's curated marketplace-ready routing contract; live cloud execution is not claimed by this artifact.",
+      "sourceUrl": "https://coinmarketcap.com/api/skills-marketplace/",
+      "status": "matched"
+    }
+  },
+  "artifactRefs": [
+    {
+      "label": "skill-route.snapshot.json",
+      "path": "skill-route.snapshot.json",
+      "role": "input",
+      "sha256": "f75a4451768b69b5bb2e56c1e4159e937812cfe4e154886c7c1f2788d38b5a3c"
+    },
+    {
+      "label": "cmc-market-context.snapshot.json",
+      "path": "cmc-market-context.snapshot.json",
+      "role": "input",
+      "sha256": "ac1d12e9d2e950af32900a0126cef40f718647e21c2c93a9fd60abf5e54ec486"
+    },
+    {
+      "label": "fourmeme-discovery.snapshot.json",
+      "path": "fourmeme-discovery.snapshot.json",
+      "role": "input",
+      "sha256": "f6a72669bf0a68a0ce5de5ed5e81dcd89bc5fc3ad85138b4a99d7b93892ce951"
     }
   ]
 }

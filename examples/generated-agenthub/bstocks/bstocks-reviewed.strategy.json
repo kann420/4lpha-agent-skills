@@ -1,11 +1,33 @@
 {
   "version": "0.1.0",
-  "strategyId": "cmc-bnb-bstocks-2026-06-17T12-55-00-000Z",
-  "generatedAt": "2026-06-17T12:56:14.199Z",
+  "dataQuality": {
+    "freshness": [
+      {
+        "expectedCadence": "CMC Agent Hub MCP global metrics and BNB quote are sampled at the provider's latest available cadence.",
+        "retrievedAt": "2026-06-18T05:16:27.207Z",
+        "sourceObservedAt": "2026-06-18T05:15:00.000Z"
+      },
+      {
+        "expectedCadence": "CMC MCP technical-analysis snapshot for BNB.",
+        "retrievedAt": "2026-06-18T05:16:27.207Z",
+        "sourceObservedAt": "2026-06-18T05:16:28.674Z"
+      },
+      {
+        "expectedCadence": "CoinMarketCap latest quotes are fetched once per bStocks generation run.",
+        "retrievedAt": "2026-06-18T05:16:27.950Z",
+        "sourceObservedAt": "2026-06-18T05:15:00.000Z"
+      }
+    ],
+    "providerErrors": [],
+    "status": "complete",
+    "summary": "bStocks draft generated from complete CMC market context and complete bStocks quote inputs."
+  },
+  "strategyId": "cmc-bnb-bstocks-2026-06-18T05-15-00-000Z",
+  "generatedAt": "2026-06-18T05:16:28.675Z",
   "domain": "bnb-bstocks",
   "status": "rejected",
   "inputWindow": {
-    "asOf": "2026-06-17T12:55:00.000Z",
+    "asOf": "2026-06-18T05:15:00.000Z",
     "barInterval": "1h",
     "lookback": "7d"
   },
@@ -26,43 +48,30 @@
     ],
     "sampleCandidates": [
       {
-        "cmcId": 40217,
-        "symbol": "SPCXB",
-        "name": "SpaceX Tokenized bStocks",
+        "cmcId": 40212,
+        "symbol": "MUB",
+        "name": "Micron Technology Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 207.4153836954827,
-        "volume24hUsd": 58671655.6096269,
-        "marketCapUsd": 35659459.13,
-        "percentChange24h": 2.86277625,
-        "percentChange7d": 29.63461481,
-        "observedAt": "2026-06-17T12:55:00.000Z"
+        "priceUsd": 1079.0929119435214,
+        "volume24hUsd": 3358686.3063557,
+        "marketCapUsd": 4742270.76,
+        "percentChange24h": 1.99401995,
+        "percentChange7d": 17.82551334,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
-        "cmcId": 40214,
-        "symbol": "TSLAB",
-        "name": "Tesla Tokenized bStocks",
+        "cmcId": 40213,
+        "symbol": "CRCLB",
+        "name": "Circle Internet Group Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 401.51315899213995,
-        "volume24hUsd": 2662215.4251755,
-        "marketCapUsd": 1533866,
-        "percentChange24h": -1.03482846,
-        "percentChange7d": 2.08786463,
-        "observedAt": "2026-06-17T12:54:00.000Z"
-      },
-      {
-        "cmcId": 40215,
-        "symbol": "NVDAB",
-        "name": "NVIDIA Tokenized bStocks",
-        "issuer": "bStocks",
-        "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 208.614569862346,
-        "volume24hUsd": 1049876.27610988,
-        "marketCapUsd": 3516774.25,
-        "percentChange24h": -1.21812179,
-        "percentChange7d": 2.75658859,
-        "observedAt": "2026-06-17T12:55:00.000Z"
+        "priceUsd": 80.78767438685631,
+        "volume24hUsd": 2299881.4425175,
+        "marketCapUsd": 4075993.62,
+        "percentChange24h": 0.25448264,
+        "percentChange7d": -3.85843669,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
         "cmcId": 40216,
@@ -70,25 +79,38 @@
         "name": "SanDisk Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 2063.8958241179735,
-        "volume24hUsd": 2762519.27082803,
-        "marketCapUsd": 2260013.64,
-        "percentChange24h": -3.02419078,
-        "percentChange7d": 13.05514155,
-        "observedAt": "2026-06-17T12:54:00.000Z"
+        "priceUsd": 2021.6318812593045,
+        "volume24hUsd": 3429035.06592392,
+        "marketCapUsd": 2736683.33,
+        "percentChange24h": -1.05822606,
+        "percentChange7d": 10.74002662,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       },
       {
-        "cmcId": 40212,
-        "symbol": "MUB",
-        "name": "Micron Technology Tokenized bStocks",
+        "cmcId": 40214,
+        "symbol": "TSLAB",
+        "name": "Tesla Tokenized bStocks",
         "issuer": "bStocks",
         "venueUrl": "https://pancakeswap.finance/stocks",
-        "priceUsd": 1056.1581630523904,
-        "volume24hUsd": 3199614.19907072,
-        "marketCapUsd": 4443631.22,
-        "percentChange24h": -3.96131764,
-        "percentChange7d": 15.32128175,
-        "observedAt": "2026-06-17T12:55:00.000Z"
+        "priceUsd": 397.8428096527467,
+        "volume24hUsd": 2616667.04861863,
+        "marketCapUsd": 1570680.37,
+        "percentChange24h": -1.31417118,
+        "percentChange7d": 1.15464957,
+        "observedAt": "2026-06-18T05:14:00.000Z"
+      },
+      {
+        "cmcId": 40215,
+        "symbol": "NVDAB",
+        "name": "NVIDIA Tokenized bStocks",
+        "issuer": "bStocks",
+        "venueUrl": "https://pancakeswap.finance/stocks",
+        "priceUsd": 205.76571712548835,
+        "volume24hUsd": 1544751.51062935,
+        "marketCapUsd": 3567894.35,
+        "percentChange24h": -1.46451988,
+        "percentChange7d": 1.35333862,
+        "observedAt": "2026-06-18T05:14:00.000Z"
       }
     ]
   },
@@ -145,7 +167,7 @@
       "description": "Require 24h quoted volume to remain at or above the current bStocks universe median so the strategy stays in the more active names.",
       "metric": "bstocks.volume_24h_usd",
       "operator": ">=",
-      "value": 2712367.35
+      "value": 2987676.68
     },
     {
       "id": "bstocks-allowlist-gate",
@@ -281,26 +303,26 @@
   "evidence": [
     {
       "source": "CoinMarketCap Global Metrics API",
-      "observedAt": "2026-06-17T00:00:00.000Z",
-      "summary": "Total crypto market cap is 2230000000000 USD with a 24h change of -2.10%.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Total crypto market cap is 2200000000000 USD with a 24h change of -2.65%.",
       "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
     },
     {
       "source": "CoinMarketCap Fear and Greed API",
-      "observedAt": "2026-06-17T00:00:00.000Z",
-      "summary": "Fear and Greed is 23 and classified as Fear.",
+      "observedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "Fear and Greed is 21 and classified as Fear.",
       "url": "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
     },
     {
       "source": "CoinMarketCap BNB Quote API",
-      "observedAt": "2026-06-17T12:55:00.000Z",
-      "summary": "BNB trades at 607.75 USD with -1.03% 24h change.",
+      "observedAt": "2026-06-18T05:15:00.000Z",
+      "summary": "BNB trades at 588.47 USD with -3.04% 24h change.",
       "url": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BNB"
     },
     {
       "source": "CoinMarketCap bStocks quote snapshot",
-      "observedAt": "2026-06-17T12:55:00.000Z",
-      "summary": "Tracked 6 bStocks symbols from the committed allowlist. Leading names: SPCXB (40217) 24h 2.86%, 7d 29.63%, price $207.42, volume $58.67M; TSLAB (40214) 24h -1.03%, 7d 2.09%, price $401.51, volume $2.66M; NVDAB (40215) 24h -1.22%, 7d 2.76%, price $208.61, volume $1.05M.",
+      "observedAt": "2026-06-18T05:15:00.000Z",
+      "summary": "Tracked 6 bStocks symbols from the committed allowlist. Leading names: MUB (40212) 24h 1.99%, 7d 17.83%, price $1079.09, volume $3.36M; CRCLB (40213) 24h 0.25%, 7d -3.86%, price $80.79, volume $2.30M; SNDKB (40216) 24h -1.06%, 7d 10.74%, price $2021.63, volume $3.43M.",
       "url": "https://mcp.coinmarketcap.com/mcp#tool=get_crypto_quotes_latest&id=40213,40212,40215,40216,40217,40214"
     },
     {
@@ -309,22 +331,22 @@
       "summary": "Applied 3 learned lesson(s) through multi-agent review."
     }
   ],
-  "rationale": "CMC conditions do not justify activating fresh bStocks rotation exposure yet. The current CMC snapshot shows Fear and Greed at 23, total market cap change at -2.10% over 24h, and BNB at -1.03% over 24h. The bStocks lane currently tracks 6 quoteable symbols from the committed allowlist, with SPCXB (2.86%), TSLAB (-1.03%), NVDAB (-1.22%) leading the 24h relative-strength table. This lane is intentionally shallow for the current milestone: it proves repo structure, CMC-backed pricing, and explicit backtestable rules without mixing in Four.Meme heuristics. Brain review: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
+  "rationale": "CMC conditions do not justify activating fresh bStocks rotation exposure yet. The current CMC snapshot shows Fear and Greed at 21, total market cap change at -2.65% over 24h, and BNB at -3.04% over 24h. The bStocks lane currently tracks 6 quoteable symbols from the committed allowlist, with MUB (1.99%), CRCLB (0.25%), SNDKB (-1.06%) leading the 24h relative-strength table. This lane is intentionally shallow for the current milestone: it proves repo structure, CMC-backed pricing, and explicit backtestable rules without mixing in Four.Meme heuristics. Brain review: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
   "rejectionReasons": [
     {
-      "description": "Total crypto market cap is -2.10% over 24h, below the flat-to-up gate.",
+      "description": "Total crypto market cap is -2.65% over 24h, below the flat-to-up gate.",
       "metric": "cmc.global.total_market_cap_change_24h_pct",
       "operator": "<",
       "value": 0
     },
     {
-      "description": "CMC Fear and Greed is 23, below the bStocks activation threshold of 45.",
+      "description": "CMC Fear and Greed is 21, below the bStocks activation threshold of 45.",
       "metric": "cmc.fear_and_greed.value",
       "operator": "<",
       "value": 45
     },
     {
-      "description": "BNB 24h performance is -1.03%, below the non-negative venue-support gate.",
+      "description": "BNB 24h performance is -3.04%, below the non-negative venue-support gate.",
       "metric": "cmc.bnb.percent_change_24h",
       "operator": "<",
       "value": 0
@@ -336,13 +358,13 @@
       "value": "wait"
     }
   ],
-  "strategyThesis": "Use CMC market regime as the first gate, then rank the committed bStocks allowlist by 24h relative strength and active quoted volume. Current Fear and Greed is 23, BNB 24h is -1.03%, and the tracked universe has 6 quoteable symbols. Current leaders are SPCXB (2.86%), TSLAB (-1.03%), NVDAB (-1.22%). The deterministic draft status is rejected under regime risk-off-wait-for-coverage. The multi-agent brain keeps this strategy inactive for now: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
+  "strategyThesis": "Use CMC market regime as the first gate, then rank the committed bStocks allowlist by 24h relative strength and active quoted volume. Current Fear and Greed is 21, BNB 24h is -3.04%, and the tracked universe has 6 quoteable symbols. Current leaders are MUB (1.99%), CRCLB (0.25%), SNDKB (-1.06%). The deterministic draft status is rejected under regime risk-off-wait-for-coverage. The multi-agent brain keeps this strategy inactive for now: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
   "brainReview": {
     "mode": "multi-agent",
     "provider": "local-rules",
     "status": "blocked",
     "finalVerdict": "wait",
-    "strategyThesis": "Use CMC market regime as the first gate, then rank the committed bStocks allowlist by 24h relative strength and active quoted volume. Current Fear and Greed is 23, BNB 24h is -1.03%, and the tracked universe has 6 quoteable symbols. Current leaders are SPCXB (2.86%), TSLAB (-1.03%), NVDAB (-1.22%). The deterministic draft status is rejected under regime risk-off-wait-for-coverage. The multi-agent brain keeps this strategy inactive for now: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
+    "strategyThesis": "Use CMC market regime as the first gate, then rank the committed bStocks allowlist by 24h relative strength and active quoted volume. Current Fear and Greed is 21, BNB 24h is -3.04%, and the tracked universe has 6 quoteable symbols. Current leaders are MUB (1.99%), CRCLB (0.25%), SNDKB (-1.06%). The deterministic draft status is rejected under regime risk-off-wait-for-coverage. The multi-agent brain keeps this strategy inactive for now: Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
     "learning": {
       "policyVersion": "0.1.0",
       "source": "bstocks-lane-global-learning",
@@ -366,10 +388,24 @@
         "confidence": 0.83,
         "summary": "Safety kept the strategy inactive because the broader market regime remains below the bStocks activation floor.",
         "reasons": [
-          "CMC Fear and Greed is 23, below the activation threshold of 45.",
+          "CMC Fear and Greed is 21, below the activation threshold of 45.",
           "Weak regime conditions should not be overridden by single-name strength in the bStocks lane."
         ]
       }
     ]
-  }
+  },
+  "artifactRefs": [
+    {
+      "label": "cmc-market-context.snapshot.json",
+      "path": "cmc-market-context.snapshot.json",
+      "role": "input",
+      "sha256": "b06efeb3d674a2751e3d3facb2a939ed5e2cc3fbad6a17c40448e514d2b25484"
+    },
+    {
+      "label": "bstocks-universe.snapshot.json",
+      "path": "bstocks-universe.snapshot.json",
+      "role": "input",
+      "sha256": "99c3b4b3517059ef7e2f33c28bda2443569734678b124a81bd5c71e797ae6224"
+    }
+  ]
 }

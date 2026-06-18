@@ -71,6 +71,7 @@ flowchart LR
 ## On-Chain Identity
 
 - Public ERC-8004 AgentIdentity registration proof: [BscScan transaction](https://bscscan.com/tx/0xf844a3155ac04c02f216c1dbf61f1682cf376c04ddb4e37158aff794d8125e19).
+- Agent profile: [fourmeme-strategy-skill on 8004scan](https://8004scan.io/agents/bsc/135051).
 - Registry contract: `0x8004A169FB4a3325136EB29fA0ceB6D2e539a432`.
 - Registered identity account: `0xD7E004CBda24E079aA3A657Ba7f8E2915192a966`.
 

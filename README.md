@@ -85,24 +85,6 @@ flowchart LR
 - **BNBAgent SDK Preflight** - Includes an official BNBAgent SDK dry-run path for ERC-8004 identity integration without broadcasting transactions.
 - **Reproducible Offline Replay** - Ships a clearly marked Four.Meme `proposed` fixture plus a replay/baseline summary that runs without live secrets.
 
-## Why This Wins Track 2
-
-4lpha is built for the Strategy Skills lane: it turns CMC market context into explicit, schema-validated strategy specs rather than trade commands. The main Four.Meme path combines Agent Hub MCP market data, BNB technical-analysis evidence, marketplace-ready routing, live venue discovery, contract-level identity, deterministic review agents, optional proof-gated on-chain enrichment, and replayable artifact hashes so reviewers can inspect exactly what data produced each rule.
-
-The live demo can reject weak regimes, which is intentional risk discipline. The committed `examples/generated/fourmeme-proposed/` fixture shows the same pipeline under a supportive regime, and `examples/replay/` compares strategy selection against a simple volume-only baseline without claiming profitability.
-
-## What Is Live, Fixture, And Local
-
-- `agent-hub-mcp` market context is live CMC Agent Hub MCP data when a local CMC key is configured.
-- `skillRoute.skillExecution.mode: local-contract` means the repo used a marketplace-ready routing contract; it is not a remote CMC Skills endpoint result.
-- `onchainEnrichment.skillExecution.mode: recorded` means the proposed fixture records the expected CMC on-chain skill output shape for replay; it is not a live on-chain call.
-- `skillExecution.mode: recorded-remote` means a sanitized and hashed transcript from real CMC remote/UI/API/agent output was imported.
-- `skillExecution.mode: live-execution` means a configured remote endpoint returned a validated CMC skill execution proof at runtime.
-- `CMC_SKILL_MARKETPLACE_ENDPOINT` is not the CMC MCP URL. Leave it blank unless you have a real remote CMC Skills execution endpoint that can run or return skill execution proofs.
-- `https://mcp.coinmarketcap.com/mcp` belongs to the CMC Agent Hub MCP transport used for market data; it is configured through the MCP provider path and `CMC_API_KEY` or `CMC_MCP_API_KEY`.
-- `npm run skill:probe` reports whether `CMC_SKILL_MARKETPLACE_ENDPOINT` is configured. Without that env var, it prints `status: unavailable` and keeps the demo honest.
-- `npm run validate:cmc-skill-proof` fails unless the proof bundle is `recorded-remote` or `live-execution` and includes all three on-chain skills.
-
 ## Quick Start
 
 ```powershell
